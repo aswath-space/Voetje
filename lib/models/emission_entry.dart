@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:carbon_tracker/models/transport_mode.dart';
 import 'package:carbon_tracker/models/meal_type.dart';
 import 'package:carbon_tracker/models/shopping_item.dart';
@@ -221,13 +222,13 @@ class EmissionEntry {
 /// Top-level emission categories.
 /// Start with transport; more coming soon.
 enum EmissionCategory {
-  transport('Transport', '🚗'),
-  food('Food', '🍽️'),
-  energy('Home Energy', '🏠'),
-  shopping('Shopping', '🛍️'),
-  waste('Waste', '♻️');
+  transport('Transport', Icons.directions_car_outlined),
+  food('Food', Icons.restaurant),
+  energy('Home Energy', Icons.bolt),
+  shopping('Shopping', Icons.shopping_bag_outlined),
+  waste('Waste', Icons.recycling);
 
-  const EmissionCategory(this.label, this.emoji);
+  const EmissionCategory(this.label, this.icon);
   final String label;
-  final String emoji;
+  final IconData icon;
 }

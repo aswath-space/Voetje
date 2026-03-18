@@ -1,4 +1,5 @@
 // test/services/nudge_message_picker_test.dart
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:carbon_tracker/models/emission_entry.dart';
 import 'package:carbon_tracker/models/meal_type.dart';
@@ -41,7 +42,7 @@ void main() {
         recentEntries: [],
       );
       expect(msg.text, isNotEmpty);
-      expect(msg.emoji, isNotEmpty);
+      expect(msg.icon, isA<IconData>());
     });
 
     test('falls back to general lines when waste disabled', () {

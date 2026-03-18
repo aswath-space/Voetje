@@ -139,15 +139,28 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                                 width: 1.5,
                               ),
                             ),
-                            child: Text(
-                              '${cat.emoji} ${cat.label}',
-                              style: VoetjeTypography.caption().copyWith(
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  cat.icon,
+                                  size: 14,
+                                  color: isSelected
+                                      ? VoetjeColors.surface
+                                      : VoetjeColors.textMuted,
+                                ),
+                                const SizedBox(width: 4),
+                                Text(
+                                  cat.label,
+                                  style: VoetjeTypography.caption().copyWith(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w600,
                                     color: isSelected
                                         ? VoetjeColors.surface
                                         : VoetjeColors.textMuted,
                                   ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -171,7 +184,7 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: _ItemCard(
-                    emoji: '✏️',
+                    icon: Icons.edit_outlined,
                     name: 'Other / Custom item',
                     subtitle: 'Enter a custom item',
                     categoryLabel: '',
@@ -179,7 +192,7 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                         setState(() => _selectedItem = const ShoppingItem(
                               name: 'Custom item',
                               co2KgNew: 30.0,
-                              emoji: '📦',
+                              icon: Icons.category_outlined,
                               category: ShoppingCategory.other,
                             )),
                   ),
@@ -189,7 +202,7 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
               return Padding(
                 padding: const EdgeInsets.only(bottom: 8),
                 child: _ItemCard(
-                  emoji: item.emoji,
+                  icon: item.icon,
                   name: item.name,
                   subtitle:
                       '${item.co2KgNew.toStringAsFixed(0)} kg CO₂ (new)',
@@ -213,8 +226,7 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
     return Scaffold(
       backgroundColor: VoetjeColors.background,
       appBar: AppBar(
-        title: Text('${item.emoji} ${item.name}',
-            style: VoetjeTypography.pageTitle()),
+        title: Text(item.name, style: VoetjeTypography.pageTitle()),
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: BackButton(
@@ -255,15 +267,23 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                     Text('That\'s the same as:',
                         style: VoetjeTypography.caption()),
                     const SizedBox(height: 4),
-                    Text(
-                        '🚗 Driving ${drivingKm.toStringAsFixed(0)} km',
-                        style: VoetjeTypography.body()),
-                    Text(
-                        '🥩 ${beefMeals.toStringAsFixed(0)} beef meals',
-                        style: VoetjeTypography.body()),
-                    Text(
-                        '📱 ${(item.co2KgNew / 0.008).toStringAsFixed(0)} smartphone charges',
-                        style: VoetjeTypography.body()),
+                    Row(children: [
+                      const Icon(Icons.directions_car_outlined, size: 16, color: VoetjeColors.textMuted),
+                      const SizedBox(width: 6),
+                      Text('Driving ${drivingKm.toStringAsFixed(0)} km', style: VoetjeTypography.body()),
+                    ]),
+                    const SizedBox(height: 2),
+                    Row(children: [
+                      const Icon(Icons.lunch_dining, size: 16, color: VoetjeColors.textMuted),
+                      const SizedBox(width: 6),
+                      Text('${beefMeals.toStringAsFixed(0)} beef meals', style: VoetjeTypography.body()),
+                    ]),
+                    const SizedBox(height: 2),
+                    Row(children: [
+                      const Icon(Icons.smartphone_outlined, size: 16, color: VoetjeColors.textMuted),
+                      const SizedBox(width: 6),
+                      Text('${(item.co2KgNew / 0.008).toStringAsFixed(0)} smartphone charges', style: VoetjeTypography.body()),
+                    ]),
                   ],
                 ),
               ),
@@ -303,12 +323,15 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                             ),
                           ),
                           child: Column(children: [
-                            Text(
-                                c == ShoppingCondition.newItem
-                                    ? '🏷️'
-                                    : '♻️',
-                                style:
-                                    const TextStyle(fontSize: 22)),
+                            Icon(
+                              c == ShoppingCondition.newItem
+                                  ? Icons.new_releases_outlined
+                                  : Icons.recycling,
+                              size: 22,
+                              color: isSelected
+                                  ? VoetjeColors.surface
+                                  : VoetjeColors.textPrimary,
+                            ),
                             const SizedBox(height: 4),
                             Text(c.label,
                                 style: VoetjeTypography.caption().copyWith(
@@ -408,14 +431,14 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
 // ─── Item card widget ─────────────────────────────────────────────────────────
 
 class _ItemCard extends StatelessWidget {
-  final String emoji;
+  final IconData icon;
   final String name;
   final String subtitle;
   final String categoryLabel;
   final VoidCallback onTap;
 
   const _ItemCard({
-    required this.emoji,
+    required this.icon,
     required this.name,
     required this.subtitle,
     required this.categoryLabel,
@@ -450,7 +473,7 @@ class _ItemCard extends StatelessWidget {
                     BorderRadius.circular(VoetjeRadius.iconContainer),
               ),
               alignment: Alignment.center,
-              child: Text(emoji, style: const TextStyle(fontSize: 22)),
+              child: Icon(icon, size: 22, color: VoetjeColors.textMuted),
             ),
             const SizedBox(width: 12),
             Expanded(

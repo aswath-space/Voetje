@@ -99,9 +99,10 @@ class _SplashNudgeScreenState extends State<SplashNudgeScreen>
                         ),
                         const SizedBox(height: 48),
                         if (msg != null) ...[
-                          Text(
-                            msg.emoji,
-                            style: const TextStyle(fontSize: 40),
+                          Icon(
+                            msg.icon,
+                            size: 40,
+                            color: VoetjeColors.primaryMedium,
                           ),
                           const SizedBox(height: 16),
                           Text(

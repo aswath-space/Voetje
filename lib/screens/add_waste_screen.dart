@@ -214,7 +214,7 @@ class _AddWasteScreenState extends State<AddWasteScreen> {
     if (context.mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Waste logged for this week ♻️'),
+          content: Text('Waste logged for this week'),
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -275,7 +275,7 @@ class _BinSlider extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(children: [
-              Text(bin.emoji, style: const TextStyle(fontSize: 22)),
+              Icon(bin.icon, size: 22, color: _binColor(bin)),
               const SizedBox(width: 10),
               Text(bin.label,
                   style: VoetjeTypography.caption().copyWith(
@@ -365,7 +365,7 @@ class _BagCounter extends StatelessWidget {
             const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Row(
           children: [
-            Text(bin.emoji, style: const TextStyle(fontSize: 22)),
+            Icon(bin.icon, size: 22, color: VoetjeColors.textMuted),
             const SizedBox(width: 10),
             Expanded(
               child: Column(
@@ -546,7 +546,7 @@ class _SetupPrompt extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text('♻️', style: TextStyle(fontSize: 48)),
+            const Icon(Icons.recycling, size: 48, color: VoetjeColors.primaryMedium),
             const SizedBox(height: 16),
             Text(
               'Set up Waste tracking first',

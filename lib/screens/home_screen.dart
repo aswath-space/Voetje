@@ -2,11 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:carbon_tracker/config/design_tokens.dart';
 import 'package:carbon_tracker/providers/emission_provider.dart';
-import 'package:carbon_tracker/screens/add_entry_screen.dart';
-import 'package:carbon_tracker/screens/add_food_screen.dart';
-import 'package:carbon_tracker/screens/add_energy_screen.dart';
-import 'package:carbon_tracker/screens/add_shopping_screen.dart';
-import 'package:carbon_tracker/screens/add_waste_screen.dart';
 import 'package:carbon_tracker/screens/history_screen.dart';
 import 'package:carbon_tracker/screens/settings_screen.dart';
 import 'package:carbon_tracker/models/emission_entry.dart';
@@ -141,7 +136,9 @@ class _DashboardContent extends StatelessWidget {
           onRefresh: provider.refreshData,
           child: CustomScrollView(
             slivers: [
-              const SliverToBoxAdapter(child: SizedBox(height: 16)),
+              SliverToBoxAdapter(
+                child: SizedBox(height: MediaQuery.of(context).padding.top + 16),
+              ),
               SliverPadding(
                 padding: const EdgeInsets.symmetric(horizontal: VoetjeSpacing.screenEdge),
                 sliver: SliverList.list(
@@ -244,10 +241,7 @@ class _DashboardContent extends StatelessWidget {
                                   label: stillToLog[i]['label'] as String,
                                   icon: Icons.restaurant,
                                   color: VoetjeColors.food,
-                                  onTap: () => Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (_) => const AddFoodScreen()),
-                                  ),
+                                  onTap: () => _showCategoryPicker(context, initialCategory: 'food'),
                                 ),
                               ),
                             ],
@@ -266,7 +260,7 @@ class _DashboardContent extends StatelessWidget {
                       ),
                       child: Row(
                         children: [
-                          Text(nudge.emoji, style: const TextStyle(fontSize: 20)),
+                          Icon(nudge.icon, size: 20, color: VoetjeColors.primaryMedium),
                           const SizedBox(width: 10),
                           Expanded(
                             child: Text(
@@ -291,41 +285,33 @@ class _DashboardContent extends StatelessWidget {
     );
   }
 
-  Future<void> _showCategoryPicker(BuildContext context) async {
+  void _showCategoryPicker(BuildContext context, {String? initialCategory}) {
     final provider = context.read<EmissionProvider>();
 
-    // Transport-only: skip picker and navigate directly
+    // Transport-only: skip picker and open transport form directly inside sheet
     if (!provider.foodEnabled &&
         !provider.energyEnabled &&
         !provider.shoppingEnabled &&
         !provider.wasteEnabled) {
-      Navigator.push(
+      showExpandingLogSheet(
         context,
-        MaterialPageRoute(builder: (_) => const AddTransportScreen()),
+        foodEnabled: false,
+        energyEnabled: false,
+        shoppingEnabled: false,
+        wasteEnabled: false,
+        initialCategory: 'transport',
       );
       return;
     }
 
-    // Show category picker — returns the selected category key
-    final category = await showModalBottomSheet<String>(
-      context: context,
-      isScrollControlled: true,
-      builder: (_) => CategoryPickerSheet(
-        foodEnabled: provider.foodEnabled,
-        energyEnabled: provider.energyEnabled,
-        shoppingEnabled: provider.shoppingEnabled,
-        wasteEnabled: provider.wasteEnabled,
-      ),
+    showExpandingLogSheet(
+      context,
+      foodEnabled: provider.foodEnabled,
+      energyEnabled: provider.energyEnabled,
+      shoppingEnabled: provider.shoppingEnabled,
+      wasteEnabled: provider.wasteEnabled,
+      initialCategory: initialCategory,
     );
-    if (category == null || !context.mounted) return;
-    final screen = switch (category) {
-      'food' => const AddFoodScreen(),
-      'energy' => const AddEnergyScreen(),
-      'shopping' => const AddShoppingScreen(),
-      'waste' => const AddWasteScreen(),
-      _ => const AddTransportScreen() as Widget,
-    };
-    Navigator.push(context, MaterialPageRoute(builder: (_) => screen));
   }
 
   String _titleForEntry(EmissionEntry entry, EmissionProvider provider) {

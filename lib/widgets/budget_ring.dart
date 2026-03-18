@@ -151,7 +151,7 @@ class _BudgetRingPainter extends CustomPainter {
   final double ratio;
   final double animationValue;
 
-  static const double strokeWidth = 11.0;
+  static const double strokeWidth = 16.0;
   static const double gapDegrees = 2.0;
   static const double gapRadians = gapDegrees * math.pi / 180.0;
 
@@ -181,11 +181,11 @@ class _BudgetRingPainter extends CustomPainter {
       trackColor = VoetjeColors.trackNeutral;
     }
 
-    // Draw subtle border rings (inner + outer edge of the track)
+    // Draw border rings (inner + outer edge of the track)
     final borderPaint = Paint()
-      ..color = VoetjeColors.border.withValues(alpha: 0.3)
+      ..color = VoetjeColors.border.withValues(alpha: 0.6)
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.0;
+      ..strokeWidth = 1.5;
     canvas.drawCircle(center, radius + strokeWidth / 2, borderPaint);
     canvas.drawCircle(center, radius - strokeWidth / 2, borderPaint);
 

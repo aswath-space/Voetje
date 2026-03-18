@@ -476,8 +476,10 @@ class _HeatingPage extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(type.emoji,
-                              style: const TextStyle(fontSize: 24)),
+                          Icon(type.icon, size: 24,
+                              color: isSelected
+                                  ? VoetjeColors.primaryMedium
+                                  : VoetjeColors.textMuted),
                           Text(type.label,
                               textAlign: TextAlign.center,
                               style: VoetjeTypography.caption().copyWith(
@@ -515,11 +517,11 @@ class _HouseholdPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const options = [
-      (size: 1, label: '👤 Just me'),
-      (size: 2, label: '👤👤 2 people'),
-      (size: 3, label: '👤👤👤 3 people'),
-      (size: 4, label: '👤👤👤👤 4 people'),
-      (size: 5, label: '👥👥 5+ people'),
+      (size: 1, label: 'Just me'),
+      (size: 2, label: '2 people'),
+      (size: 3, label: '3 people'),
+      (size: 4, label: '4 people'),
+      (size: 5, label: '5+ people'),
     ];
     return Padding(
       padding: const EdgeInsets.all(VoetjeSpacing.screenEdge),
@@ -562,7 +564,7 @@ class _MethodPage extends StatelessWidget {
               style: VoetjeTypography.pageQuestion()),
           const SizedBox(height: 16),
           _MethodCard(
-            emoji: '📊',
+            icon: Icons.bar_chart_outlined,
             title: 'Use an estimate',
             subtitle: 'Based on your country and household size.',
             badge: 'Popular',
@@ -570,7 +572,7 @@ class _MethodPage extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           _MethodCard(
-            emoji: '🧾',
+            icon: Icons.receipt_long_outlined,
             title: 'Enter my bills',
             subtitle: 'Log your monthly electricity and gas bills.',
             onTap: () => onSelected(EnergyTrackingMethod.bills),
@@ -587,14 +589,14 @@ class _MethodPage extends StatelessWidget {
 }
 
 class _MethodCard extends StatelessWidget {
-  final String emoji;
+  final IconData icon;
   final String title;
   final String subtitle;
   final String? badge;
   final VoidCallback onTap;
 
   const _MethodCard({
-    required this.emoji,
+    required this.icon,
     required this.title,
     required this.subtitle,
     this.badge,
@@ -626,7 +628,7 @@ class _MethodCard extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Row(
           children: [
-            Text(emoji, style: const TextStyle(fontSize: 32)),
+            Icon(icon, size: 32, color: VoetjeColors.primaryMedium),
             const SizedBox(width: 12),
             Expanded(
               child: Column(

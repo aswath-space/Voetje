@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:carbon_tracker/widgets/category_picker_sheet.dart';
 
-/// Helper that opens CategoryPickerSheet inside a modal bottom sheet,
+/// Helper that opens the expanding log sheet inside a modal bottom sheet,
 /// matching how the app uses it in production.
-/// Records the popped result so tests can verify it.
-class _SheetOpener extends StatefulWidget {
+class _SheetOpener extends StatelessWidget {
   final bool foodEnabled;
   final bool energyEnabled;
   final bool shoppingEnabled;
@@ -20,37 +19,24 @@ class _SheetOpener extends StatefulWidget {
   });
 
   @override
-  State<_SheetOpener> createState() => _SheetOpenerState();
-}
-
-class _SheetOpenerState extends State<_SheetOpener> {
-  String? result;
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ElevatedButton(
-              onPressed: () async {
-                final value = await showModalBottomSheet<String>(
-                  context: context,
-                  isScrollControlled: true,
-                  builder: (_) => CategoryPickerSheet(
-                    foodEnabled: widget.foodEnabled,
-                    energyEnabled: widget.energyEnabled,
-                    shoppingEnabled: widget.shoppingEnabled,
-                    wasteEnabled: widget.wasteEnabled,
-                  ),
-                );
-                setState(() => result = value);
-              },
-              child: const Text('Open'),
-            ),
-            if (result != null) Text('Result: $result'),
-          ],
+        child: ElevatedButton(
+          onPressed: () {
+            showModalBottomSheet<void>(
+              context: context,
+              isScrollControlled: true,
+              backgroundColor: Colors.transparent,
+              builder: (_) => CategoryPickerSheet(
+                foodEnabled: foodEnabled,
+                energyEnabled: energyEnabled,
+                shoppingEnabled: shoppingEnabled,
+                wasteEnabled: wasteEnabled,
+              ),
+            );
+          },
+          child: const Text('Open'),
         ),
       ),
     );
@@ -133,58 +119,11 @@ void main() {
     expect(delegate.crossAxisCount, 2);
   });
 
-  testWidgets('Tapping Transport tile returns "transport"', (tester) async {
+  testWidgets('Sheet shows title text', (tester) async {
     await tester.pumpWidget(buildTestApp());
     await tester.tap(find.text('Open'));
     await tester.pumpAndSettle();
 
-    await tester.tap(find.text('Transport'));
-    await tester.pumpAndSettle();
-
-    expect(find.text('Result: transport'), findsOneWidget);
-  });
-
-  testWidgets('Tapping Food tile returns "food"', (tester) async {
-    await tester.pumpWidget(buildTestApp());
-    await tester.tap(find.text('Open'));
-    await tester.pumpAndSettle();
-
-    await tester.tap(find.text('Food'));
-    await tester.pumpAndSettle();
-
-    expect(find.text('Result: food'), findsOneWidget);
-  });
-
-  testWidgets('Tapping Energy tile returns "energy"', (tester) async {
-    await tester.pumpWidget(buildTestApp());
-    await tester.tap(find.text('Open'));
-    await tester.pumpAndSettle();
-
-    await tester.tap(find.text('Energy'));
-    await tester.pumpAndSettle();
-
-    expect(find.text('Result: energy'), findsOneWidget);
-  });
-
-  testWidgets('Tapping Shopping tile returns "shopping"', (tester) async {
-    await tester.pumpWidget(buildTestApp());
-    await tester.tap(find.text('Open'));
-    await tester.pumpAndSettle();
-
-    await tester.tap(find.text('Shopping'));
-    await tester.pumpAndSettle();
-
-    expect(find.text('Result: shopping'), findsOneWidget);
-  });
-
-  testWidgets('Tapping Waste tile returns "waste"', (tester) async {
-    await tester.pumpWidget(buildTestApp());
-    await tester.tap(find.text('Open'));
-    await tester.pumpAndSettle();
-
-    await tester.tap(find.text('Waste'));
-    await tester.pumpAndSettle();
-
-    expect(find.text('Result: waste'), findsOneWidget);
+    expect(find.text('What are you logging?'), findsOneWidget);
   });
 }

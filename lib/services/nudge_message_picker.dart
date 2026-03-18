@@ -86,8 +86,8 @@ class NudgeMessagePicker {
         if (line.promptOnly && logged) continue;
 
         final resolved = line.text.replaceAll('{streak}', '$streak');
-        // Emoji comes from the HabitType enum, not from the line (DRY)
-        results.add((text: resolved, emoji: habit.emoji));
+        // Icon comes from the HabitType enum, not from the line (DRY)
+        results.add((text: resolved, icon: habit.icon));
       }
     }
 
@@ -127,12 +127,12 @@ class NudgeMessagePicker {
       if (msg.text.contains('drove') && carCount > 0) {
         results.add((
           text: msg.text.replaceAll('{days}', '$carCount'),
-          emoji: msg.emoji,
+          icon: msg.icon,
         ));
       } else if (msg.text.contains('public transport') && busCount > 0) {
         results.add((
           text: msg.text.replaceAll('{days}', '$busCount'),
-          emoji: msg.emoji,
+          icon: msg.icon,
         ));
       } else if (msg.text.contains('Plant-based') && hasPlantBased) {
         results.add(msg);

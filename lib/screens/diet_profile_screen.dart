@@ -49,25 +49,25 @@ class _DietProfileScreenState extends State<DietProfileScreen> {
           const Text('In a typical week, how many of your 21 meals have...'),
           const SizedBox(height: 16),
           _StepperRow(
-            emoji: '🥬',
+            icon: Icons.eco,
             label: 'Plant-based',
             value: _plant,
             onChanged: (v) => setState(() => _plant = v),
           ),
           _StepperRow(
-            emoji: '🐔',
+            icon: Icons.set_meal,
             label: 'Chicken or fish',
             value: _chicken,
             onChanged: (v) => setState(() => _chicken = v),
           ),
           _StepperRow(
-            emoji: '🥩',
+            icon: Icons.lunch_dining,
             label: 'Red meat',
             value: _red,
             onChanged: (v) => setState(() => _red = v),
           ),
           _StepperRow(
-            emoji: '🍔',
+            icon: Icons.fastfood,
             label: 'Fast food',
             value: _fast,
             onChanged: (v) => setState(() => _fast = v),
@@ -118,12 +118,13 @@ class _DietProfileScreenState extends State<DietProfileScreen> {
 }
 
 class _StepperRow extends StatelessWidget {
-  final String emoji, label;
+  final IconData icon;
+  final String label;
   final int value;
   final ValueChanged<int> onChanged;
 
   const _StepperRow({
-    required this.emoji,
+    required this.icon,
     required this.label,
     required this.value,
     required this.onChanged,
@@ -134,7 +135,7 @@ class _StepperRow extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(children: [
-        Text(emoji, style: const TextStyle(fontSize: 24)),
+        Icon(icon, size: 24),
         const SizedBox(width: 8),
         Expanded(child: Text(label)),
         IconButton(

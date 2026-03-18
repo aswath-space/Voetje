@@ -51,7 +51,7 @@ class _AddFoodScreenState extends State<AddFoodScreen> {
         scaffoldMsg.showSnackBar(
           SnackBar(
             content: Text(
-              '🍪 Snack logged: ${MealType.snack.co2Kg} kg CO₂',
+              'Snack logged: ${MealType.snack.co2Kg} kg CO₂',
             ),
           ),
         );
@@ -148,9 +148,12 @@ class _AddFoodScreenState extends State<AddFoodScreen> {
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Text(
-                              slot.emoji,
-                              style: const TextStyle(fontSize: 16),
+                            Icon(
+                              slot.icon,
+                              size: 18,
+                              color: isSelected
+                                  ? VoetjeColors.surface
+                                  : VoetjeColors.textMuted,
                             ),
                             const SizedBox(height: 2),
                             Text(

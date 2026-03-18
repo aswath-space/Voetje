@@ -1,16 +1,18 @@
 // Waste & Recycling setup model.
 // Stores the user's bin types and housing type (own bins vs communal).
 
-enum BinType {
-  generalWaste('General Waste', '🗑️', 0.58),
-  recycling('Recycling', '♻️', -0.30),
-  foodWaste('Food Waste', '🍌', 0.70),
-  compost('Compost', '🌿', 0.05);
+import 'package:flutter/material.dart';
 
-  const BinType(this.label, this.emoji, this.co2PerKg);
+enum BinType {
+  generalWaste('General Waste', Icons.delete_outline, 0.58),
+  recycling('Recycling', Icons.recycling, -0.30),
+  foodWaste('Food Waste', Icons.restaurant_outlined, 0.70),
+  compost('Compost', Icons.yard_outlined, 0.05);
+
+  const BinType(this.label, this.icon, this.co2PerKg);
 
   final String label;
-  final String emoji;
+  final IconData icon;
 
   /// kg CO2e per kg of waste disposed via this method.
   /// Negative = net saving (recycling displaces virgin-material production).
@@ -21,22 +23,22 @@ enum BinType {
 }
 
 enum HousingType {
-  ownBins('I have my own bins/wheelie bins', '🏠'),
-  communalBins('I use shared/communal bins', '🏢');
+  ownBins('I have my own bins/wheelie bins', Icons.home_outlined),
+  communalBins('I use shared/communal bins', Icons.apartment_outlined);
 
-  const HousingType(this.label, this.emoji);
+  const HousingType(this.label, this.icon);
   final String label;
-  final String emoji;
+  final IconData icon;
 }
 
 enum HabitType {
-  reusableBag('Reusable bag', '🛍️'),
-  reusableBottle('Reusable bottle', '🥤'),
-  reusableCup('Reusable cup', '☕');
+  reusableBag('Reusable bag', Icons.shopping_bag_outlined),
+  reusableBottle('Reusable bottle', Icons.water_drop_outlined),
+  reusableCup('Reusable cup', Icons.coffee_outlined);
 
-  const HabitType(this.label, this.emoji);
+  const HabitType(this.label, this.icon);
   final String label;
-  final String emoji;
+  final IconData icon;
 }
 
 class WasteSetup {

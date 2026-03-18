@@ -33,7 +33,7 @@ class SecondHandCelebrationScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('🎉', style: TextStyle(fontSize: 80)),
+              const Icon(Icons.celebration, size: 80, color: Colors.green),
               const SizedBox(height: 24),
               Text(
                 'You saved ${savedCO2.toStringAsFixed(1)} kg CO₂',
@@ -67,7 +67,7 @@ class SecondHandCelebrationScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: Colors.green),
                   ),
-                  const Text('🌿', style: TextStyle(fontSize: 24)),
+                  const Icon(Icons.eco, size: 24, color: Colors.green),
                 ]),
               ),
               const SizedBox(height: 48),

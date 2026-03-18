@@ -1,16 +1,17 @@
 // lib/models/energy_profile.dart
 import 'dart:convert';
+import 'package:flutter/material.dart';
 
 enum HeatingType {
-  electric('Electric heater/AC', '⚡'),
-  gas('Gas boiler', '🔥'),
-  oil('Oil heating', '🛢️'),
-  wood('Wood/pellets', '🪵'),
-  notSure('Not sure', '🤷');
+  electric('Electric heater/AC', Icons.bolt),
+  gas('Gas boiler', Icons.local_fire_department_outlined),
+  oil('Oil heating', Icons.water_drop_outlined),
+  wood('Wood/pellets', Icons.forest_outlined),
+  notSure('Not sure', Icons.help_outline);
 
-  const HeatingType(this.label, this.emoji);
+  const HeatingType(this.label, this.icon);
   final String label;
-  final String emoji;
+  final IconData icon;
 }
 
 enum EnergyTrackingMethod { estimate, bills }

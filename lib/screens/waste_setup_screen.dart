@@ -214,7 +214,7 @@ class _BinTile extends StatelessWidget {
           ),
           child: Row(
             children: [
-              Text(bin.emoji, style: const TextStyle(fontSize: 24)),
+              Icon(bin.icon, size: 24, color: VoetjeColors.primaryMedium),
               const SizedBox(width: 16),
               Expanded(
                 child: Text(
@@ -297,8 +297,7 @@ class _HousingTypeStep extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
-                        Text(h.emoji,
-                            style: const TextStyle(fontSize: 28)),
+                        Icon(h.icon, size: 28, color: VoetjeColors.primaryMedium),
                         const SizedBox(width: 16),
                         Expanded(
                           child: Text(
@@ -323,7 +322,7 @@ class _HousingTypeStep extends StatelessWidget {
                 ),
               )),
           const SizedBox(height: 28),
-          _GreenPillButton(label: 'Done ✓', onPressed: onDone),
+          _GreenPillButton(label: 'Done', onPressed: onDone),
         ],
       ),
     );

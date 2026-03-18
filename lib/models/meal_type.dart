@@ -16,14 +16,14 @@ enum MealType {
 }
 
 enum MealSlot {
-  breakfast('Breakfast', '☀️'),
-  lunch('Lunch', '🍱'),
-  dinner('Dinner', '🌙'),
-  snack('Snack', '🍪');
+  breakfast('Breakfast', Icons.wb_sunny_outlined),
+  lunch('Lunch', Icons.lunch_dining),
+  dinner('Dinner', Icons.nightlight_round),
+  snack('Snack', Icons.cookie_outlined);
 
-  const MealSlot(this.label, this.emoji);
+  const MealSlot(this.label, this.icon);
   final String label;
-  final String emoji;
+  final IconData icon;
 
   /// Returns the appropriate slot based on local time of day.
   static MealSlot slotForTime(DateTime time) {
