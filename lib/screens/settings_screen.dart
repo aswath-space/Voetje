@@ -237,7 +237,7 @@ class SettingsScreen extends StatelessWidget {
                     trailing: Text(
                       'v1.0.0',
                       style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 13,
                         color: VoetjeColors.captionColor,
                       ),
                     ),
@@ -547,7 +547,7 @@ class _UnitSegmentedControl extends StatelessWidget {
               child: Text(
                 seg,
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: 13,
                   fontWeight: FontWeight.w600,
                   color: selected ? Colors.white : VoetjeColors.textMuted,
                 ),
@@ -582,6 +582,7 @@ class _CategoryRow extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             width: 26,
@@ -601,7 +602,7 @@ class _CategoryRow extends StatelessWidget {
             child: Text(
               label,
               style: const TextStyle(
-                fontSize: 12,
+                fontSize: 14,
                 fontWeight: FontWeight.w600,
                 color: VoetjeColors.textPrimary,
               ),
@@ -611,7 +612,7 @@ class _CategoryRow extends StatelessWidget {
             const Text(
               'Always on',
               style: TextStyle(
-                fontSize: 10,
+                fontSize: 12,
                 color: VoetjeColors.captionColor,
               ),
             )

@@ -29,7 +29,7 @@ class SectionHeader extends StatelessWidget {
             child: Text(
               actionLabel!,
               style: GoogleFonts.plusJakartaSans(
-                fontSize: 12,
+                fontSize: 14,
                 fontWeight: FontWeight.w600,
                 color: VoetjeColors.primaryMedium,
               ),

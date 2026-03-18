@@ -38,7 +38,7 @@ class _BudgetRingState extends State<BudgetRing> {
           const Text(
             'Over budget',
             style: TextStyle(
-              fontSize: 11,
+              fontSize: 13,
               fontWeight: FontWeight.w600,
               color: Color(0xFFEF5350),
             ),
@@ -46,7 +46,7 @@ class _BudgetRingState extends State<BudgetRing> {
           Text(
             '+${overage.toStringAsFixed(1)} kg',
             style: const TextStyle(
-              fontSize: 22,
+              fontSize: 28,
               fontWeight: FontWeight.w700,
               color: Color(0xFFEF5350),
             ),
@@ -54,7 +54,7 @@ class _BudgetRingState extends State<BudgetRing> {
           Text(
             '${widget.totalCO2.toStringAsFixed(1)} of ${widget.budget.toStringAsFixed(1)} kg',
             style: const TextStyle(
-              fontSize: 10,
+              fontSize: 13,
               color: Color(0xFF999999),
             ),
           ),
@@ -72,7 +72,7 @@ class _BudgetRingState extends State<BudgetRing> {
           Text(
             '${remaining.toStringAsFixed(1)} kg left',
             style: const TextStyle(
-              fontSize: 12,
+              fontSize: 14,
               fontWeight: FontWeight.w500,
               color: Color(0xFFEF5350),
             ),
@@ -91,7 +91,7 @@ class _BudgetRingState extends State<BudgetRing> {
           Text(
             '${remaining.toStringAsFixed(1)} kg left',
             style: const TextStyle(
-              fontSize: 12,
+              fontSize: 14,
               fontWeight: FontWeight.w500,
               color: Color(0xFFF9A825),
             ),
@@ -110,7 +110,7 @@ class _BudgetRingState extends State<BudgetRing> {
           Text(
             'of ${widget.budget.toStringAsFixed(1)} kg',
             style: const TextStyle(
-              fontSize: 12,
+              fontSize: 13,
               fontWeight: FontWeight.w500,
               color: Color(0xFF999999),
             ),

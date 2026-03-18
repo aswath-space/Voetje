@@ -330,7 +330,7 @@ class _WeeklySummaryCard extends StatelessWidget {
         child: Text(
           '${isDown ? '↓' : '↑'} ${pct.toStringAsFixed(0)}%',
           style: GoogleFonts.plusJakartaSans(
-            fontSize: 11,
+            fontSize: 12,
             fontWeight: FontWeight.w700,
             color: isDown
                 ? VoetjeColors.primaryMedium
@@ -422,7 +422,7 @@ class _MiniBarChart extends StatelessWidget {
               const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
-                fontSize: 11,
+                fontSize: 12,
               ),
             ),
           ),
@@ -442,7 +442,7 @@ class _MiniBarChart extends StatelessWidget {
                   child: Text(
                     isToday ? 'Today' : DateFormat('E').format(days[idx]),
                     style: GoogleFonts.plusJakartaSans(
-                      fontSize: 9,
+                      fontSize: 11,
                       fontWeight: isToday ? FontWeight.w700 : FontWeight.w500,
                       color: isToday
                           ? VoetjeColors.primary
@@ -527,7 +527,7 @@ class _FilterChip extends StatelessWidget {
         child: Text(
           label,
           style: GoogleFonts.plusJakartaSans(
-            fontSize: 12,
+            fontSize: 13,
             fontWeight: FontWeight.w600,
             color: selected ? Colors.white : VoetjeColors.textMuted,
           ),

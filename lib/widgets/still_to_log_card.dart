@@ -35,8 +35,8 @@ class StillToLogCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: 24,
-              height: 24,
+              width: 28,
+              height: 28,
               decoration: BoxDecoration(
                 color: color.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(8),
@@ -44,7 +44,7 @@ class StillToLogCard extends StatelessWidget {
               alignment: Alignment.center,
               child: Icon(
                 icon,
-                size: 12,
+                size: 14,
                 color: color,
               ),
             ),
@@ -52,7 +52,7 @@ class StillToLogCard extends StatelessWidget {
             Text(
               label,
               style: GoogleFonts.plusJakartaSans(
-                fontSize: 10,
+                fontSize: 13,
                 fontWeight: FontWeight.w500,
                 color: VoetjeColors.textMuted,
               ),

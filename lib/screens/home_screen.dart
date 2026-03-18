@@ -187,7 +187,7 @@ class _DashboardContent extends StatelessWidget {
                           child: Text(
                             'This week: ${provider.weekCO2.toStringAsFixed(1)} kg \u2192',
                             style: GoogleFonts.plusJakartaSans(
-                              fontSize: 12,
+                              fontSize: 14,
                               fontWeight: FontWeight.w600,
                               color: VoetjeColors.textSecondary,
                             ),
@@ -231,7 +231,7 @@ class _DashboardContent extends StatelessWidget {
                               Text(
                                 'Nothing logged yet today',
                                 style: GoogleFonts.plusJakartaSans(
-                                  fontSize: 13,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.w500,
                                   color: VoetjeColors.textMuted,
                                 ),
@@ -240,7 +240,7 @@ class _DashboardContent extends StatelessWidget {
                               Text(
                                 'Tap "+ Add" to start tracking',
                                 style: GoogleFonts.plusJakartaSans(
-                                  fontSize: 12,
+                                  fontSize: 14,
                                   color: VoetjeColors.captionColor,
                                 ),
                               ),
@@ -290,7 +290,7 @@ class _DashboardContent extends StatelessWidget {
                             child: Text(
                               nudge.text,
                               style: GoogleFonts.plusJakartaSans(
-                                fontSize: 12,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w500,
                                 color: VoetjeColors.textSecondary,
                               ),

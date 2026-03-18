@@ -39,10 +39,11 @@ class EntryTile extends StatelessWidget {
         ),
         padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 11),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              width: 32,
-              height: 32,
+              width: 36,
+              height: 36,
               decoration: BoxDecoration(
                 color: VoetjeColors.categoryBackground(category),
                 borderRadius: BorderRadius.circular(10),
@@ -50,7 +51,7 @@ class EntryTile extends StatelessWidget {
               alignment: Alignment.center,
               child: Icon(
                 icon,
-                size: 15,
+                size: 18,
                 color: VoetjeColors.categoryColor(category),
               ),
             ),
@@ -62,7 +63,7 @@ class EntryTile extends StatelessWidget {
                   Text(
                     title,
                     style: GoogleFonts.plusJakartaSans(
-                      fontSize: 12,
+                      fontSize: 15,
                       fontWeight: FontWeight.w600,
                       color: VoetjeColors.textPrimary,
                     ),
@@ -71,7 +72,7 @@ class EntryTile extends StatelessWidget {
                     Text(
                       subtitle!,
                       style: GoogleFonts.plusJakartaSans(
-                        fontSize: 10,
+                        fontSize: 13,
                         fontWeight: FontWeight.w500,
                         color: VoetjeColors.captionColor,
                       ),
@@ -82,7 +83,7 @@ class EntryTile extends StatelessWidget {
             Text(
               kgValue,
               style: GoogleFonts.plusJakartaSans(
-                fontSize: 12,
+                fontSize: 15,
                 fontWeight: FontWeight.w600,
                 color: VoetjeColors.textSecondary,
               ),

@@ -163,7 +163,7 @@ class _CategoryTile extends StatelessWidget {
                 Text(
                   category.label,
                   style: GoogleFonts.plusJakartaSans(
-                    fontSize: 12,
+                    fontSize: 14,
                     fontWeight: FontWeight.w600,
                     color: VoetjeColors.textPrimary,
                   ),
