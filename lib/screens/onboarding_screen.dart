@@ -230,7 +230,7 @@ class _OnboardingPage extends StatelessWidget {
               borderRadius: BorderRadius.circular(60),
             ),
             alignment: Alignment.center,
-            child: Icon(icon, size: 48, color: VoetjeColors.primaryMedium),
+            child: Icon(icon, size: VoetjeIconSize.xlargeIcon, color: VoetjeColors.primaryMedium),
           ),
           const SizedBox(height: 36),
           Text(

@@ -41,16 +41,16 @@ class EntryTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              width: 36,
-              height: 36,
+              width: VoetjeIconSize.smallContainer,
+              height: VoetjeIconSize.smallContainer,
               decoration: BoxDecoration(
                 color: VoetjeColors.categoryBackground(category),
-                borderRadius: BorderRadius.circular(VoetjeRadius.iconContainer),
+                borderRadius: BorderRadius.circular(VoetjeIconSize.smallRadius),
               ),
               alignment: Alignment.center,
               child: Icon(
                 icon,
-                size: 20,
+                size: VoetjeIconSize.smallIcon,
                 color: VoetjeColors.categoryColor(category),
               ),
             ),

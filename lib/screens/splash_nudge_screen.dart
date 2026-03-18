@@ -101,7 +101,7 @@ class _SplashNudgeScreenState extends State<SplashNudgeScreen>
                         if (msg != null) ...[
                           Icon(
                             msg.icon,
-                            size: 40,
+                            size: VoetjeIconSize.mediumIcon,
                             color: VoetjeColors.primaryMedium,
                           ),
                           const SizedBox(height: 16),

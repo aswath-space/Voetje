@@ -214,7 +214,7 @@ class _BinTile extends StatelessWidget {
           ),
           child: Row(
             children: [
-              Icon(bin.icon, size: 24, color: VoetjeColors.primaryMedium),
+              Icon(bin.icon, size: VoetjeIconSize.mediumIcon, color: VoetjeColors.primaryMedium),
               const SizedBox(width: 16),
               Expanded(
                 child: Text(
@@ -297,7 +297,7 @@ class _HousingTypeStep extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
-                        Icon(h.icon, size: 28, color: VoetjeColors.primaryMedium),
+                        Icon(h.icon, size: VoetjeIconSize.largeIcon, color: VoetjeColors.primaryMedium),
                         const SizedBox(width: 16),
                         Expanded(
                           child: Text(

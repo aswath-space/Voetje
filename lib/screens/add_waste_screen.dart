@@ -275,7 +275,7 @@ class _BinSlider extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(children: [
-              Icon(bin.icon, size: 22, color: _binColor(bin)),
+              Icon(bin.icon, size: VoetjeIconSize.mediumIcon, color: _binColor(bin)),
               const SizedBox(width: 10),
               Text(bin.label,
                   style: VoetjeTypography.caption().copyWith(
@@ -365,7 +365,7 @@ class _BagCounter extends StatelessWidget {
             const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Row(
           children: [
-            Icon(bin.icon, size: 22, color: VoetjeColors.textMuted),
+            Icon(bin.icon, size: VoetjeIconSize.mediumIcon, color: VoetjeColors.textMuted),
             const SizedBox(width: 10),
             Expanded(
               child: Column(
@@ -546,7 +546,7 @@ class _SetupPrompt extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.recycling, size: 48, color: VoetjeColors.primaryMedium),
+            const Icon(Icons.recycling, size: VoetjeIconSize.xlargeIcon, color: VoetjeColors.primaryMedium),
             const SizedBox(height: 16),
             Text(
               'Set up Waste tracking first',

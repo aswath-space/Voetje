@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:carbon_tracker/config/design_tokens.dart';
 import 'package:carbon_tracker/models/saved_place.dart';
 import 'package:carbon_tracker/providers/emission_provider.dart';
 import 'package:carbon_tracker/widgets/add_place_sheet.dart';
@@ -19,7 +20,7 @@ class SavedPlacesScreen extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(Icons.place_outlined, size: 48, color: Colors.grey),
+                  Icon(Icons.place_outlined, size: VoetjeIconSize.xlargeIcon, color: Colors.grey),
                   SizedBox(height: 12),
                   Text('No places saved yet'),
                   SizedBox(height: 4),

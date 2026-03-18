@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:carbon_tracker/config/design_tokens.dart';
 import 'package:carbon_tracker/providers/emission_provider.dart';
 import 'package:carbon_tracker/services/food_calculator.dart';
 
@@ -135,7 +136,7 @@ class _StepperRow extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(children: [
-        Icon(icon, size: 24),
+        Icon(icon, size: VoetjeIconSize.mediumIcon),
         const SizedBox(width: 8),
         Expanded(child: Text(label)),
         IconButton(

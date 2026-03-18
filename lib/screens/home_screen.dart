@@ -96,7 +96,7 @@ class _DashboardTab extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Icon(Icons.cloud_off_outlined, size: 48, color: Colors.grey),
+                  const Icon(Icons.cloud_off_outlined, size: VoetjeIconSize.xlargeIcon, color: Colors.grey),
                   const SizedBox(height: 12),
                   Text(state.error!, textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyMedium),
@@ -210,7 +210,7 @@ class _DashboardContent extends StatelessWidget {
                         child: Center(
                           child: Column(
                             children: [
-                              const Icon(Icons.eco_outlined, size: 48, color: VoetjeColors.textMuted),
+                              const Icon(Icons.eco_outlined, size: VoetjeIconSize.xlargeIcon, color: VoetjeColors.textMuted),
                               const SizedBox(height: 8),
                               Text(
                                 'Nothing logged yet today',
@@ -267,7 +267,7 @@ class _DashboardContent extends StatelessWidget {
                       ),
                       child: Row(
                         children: [
-                          Icon(nudge.icon, size: 24, color: VoetjeColors.primaryMedium),
+                          Icon(nudge.icon, size: VoetjeIconSize.mediumIcon, color: VoetjeColors.primaryMedium),
                           const SizedBox(width: 10),
                           Expanded(
                             child: Text(

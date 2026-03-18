@@ -119,9 +119,57 @@ class VoetjeRadius {
   static const double card = 16;
   static const double chip = 20;
   static const double iconContainer = 10;
+  static const double iconContainerMedium = 12;
+  static const double iconContainerLarge = 14;
   static const double input = 14;
   static const double button = 20;
   static const double appFrame = 28;
+}
+
+/// Standardized icon container sizes.
+/// Each size defines a container dimension, icon dimension, and border radius.
+/// The icon-to-container ratio is consistently ~55%.
+class VoetjeIconSize {
+  // Small — entry tiles, list items, inline icons
+  static const double smallContainer = 36;
+  static const double smallIcon = 20;
+  static const double smallRadius = VoetjeRadius.iconContainer; // 10
+
+  // Medium — still-to-log cards, settings category rows, form option cards
+  static const double mediumContainer = 44;
+  static const double mediumIcon = 24;
+  static const double mediumRadius = VoetjeRadius.iconContainerMedium; // 12
+
+  // Large — category picker tiles, meal type cards, prominent selections
+  static const double largeContainer = 52;
+  static const double largeIcon = 28;
+  static const double largeRadius = VoetjeRadius.iconContainerLarge; // 14
+
+  // XLarge — onboarding illustrations, empty states, celebration screens
+  static const double xlargeContainer = 72;
+  static const double xlargeIcon = 40;
+  static const double xlargeRadius = 18;
+
+  /// Builds a standard icon container with category-colored background.
+  static Widget container({
+    required IconData icon,
+    required Color color,
+    double containerSize = mediumContainer,
+    double iconSize = mediumIcon,
+    double radius = mediumRadius,
+    Color? backgroundColor,
+  }) {
+    return Container(
+      width: containerSize,
+      height: containerSize,
+      decoration: BoxDecoration(
+        color: backgroundColor ?? color.withValues(alpha: 0.15),
+        borderRadius: BorderRadius.circular(radius),
+      ),
+      alignment: Alignment.center,
+      child: Icon(icon, size: iconSize, color: color),
+    );
+  }
 }
 
 class VoetjeTypography {

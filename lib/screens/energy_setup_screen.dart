@@ -476,7 +476,7 @@ class _HeatingPage extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(type.icon, size: 24,
+                          Icon(type.icon, size: VoetjeIconSize.mediumIcon,
                               color: isSelected
                                   ? VoetjeColors.primaryMedium
                                   : VoetjeColors.textMuted),
@@ -628,7 +628,7 @@ class _MethodCard extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Row(
           children: [
-            Icon(icon, size: 32, color: VoetjeColors.primaryMedium),
+            Icon(icon, size: VoetjeIconSize.largeIcon, color: VoetjeColors.primaryMedium),
             const SizedBox(width: 12),
             Expanded(
               child: Column(

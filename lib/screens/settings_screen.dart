@@ -471,7 +471,7 @@ class _RowItem extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Row(
           children: [
-            Icon(icon, size: 18, color: effectiveIconColor),
+            Icon(icon, size: VoetjeIconSize.smallIcon, color: effectiveIconColor),
             const SizedBox(width: VoetjeSpacing.iconTextGap),
             Expanded(
               child: subtitle != null
@@ -505,7 +505,7 @@ class _RowItem extends StatelessWidget {
             ] else if (onTap != null) ...[
               const SizedBox(width: 8),
               const Icon(Icons.chevron_right,
-                  size: 18, color: VoetjeColors.border),
+                  size: VoetjeIconSize.smallIcon, color: VoetjeColors.border),
             ],
           ],
         ),
@@ -585,15 +585,15 @@ class _CategoryRow extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            width: 26,
-            height: 26,
+            width: VoetjeIconSize.smallContainer,
+            height: VoetjeIconSize.smallContainer,
             decoration: BoxDecoration(
               color: VoetjeColors.categoryBackground(category),
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(VoetjeIconSize.smallRadius),
             ),
             child: Icon(
               icon,
-              size: 14,
+              size: VoetjeIconSize.smallIcon,
               color: VoetjeColors.categoryColor(category),
             ),
           ),

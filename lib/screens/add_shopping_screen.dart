@@ -144,7 +144,7 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                               children: [
                                 Icon(
                                   cat.icon,
-                                  size: 20,
+                                  size: VoetjeIconSize.smallIcon,
                                   color: isSelected
                                       ? VoetjeColors.surface
                                       : VoetjeColors.textMuted,
@@ -268,19 +268,19 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                         style: VoetjeTypography.caption()),
                     const SizedBox(height: 4),
                     Row(children: [
-                      const Icon(Icons.directions_car_outlined, size: 20, color: VoetjeColors.textMuted),
+                      const Icon(Icons.directions_car_outlined, size: VoetjeIconSize.smallIcon, color: VoetjeColors.textMuted),
                       const SizedBox(width: 6),
                       Text('Driving ${drivingKm.toStringAsFixed(0)} km', style: VoetjeTypography.body()),
                     ]),
                     const SizedBox(height: 2),
                     Row(children: [
-                      const Icon(Icons.lunch_dining, size: 20, color: VoetjeColors.textMuted),
+                      const Icon(Icons.lunch_dining, size: VoetjeIconSize.smallIcon, color: VoetjeColors.textMuted),
                       const SizedBox(width: 6),
                       Text('${beefMeals.toStringAsFixed(0)} beef meals', style: VoetjeTypography.body()),
                     ]),
                     const SizedBox(height: 2),
                     Row(children: [
-                      const Icon(Icons.smartphone_outlined, size: 20, color: VoetjeColors.textMuted),
+                      const Icon(Icons.smartphone_outlined, size: VoetjeIconSize.smallIcon, color: VoetjeColors.textMuted),
                       const SizedBox(width: 6),
                       Text('${(item.co2KgNew / 0.008).toStringAsFixed(0)} smartphone charges', style: VoetjeTypography.body()),
                     ]),
@@ -322,7 +322,7 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                               c == ShoppingCondition.newItem
                                   ? Icons.new_releases_outlined
                                   : Icons.recycling,
-                              size: 28,
+                              size: VoetjeIconSize.largeIcon,
                               color: isSelected
                                   ? VoetjeColors.primaryMedium
                                   : VoetjeColors.textMuted,
@@ -460,15 +460,15 @@ class _ItemCard extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              width: 44,
-              height: 44,
+              width: VoetjeIconSize.smallContainer,
+              height: VoetjeIconSize.smallContainer,
               decoration: BoxDecoration(
                 color: VoetjeColors.background,
                 borderRadius:
-                    BorderRadius.circular(VoetjeRadius.iconContainer),
+                    BorderRadius.circular(VoetjeIconSize.smallRadius),
               ),
               alignment: Alignment.center,
-              child: Icon(icon, size: 26, color: VoetjeColors.textMuted),
+              child: Icon(icon, size: VoetjeIconSize.smallIcon, color: VoetjeColors.textMuted),
             ),
             const SizedBox(width: 12),
             Expanded(

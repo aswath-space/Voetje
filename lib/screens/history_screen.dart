@@ -157,7 +157,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(Icons.history, size: 48,
+                        const Icon(Icons.history, size: VoetjeIconSize.xlargeIcon,
                             color: VoetjeColors.border),
                         const SizedBox(height: 12),
                         Text(
@@ -172,7 +172,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 )
               else
                 SliverPadding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: VoetjeSpacing.screenEdge),
                   sliver: SliverList(
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {

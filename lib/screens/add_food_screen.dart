@@ -150,7 +150,7 @@ class _AddFoodScreenState extends State<AddFoodScreen> {
                           children: [
                             Icon(
                               slot.icon,
-                              size: 22,
+                              size: VoetjeIconSize.mediumIcon,
                               color: isSelected
                                   ? VoetjeColors.surface
                                   : VoetjeColors.textMuted,
@@ -229,7 +229,7 @@ class _AddFoodScreenState extends State<AddFoodScreen> {
                       Icon(
                         MealType.inBetween.icon,
                         color: MealType.inBetween.color,
-                        size: 28,
+                        size: VoetjeIconSize.largeIcon,
                       ),
                       const SizedBox(width: 10),
                       Expanded(
@@ -377,7 +377,7 @@ class _MealTypeCard extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(meal.icon, color: meal.color, size: 32),
+            Icon(meal.icon, color: meal.color, size: VoetjeIconSize.largeIcon),
             const SizedBox(height: 4),
             Text(
               meal.label,

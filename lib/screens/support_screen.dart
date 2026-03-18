@@ -22,7 +22,7 @@ class SupportScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Support This Project')),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(VoetjeSpacing.screenEdge),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -157,7 +157,7 @@ class _SupportOption extends StatelessWidget {
       child: ListTile(
         leading: CircleAvatar(
           backgroundColor: iconColor.withValues(alpha: 0.1),
-          child: Icon(icon, color: iconColor, size: 22),
+          child: Icon(icon, color: iconColor, size: VoetjeIconSize.mediumIcon),
         ),
         title: Text(title),
         subtitle: Text(subtitle),

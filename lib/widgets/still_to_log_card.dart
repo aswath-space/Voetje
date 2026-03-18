@@ -34,16 +34,16 @@ class StillToLogCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: 48,
-              height: 48,
+              width: VoetjeIconSize.mediumContainer,
+              height: VoetjeIconSize.mediumContainer,
               decoration: BoxDecoration(
                 color: color.withValues(alpha: 0.15),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(VoetjeIconSize.mediumRadius),
               ),
               alignment: Alignment.center,
               child: Icon(
                 icon,
-                size: 26,
+                size: VoetjeIconSize.mediumIcon,
                 color: color,
               ),
             ),

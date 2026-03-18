@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:carbon_tracker/config/design_tokens.dart';
 
 /// Lightweight "About our data" screen accessible from Settings.
 /// Shows what sources we use and when they were last verified.
@@ -18,7 +19,7 @@ class DataSourcesScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('About Our Data')),
       body: ListView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(VoetjeSpacing.screenEdge),
         children: [
           Text(
             'Where do the numbers come from?',

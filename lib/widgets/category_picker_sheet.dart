@@ -302,13 +302,13 @@ class _CategoryTile extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
-                  width: 52,
-                  height: 52,
+                  width: VoetjeIconSize.largeContainer,
+                  height: VoetjeIconSize.largeContainer,
                   decoration: BoxDecoration(
                     color: iconBg,
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(VoetjeIconSize.largeRadius),
                   ),
-                  child: Icon(category.icon, size: 28, color: iconColor),
+                  child: Icon(category.icon, size: VoetjeIconSize.largeIcon, color: iconColor),
                 ),
                 const SizedBox(height: 10),
                 Text(
