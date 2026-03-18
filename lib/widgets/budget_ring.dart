@@ -181,6 +181,14 @@ class _BudgetRingPainter extends CustomPainter {
       trackColor = VoetjeColors.trackNeutral;
     }
 
+    // Draw subtle border rings (inner + outer edge of the track)
+    final borderPaint = Paint()
+      ..color = VoetjeColors.border.withValues(alpha: 0.3)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1.0;
+    canvas.drawCircle(center, radius + strokeWidth / 2, borderPaint);
+    canvas.drawCircle(center, radius - strokeWidth / 2, borderPaint);
+
     // Draw background track circle
     if (trackColor != Colors.transparent) {
       final trackPaint = Paint()

@@ -141,28 +141,17 @@ class _DashboardContent extends StatelessWidget {
           onRefresh: provider.refreshData,
           child: CustomScrollView(
             slivers: [
-              SliverAppBar(
-                floating: true,
-                title: Text('Voetje', style: VoetjeTypography.pageTitle()),
-                actions: [
-                  IconButton(
-                    icon: const Icon(Icons.settings_outlined),
-                    color: VoetjeColors.textSecondary,
-                    onPressed: onSwitchToSettings,
-                  ),
-                ],
-                backgroundColor: Colors.transparent,
-                elevation: 0,
-              ),
+              const SliverToBoxAdapter(child: SizedBox(height: 16)),
               SliverPadding(
                 padding: const EdgeInsets.symmetric(horizontal: VoetjeSpacing.screenEdge),
                 sliver: SliverList.list(
                   children: [
-                    // Hero ring
+                    // Hero ring — ~55% of screen width like Digital Wellbeing
                     Center(
                       child: BudgetRing(
                         totalCO2: provider.todayCO2,
                         categoryBreakdown: breakdown,
+                        size: MediaQuery.of(context).size.width * 0.55,
                       ),
                     ),
 

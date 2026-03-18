@@ -29,29 +29,28 @@ class StillToLogCard extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(VoetjeRadius.input),
         ),
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-        child: Column(
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 12),
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: 28,
-              height: 28,
+              width: 36,
+              height: 36,
               decoration: BoxDecoration(
                 color: color.withValues(alpha: 0.15),
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(VoetjeRadius.iconContainer),
               ),
               alignment: Alignment.center,
               child: Icon(
                 icon,
-                size: 14,
+                size: 20,
                 color: color,
               ),
             ),
-            const SizedBox(height: 4),
+            const SizedBox(width: 10),
             Text(
               label,
-              style: VoetjeTypography.caption().copyWith(
-                    fontSize: 13,
+              style: VoetjeTypography.body().copyWith(
                     color: VoetjeColors.textMuted,
                   ),
             ),

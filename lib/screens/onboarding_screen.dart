@@ -427,7 +427,6 @@ class _CategorySelectionPageState extends State<_CategorySelectionPage> {
             Switch(
               value: value,
               onChanged: enabled ? onChanged : null,
-              activeThumbColor: VoetjeColors.primaryMedium,
             ),
           ],
         ),
