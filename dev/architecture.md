@@ -159,14 +159,11 @@ Every Dart file in `lib/`, what it does, and when you'd need to touch it.
 
 | File | Purpose |
 |------|---------|
-| `stat_card.dart` | Week/month stat display card |
-| `emission_chart.dart` | 7-day bar chart (fl_chart) |
-| `category_card.dart` | Transport mode breakdown row |
-| `todays_meals_card.dart` | 3-slot meal summary card |
-| `energy_dashboard_card.dart` | Energy daily average card |
-| `shopping_dashboard_card.dart` | Shopping monthly CO2 + savings card |
-| `waste_dashboard_card.dart` | Waste weekly CO2 + recycling rate card |
-| `habit_check_row.dart` | Daily habit checkboxes |
+| `budget_ring.dart` | CustomPainter donut chart for daily CO2 budget |
+| `entry_tile.dart` | Reusable logged-entry card (dashboard + history) |
+| `section_header.dart` | "TODAY" + "+ Add" section header |
+| `still_to_log_card.dart` | Dashed placeholder for unlogged items |
+| `screen_shell.dart` | Shared screen wrapper (standalone vs embedded) |
 | `airport_picker.dart` | Airport search autocomplete |
 | `route_picker.dart` | Saved places A-B route selector |
 | `add_place_sheet.dart` | Bottom sheet for adding a saved place |

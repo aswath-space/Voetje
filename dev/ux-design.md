@@ -35,12 +35,15 @@ This document is the canonical UX design reference for the Voetje carbon tracker
 - 800 (hero numbers)
 
 **Scale:**
-- Hero number: 26-30px, weight 700
-- Page title: 20px, weight 700, letter-spacing -0.3px
-- Section header: 14px, weight 700
-- Section label: 11px, weight 700, uppercase, letter-spacing 0.8px
-- Body: 13px, weight 500
-- Caption: 10-11px, weight 500
+- Hero number: 40px, weight 700
+- Page title: 26px, weight 700, letter-spacing -0.3
+- Section header: 18px, weight 700
+- Section label: 13px, weight 700, uppercase, letter-spacing 0.8
+- Body: 16px, weight 500
+- Caption: 14px, weight 500
+- bodyEmphasis: 15px, weight 600
+- pageQuestion: 22px, weight 700
+- buttonLabel: 15px, weight 700, white
 
 **Title Colors:**
 - Page titles: #1B5E20 (dark green)
@@ -102,18 +105,23 @@ This document is the canonical UX design reference for the Voetje carbon tracker
 - App frame: 28px
 - Segmented controls: 8-10px inner, 12px outer
 
-### Elevation
+### Elevation / Shadows
 
-- Near-flat design: box-shadow 0 1px 3px rgba(0,0,0,0.02) for cards
+- Near-flat design: shadowLight — color 0x12 (~7% opacity), blur 8, offset (0,2)
+- Medium shadow: shadowMedium — color 0x1A (~10% opacity)
 - Buttons: box-shadow 0 2-4px 6-12px with tinted shadow (e.g., rgba(27,94,32,0.25) for green buttons)
 - No elevation on AppBars
 
 ### Icons
 
-- Style: thin outlined, 1.5-1.8px stroke weight
-- Size: 14-18px inline, 24-26px in cards
-- Container: rounded square (border-radius 8-12px) with category-tinted background
-- Container size: 30-38px
+- Style: Material Icons, outlined variants
+- Sizes defined via VoetjeIconSize tokens:
+  - Small (entry tiles, list items): 36px container, 20px icon, 10px radius
+  - Medium (form options, settings rows): 44px container, 24px icon, 12px radius
+  - Large (category picker, meal cards): 52px container, 28px icon, 14px radius
+  - XLarge (onboarding, empty states): 72px container, 40px icon, 18px radius
+- Icon-to-container ratio: consistently ~55%
+- All sizes defined in design_tokens.dart VoetjeIconSize class
 
 ### Components
 
@@ -154,7 +162,7 @@ This document is the canonical UX design reference for the Voetje carbon tracker
 - **Center text:**
   - Under 100%: large number (kg used today), subtitle "of 6.3 kg" or "X.X kg left"
   - Over 100%: "Over budget" as header, "+X.X kg" as large number, "X.X of 6.3 kg" as small subtitle — all in #EF5350
-- **Ring stroke width:** 10-12px
+- **Ring stroke width:** 16px
 - **Ring size:** ~130-160px diameter
 
 ### Navigation

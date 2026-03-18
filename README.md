@@ -16,7 +16,7 @@ I looked at every carbon tracker on the Play Store. The space is surprisingly em
 
 The methodology — which factors to use, what scope boundaries to draw, how to handle edge cases like electric vehicles on different grids or manufacture-only vs. lifecycle CO2 — comes from my sustainability background. The coding was done using [Claude Code](https://claude.ai/claude-code) (Anthropic's AI coding assistant). I'd describe the architecture and constraints, Claude would write the code, and I'd verify the methodology was sound. The result is an app where the domain knowledge is mine and the implementation was AI-assisted.
 
-I'm transparent about this because I think it matters. Every emission factor is sourced, cited, and documented. The code has 179 passing tests. The [full audit](dev/audit-2026-03.md) and [data source verification](dev/data-sources.md) are public. You can see exactly how every number is calculated.
+I'm transparent about this because I think it matters. Every emission factor is sourced, cited, and documented. The code has 175 passing tests. The [full audit](dev/audit-2026-03.md) and [data source verification](dev/data-sources.md) are public. You can see exactly how every number is calculated.
 
 ## Features
 
@@ -72,7 +72,7 @@ lib/
 ├── providers/
 │   └── emission_provider.dart   # Central state (ChangeNotifier + Provider)
 ├── services/                    # Pure calculation services (no state, no Provider dependency)
-├── screens/                     # 15 screens (dashboard, entry forms, settings, setup wizards)
+├── screens/                     # 17 screens (dashboard, entry forms, settings, setup wizards)
 └── widgets/                     # Reusable UI components (budget ring, entry tiles, pickers)
 ```
 
