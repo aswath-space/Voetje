@@ -6,6 +6,7 @@ import 'package:carbon_tracker/models/waste_setup.dart';
 import 'package:carbon_tracker/providers/emission_provider.dart';
 import 'package:carbon_tracker/screens/waste_setup_screen.dart';
 import 'package:carbon_tracker/services/waste_calculator.dart';
+import 'package:carbon_tracker/widgets/screen_shell.dart';
 
 class AddWasteScreen extends StatefulWidget {
   const AddWasteScreen({super.key});
@@ -25,42 +26,20 @@ class _AddWasteScreenState extends State<AddWasteScreen> {
     final provider = context.watch<EmissionProvider>();
     final setup = provider.wasteSetup;
 
-    if (setup == null) {
-      return Scaffold(
-        backgroundColor: VoetjeColors.background,
-        appBar: AppBar(
-          title: Text('Log Waste', style: VoetjeTypography.pageTitle()),
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-        ),
-        body: _SetupPrompt(),
+    if (setup == null || setup.enabledBins.isEmpty) {
+      return VoetjeScreenShell(
+        title: 'Log Waste',
+        child: _SetupPrompt(),
       );
     }
 
     final bins = setup.enabledBins;
-    if (bins.isEmpty) {
-      return Scaffold(
-        backgroundColor: VoetjeColors.background,
-        appBar: AppBar(
-          title: Text('Log Waste', style: VoetjeTypography.pageTitle()),
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-        ),
-        body: _SetupPrompt(),
-      );
-    }
-
     final isOwn = setup.housingType == HousingType.ownBins;
     final totalCO2 = _computeTotalCO2(bins, isOwn);
 
-    return Scaffold(
-      backgroundColor: VoetjeColors.background,
-      appBar: AppBar(
-        title: Text('Log Waste', style: VoetjeTypography.pageTitle()),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      body: SingleChildScrollView(
+    return VoetjeScreenShell(
+      title: 'Log Waste',
+      child: SingleChildScrollView(
         padding: const EdgeInsets.all(VoetjeSpacing.screenEdge),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
