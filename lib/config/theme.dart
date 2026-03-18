@@ -87,11 +87,17 @@ class AppTheme {
           ),
         ),
         switchTheme: SwitchThemeData(
+          thumbColor: WidgetStateProperty.resolveWith((states) {
+            return Colors.white;
+          }),
           trackColor: WidgetStateProperty.resolveWith((states) {
             if (states.contains(WidgetState.selected)) {
               return VoetjeColors.primaryMedium;
             }
             return VoetjeColors.border;
+          }),
+          trackOutlineColor: WidgetStateProperty.resolveWith((states) {
+            return Colors.transparent;
           }),
         ),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
@@ -138,11 +144,17 @@ class AppTheme {
               const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         ),
         switchTheme: SwitchThemeData(
+          thumbColor: WidgetStateProperty.resolveWith((states) {
+            return Colors.white;
+          }),
           trackColor: WidgetStateProperty.resolveWith((states) {
             if (states.contains(WidgetState.selected)) {
               return VoetjeColors.darkAccent;
             }
             return VoetjeColors.darkTrack;
+          }),
+          trackOutlineColor: WidgetStateProperty.resolveWith((states) {
+            return Colors.transparent;
           }),
         ),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
