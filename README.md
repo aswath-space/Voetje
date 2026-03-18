@@ -2,7 +2,7 @@
 
 *Dutch for "little footprint" — pronounced roughly "foot-yuh" (IPA: /ˈvutjə/)*
 
-A free, privacy-first personal carbon footprint tracker I built with Flutter and [Claude Code](https://claude.ai/claude-code).
+A free, privacy-first personal carbon footprint tracker built with Flutter and [Claude Code](https://claude.ai/claude-code).
 
 **No ads. No accounts. No data harvesting. All data stays on your device.**
 
@@ -10,23 +10,27 @@ Voetje tracks five categories of personal CO2 emissions — transport, food, hom
 
 ## How it was built
 
-I have a Master's in Sustainability, so the methodology — which factors to use, what scope boundaries to draw, how to handle edge cases like electric vehicles on different grids or lifecycle vs. manufacture-only CO2 — comes from that background. The coding was done using [Claude Code](https://claude.ai/claude-code) (Anthropic's AI coding assistant) as my development tool.
+I have a Master's in Sustainability and I wanted a simple daily carbon tracker for myself. Something that would tell me "you used 3.2 of your 6.3 kg daily budget today, mostly from driving." Not a pledge app, not an offset store, not something that needs my bank account — just a straightforward tracker with real numbers.
 
-I'm transparent about this because I think it matters. The domain knowledge and methodology decisions are mine. The code, architecture, and data verification were built collaboratively with AI. Every emission factor is sourced, cited, and documented. The code has 173 passing tests. The [full audit](dev/audit-2026-03.md) and [data source verification](dev/data-sources.md) are public.
+I looked at every carbon tracker on the Play Store. The space is surprisingly empty. The ones that exist are either dead, ad-supported, subscription-based, or focused on offsets rather than tracking. None of them let you log transport, food, energy, shopping, and waste in one place with proper emission factors. So I built my own.
+
+The methodology — which factors to use, what scope boundaries to draw, how to handle edge cases like electric vehicles on different grids or manufacture-only vs. lifecycle CO2 — comes from my sustainability background. The coding was done using [Claude Code](https://claude.ai/claude-code) (Anthropic's AI coding assistant). I'd describe the architecture and constraints, Claude would write the code, and I'd verify the methodology was sound. The result is an app where the domain knowledge is mine and the implementation was AI-assisted.
+
+I'm transparent about this because I think it matters. Every emission factor is sourced, cited, and documented. The code has 179 passing tests. The [full audit](dev/audit-2026-03.md) and [data source verification](dev/data-sources.md) are public. You can see exactly how every number is calculated.
 
 ## Features
 
 **Transport** — 16 modes from walking to long-haul flights. Carpooling splits emissions by passengers. Airport picker with auto-distance for flights. Saved places and route presets for daily commutes.
 
-**Food** — Log meals by type (plant-based, chicken/fish, red meat, fast food). Automatic meal slot detection. Daily meal summary card. Weekly diet profile.
+**Food** — Log meals by type (plant-based, chicken/fish, red meat, fast food). Automatic meal slot detection. Weekly diet profile for background estimates.
 
 **Home Energy** — Country-specific grid intensity for 24 countries with state/province overrides (US, Canada, Australia). Enter bills by kWh or cost. Quick estimate mode based on country averages and household size. Supports electricity, gas, oil, and wood heating.
 
 **Shopping** — 25 common items across clothing, electronics, furniture, and other. Manufacture-only CO2 (not lifecycle). Second-hand and repaired items credited with savings.
 
-**Waste & Recycling** — Weekly bin logging (fill fraction or bag count). Recycling counts as net CO2 savings. Daily habit streaks for reusable bags, bottles, and cups.
+**Waste & Recycling** — Weekly bin logging (fill fraction or bag count). Recycling counts as net CO2 savings.
 
-**Dashboard** — Daily footprint with Paris Agreement budget progress. 7-day bar chart. Category breakdown. Contextual nudge messages. Relatable equivalencies ("like charging 200 smartphones").
+**Dashboard** — Category donut ring showing daily Paris Agreement budget usage. Threshold urgency (green to amber to red as you approach your limit). Timeline-style logging with "still to log" prompts. Weekly trend in History. Contextual nudge messages.
 
 ## Screenshots
 
@@ -42,8 +46,8 @@ I'm transparent about this because I think it matters. The domain knowledge and 
 ## Getting started
 
 ```bash
-git clone https://github.com/aswath-space/voetje.git
-cd voetje
+git clone https://github.com/aswath-space/Voetje.git
+cd Voetje
 
 flutter pub get
 flutter run
@@ -51,14 +55,14 @@ flutter run
 
 Requires Flutter 3.27+ and Dart 3.11+.
 
-**Platforms tested:** Android, Windows. macOS/Linux should work but are untested. **I don't have a Mac**, so iOS builds are untested — if you can help with that, see [Contributing](#contributing).
+**Platforms:** Android is the primary target. iOS should work via Flutter but is untested — **I don't have a Mac**, so if you can help with that, see [Contributing](#contributing).
 
 ## Architecture
 
 ```
 lib/
 ├── main.dart / app.dart         # Entry point, MaterialApp, theme
-├── config/                      # Theme, routes
+├── config/                      # Design tokens, theme, routes
 ├── data/
 │   ├── country_defaults.dart    # Single source of truth: 24 countries, grid, kWh, prices, regions
 │   ├── emission_factors.dart    # Central registry: all CO2 factors + physical constants
@@ -68,13 +72,15 @@ lib/
 ├── providers/
 │   └── emission_provider.dart   # Central state (ChangeNotifier + Provider)
 ├── services/                    # Pure calculation services (no state, no Provider dependency)
-├── screens/                     # 14 screens (dashboard, entry forms, settings, setup wizards)
-└── widgets/                     # Reusable UI components
+├── screens/                     # 15 screens (dashboard, entry forms, settings, setup wizards)
+└── widgets/                     # Reusable UI components (budget ring, entry tiles, pickers)
 ```
 
 **State management:** Provider with a single `EmissionProvider` (ChangeNotifier). All DB queries run concurrently via `Future.wait`.
 
 **Database:** SQLite via sqflite. Schema v4 with forward migrations. Foreign key cascades. All data on-device.
+
+**Design system:** Plus Jakarta Sans typography, category-colored identity system, custom `CustomPainter` budget ring. Design tokens centralized in `design_tokens.dart`.
 
 **Data layer:** All emission factors, country data, and physical constants live in `lib/data/`. Adding a country = one entry in `country_defaults.dart`. Updating factors = one file (`emission_factors.dart`). Sources and methodology documented in [dev/data-sources.md](dev/data-sources.md).
 

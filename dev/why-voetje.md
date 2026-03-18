@@ -24,7 +24,7 @@ The name is Dutch for "little footprint" (pronounced roughly "foot-yuh"). It fel
 
 I have a Master's in Sustainability — the methodology decisions (scope boundaries, factor selection, how to handle things like grid-dependent EV emissions or manufacture-only vs. lifecycle CO2) come from that background. I used [Claude Code](https://claude.ai/claude-code) (Anthropic's AI coding assistant) for the development itself. The architecture, data layer, UI, tests, and documentation were built through conversation with Claude.
 
-I'm transparent about this because I think it matters. The domain knowledge is mine; the code was AI-assisted. Every emission factor is sourced from DEFRA, IEA, EPA, or peer-reviewed research. The code has 173 passing tests.
+I'm transparent about this because I think it matters. The domain knowledge is mine; the code was AI-assisted. Every emission factor is sourced from DEFRA, IEA, EPA, or peer-reviewed research. The code has 179 passing tests.
 
 ## How I fund it
 
@@ -50,5 +50,5 @@ Being honest:
 |------|---------|
 | Social/community | No accounts means no social features. Streaks and export-to-share are my substitute. |
 | iOS | I don't have a Mac. The app should work on iOS via Flutter but it's untested. |
-| Polished brand | It's a v1. The data and methodology are solid; the visual polish will come. |
+| Polished brand | v1 with a custom design system (Plus Jakarta Sans, category-colored donut ring, rich green palette). Room to grow but intentionally designed. |
 | User testing | Needs real-world testing with people who aren't me. |
