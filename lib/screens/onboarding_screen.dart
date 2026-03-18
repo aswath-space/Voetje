@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:carbon_tracker/config/design_tokens.dart';
 import 'package:carbon_tracker/providers/emission_provider.dart';
@@ -77,7 +76,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             decoration: BoxDecoration(
                               color: isFilled
                                   ? VoetjeColors.primaryMedium
-                                  : const Color(0xFFC6DAC2),
+                                  : VoetjeColors.progressTrack,
                               borderRadius: BorderRadius.circular(2),
                             ),
                           ),
@@ -114,11 +113,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             ),
                             child: Text(
                               'Back',
-                              style: GoogleFonts.plusJakartaSans(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                                color: VoetjeColors.textMuted,
-                              ),
+                              style: VoetjeTypography.caption().copyWith(
+                                    color: VoetjeColors.textMuted,
+                                  ),
                             ),
                           )
                         else
@@ -149,11 +146,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   onPressed: _completeOnboarding,
                   child: Text(
                     'Skip',
-                    style: GoogleFonts.plusJakartaSans(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                      color: VoetjeColors.textMuted,
-                    ),
+                    style: VoetjeTypography.caption().copyWith(
+                          fontSize: 12,
+                          color: VoetjeColors.textMuted,
+                        ),
                   ),
                 ),
               ),
@@ -198,11 +194,7 @@ class _PillButton extends StatelessWidget {
       ),
       child: Text(
         label,
-        style: GoogleFonts.plusJakartaSans(
-          fontSize: 14,
-          fontWeight: FontWeight.w700,
-          color: Colors.white,
-        ),
+        style: VoetjeTypography.buttonLabel().copyWith(fontSize: 14),
       ),
     );
   }
@@ -243,22 +235,17 @@ class _OnboardingPage extends StatelessWidget {
           const SizedBox(height: 36),
           Text(
             title,
-            style: GoogleFonts.plusJakartaSans(
-              fontSize: 22,
-              fontWeight: FontWeight.w700,
-              color: VoetjeColors.primary,
-            ),
+            style: VoetjeTypography.pageQuestion(),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 14),
           Text(
             description,
-            style: GoogleFonts.plusJakartaSans(
-              fontSize: 13,
-              fontWeight: FontWeight.w500,
-              color: const Color(0xFF5A755A),
-              height: 1.6,
-            ),
+            style: VoetjeTypography.caption().copyWith(
+                  fontSize: 13,
+                  color: VoetjeColors.textSecondary,
+                  height: 1.6,
+                ),
             textAlign: TextAlign.center,
           ),
         ],
@@ -292,21 +279,16 @@ class _CategorySelectionPageState extends State<_CategorySelectionPage> {
           const SizedBox(height: 32),
           Text(
             'What do you want to track?',
-            style: GoogleFonts.plusJakartaSans(
-              fontSize: 22,
-              fontWeight: FontWeight.w700,
-              color: VoetjeColors.primary,
-            ),
+            style: VoetjeTypography.pageQuestion(),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 8),
           Text(
             'You can always change this in Settings.',
-            style: GoogleFonts.plusJakartaSans(
-              fontSize: 13,
-              fontWeight: FontWeight.w500,
-              color: const Color(0xFF5A755A),
-            ),
+            style: VoetjeTypography.caption().copyWith(
+                  fontSize: 13,
+                  color: VoetjeColors.textSecondary,
+                ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 24),
@@ -379,11 +361,7 @@ class _CategorySelectionPageState extends State<_CategorySelectionPage> {
               ),
               child: Text(
                 'Get Started',
-                style: GoogleFonts.plusJakartaSans(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white,
-                ),
+                style: VoetjeTypography.buttonLabel(),
               ),
             ),
           ),
@@ -431,18 +409,17 @@ class _CategorySelectionPageState extends State<_CategorySelectionPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(name,
-                      style: GoogleFonts.plusJakartaSans(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 13,
-                        color: VoetjeColors.textPrimary,
-                      )),
+                      style: VoetjeTypography.caption().copyWith(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 13,
+                            color: VoetjeColors.textPrimary,
+                          )),
                   Text(
                     description,
-                    style: GoogleFonts.plusJakartaSans(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w500,
-                      color: VoetjeColors.textMuted,
-                    ),
+                    style: VoetjeTypography.caption().copyWith(
+                          fontSize: 11,
+                          color: VoetjeColors.textMuted,
+                        ),
                   ),
                 ],
               ),

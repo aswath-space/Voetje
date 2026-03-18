@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:carbon_tracker/config/design_tokens.dart';
 import 'package:carbon_tracker/data/country_defaults.dart';
@@ -71,7 +70,7 @@ class _EnergySetupScreenState extends State<EnergySetupScreen> {
                       decoration: BoxDecoration(
                         color: isFilled
                             ? VoetjeColors.primaryMedium
-                            : const Color(0xFFC6DAC2),
+                            : VoetjeColors.progressTrack,
                         borderRadius: BorderRadius.circular(2),
                       ),
                     ),
@@ -154,11 +153,7 @@ class _GreenPillButton extends StatelessWidget {
         ),
         child: Text(
           label,
-          style: GoogleFonts.plusJakartaSans(
-            fontSize: 15,
-            fontWeight: FontWeight.w700,
-            color: Colors.white,
-          ),
+          style: VoetjeTypography.buttonLabel(),
         ),
       ),
     );
@@ -194,7 +189,7 @@ class _SelectionCard extends StatelessWidget {
           ),
           boxShadow: const [
             BoxShadow(
-              color: Color(0x05000000),
+              color: VoetjeColors.shadowLight,
               blurRadius: 3,
               offset: Offset(0, 1),
             )
@@ -284,11 +279,7 @@ class _CountryPageState extends State<_CountryPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Which state/province?',
-                style: GoogleFonts.plusJakartaSans(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w700,
-                  color: VoetjeColors.primary,
-                )),
+                style: VoetjeTypography.pageQuestion()),
             const SizedBox(height: 16),
             Expanded(
               child: ListView(
@@ -330,11 +321,10 @@ class _CountryPageState extends State<_CountryPage> {
                   setState(() => _selectedCountry = null),
               child: Text(
                 '← Back to countries',
-                style: GoogleFonts.plusJakartaSans(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w500,
-                  color: VoetjeColors.textMuted,
-                ),
+                style: VoetjeTypography.caption().copyWith(
+                      fontSize: 13,
+                      color: VoetjeColors.textMuted,
+                    ),
               ),
             ),
           ],
@@ -348,22 +338,17 @@ class _CountryPageState extends State<_CountryPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('Where do you live?',
-              style: GoogleFonts.plusJakartaSans(
-                fontSize: 22,
-                fontWeight: FontWeight.w700,
-                color: VoetjeColors.primary,
-              )),
+              style: VoetjeTypography.pageQuestion()),
           const SizedBox(height: 14),
           TextField(
             controller: _searchCtrl,
             style: VoetjeTypography.body(),
             decoration: InputDecoration(
               hintText: 'Search country...',
-              hintStyle: GoogleFonts.plusJakartaSans(
-                fontSize: 13,
-                fontWeight: FontWeight.w500,
-                color: VoetjeColors.textMuted,
-              ),
+              hintStyle: VoetjeTypography.caption().copyWith(
+                    fontSize: 13,
+                    color: VoetjeColors.textMuted,
+                  ),
               prefixIcon: const Icon(Icons.search,
                   color: VoetjeColors.textMuted),
               filled: true,
@@ -442,11 +427,7 @@ class _HeatingPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('How do you heat your home?',
-              style: GoogleFonts.plusJakartaSans(
-                fontSize: 22,
-                fontWeight: FontWeight.w700,
-                color: VoetjeColors.primary,
-              )),
+              style: VoetjeTypography.pageQuestion()),
           const SizedBox(height: 6),
           Text('Select all that apply',
               style: VoetjeTypography.body()
@@ -485,7 +466,7 @@ class _HeatingPage extends StatelessWidget {
                       ),
                       boxShadow: const [
                         BoxShadow(
-                          color: Color(0x05000000),
+                          color: VoetjeColors.shadowLight,
                           blurRadius: 3,
                           offset: Offset(0, 1),
                         )
@@ -499,13 +480,13 @@ class _HeatingPage extends StatelessWidget {
                               style: const TextStyle(fontSize: 24)),
                           Text(type.label,
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.plusJakartaSans(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                                color: isSelected
-                                    ? VoetjeColors.primaryMedium
-                                    : VoetjeColors.textPrimary,
-                              )),
+                              style: VoetjeTypography.caption().copyWith(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w600,
+                                    color: isSelected
+                                        ? VoetjeColors.primaryMedium
+                                        : VoetjeColors.textPrimary,
+                                  )),
                         ],
                       ),
                     ),
@@ -546,11 +527,7 @@ class _HouseholdPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('Who lives in your home?',
-              style: GoogleFonts.plusJakartaSans(
-                fontSize: 22,
-                fontWeight: FontWeight.w700,
-                color: VoetjeColors.primary,
-              )),
+              style: VoetjeTypography.pageQuestion()),
           const SizedBox(height: 16),
           ...options.map((opt) => Padding(
                 padding: const EdgeInsets.only(bottom: 10),
@@ -558,11 +535,7 @@ class _HouseholdPage extends StatelessWidget {
                   selected: selected == opt.size,
                   onTap: () => onSelected(opt.size),
                   child: Text(opt.label,
-                      style: GoogleFonts.plusJakartaSans(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                        color: VoetjeColors.textPrimary,
-                      )),
+                      style: VoetjeTypography.bodyEmphasis()),
                 ),
               )),
         ],
@@ -586,11 +559,7 @@ class _MethodPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('How should we track your energy?',
-              style: GoogleFonts.plusJakartaSans(
-                fontSize: 22,
-                fontWeight: FontWeight.w700,
-                color: VoetjeColors.primary,
-              )),
+              style: VoetjeTypography.pageQuestion()),
           const SizedBox(height: 16),
           _MethodCard(
             emoji: '📊',
@@ -648,7 +617,7 @@ class _MethodCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(VoetjeRadius.input),
           boxShadow: const [
             BoxShadow(
-              color: Color(0x05000000),
+              color: VoetjeColors.shadowLight,
               blurRadius: 3,
               offset: Offset(0, 1),
             )
@@ -666,11 +635,9 @@ class _MethodCard extends StatelessWidget {
                   Row(
                     children: [
                       Text(title,
-                          style: GoogleFonts.plusJakartaSans(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 15,
-                            color: VoetjeColors.textPrimary,
-                          )),
+                          style: VoetjeTypography.bodyEmphasis().copyWith(
+                                fontWeight: FontWeight.w700,
+                              )),
                       if (badge != null) ...[
                         const SizedBox(width: 8),
                         Container(

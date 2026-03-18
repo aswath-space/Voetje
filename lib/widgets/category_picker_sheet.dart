@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:carbon_tracker/config/design_tokens.dart';
 
 /// A bottom sheet that lets the user pick which emission category to log.
@@ -129,14 +128,14 @@ class _CategoryTile extends StatelessWidget {
     final iconColor = VoetjeColors.categoryColor(category.key);
 
     return Material(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(14),
+      color: VoetjeColors.surface,
+      borderRadius: BorderRadius.circular(VoetjeRadius.input),
       child: InkWell(
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(VoetjeRadius.input),
         onTap: onTap,
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(VoetjeRadius.input),
             border: Border.all(
               color: VoetjeColors.border,
               width: 1.5,
@@ -151,7 +150,7 @@ class _CategoryTile extends StatelessWidget {
                   height: 32,
                   decoration: BoxDecoration(
                     color: iconBg,
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(VoetjeRadius.iconContainer),
                   ),
                   child: Icon(
                     category.icon,
@@ -162,11 +161,10 @@ class _CategoryTile extends StatelessWidget {
                 const SizedBox(height: 6),
                 Text(
                   category.label,
-                  style: GoogleFonts.plusJakartaSans(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: VoetjeColors.textPrimary,
-                  ),
+                  style: VoetjeTypography.caption().copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: VoetjeColors.textPrimary,
+                      ),
                 ),
               ],
             ),

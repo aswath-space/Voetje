@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:carbon_tracker/config/design_tokens.dart';
 import 'package:carbon_tracker/providers/emission_provider.dart';
@@ -46,15 +45,15 @@ class _HomeScreenState extends State<HomeScreen> {
         currentIndex: _currentIndex,
         onTap: (i) => setState(() => _currentIndex = i),
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: VoetjeColors.surface,
         selectedItemColor: VoetjeColors.primary,
         unselectedItemColor: VoetjeColors.inactiveNav,
         type: BottomNavigationBarType.fixed,
-        selectedLabelStyle: GoogleFonts.plusJakartaSans(
+        selectedLabelStyle: VoetjeTypography.caption().copyWith(
           fontSize: 11,
           fontWeight: FontWeight.w600,
         ),
-        unselectedLabelStyle: GoogleFonts.plusJakartaSans(
+        unselectedLabelStyle: VoetjeTypography.caption().copyWith(
           fontSize: 11,
           fontWeight: FontWeight.w500,
         ),
@@ -181,16 +180,15 @@ class _DashboardContent extends StatelessWidget {
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
                           decoration: BoxDecoration(
-                            color: const Color(0xFFF5F5F5),
+                            color: VoetjeColors.surfaceSubtle,
                             borderRadius: BorderRadius.circular(VoetjeRadius.chip),
                           ),
                           child: Text(
                             'This week: ${provider.weekCO2.toStringAsFixed(1)} kg \u2192',
-                            style: GoogleFonts.plusJakartaSans(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              color: VoetjeColors.textSecondary,
-                            ),
+                            style: VoetjeTypography.caption().copyWith(
+                                  fontWeight: FontWeight.w600,
+                                  color: VoetjeColors.textSecondary,
+                                ),
                           ),
                         ),
                       ),
@@ -230,19 +228,14 @@ class _DashboardContent extends StatelessWidget {
                               const SizedBox(height: 8),
                               Text(
                                 'Nothing logged yet today',
-                                style: GoogleFonts.plusJakartaSans(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: VoetjeColors.textMuted,
-                                ),
+                                style: VoetjeTypography.body().copyWith(
+                                      color: VoetjeColors.textMuted,
+                                    ),
                               ),
                               const SizedBox(height: 4),
                               Text(
                                 'Tap "+ Add" to start tracking',
-                                style: GoogleFonts.plusJakartaSans(
-                                  fontSize: 14,
-                                  color: VoetjeColors.captionColor,
-                                ),
+                                style: VoetjeTypography.caption(),
                               ),
                             ],
                           ),
@@ -279,8 +272,8 @@ class _DashboardContent extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFF8FAF7),
-                        borderRadius: BorderRadius.circular(14),
+                        color: VoetjeColors.surfaceSubtle,
+                        borderRadius: BorderRadius.circular(VoetjeRadius.input),
                       ),
                       child: Row(
                         children: [
@@ -289,11 +282,9 @@ class _DashboardContent extends StatelessWidget {
                           Expanded(
                             child: Text(
                               nudge.text,
-                              style: GoogleFonts.plusJakartaSans(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                                color: VoetjeColors.textSecondary,
-                              ),
+                              style: VoetjeTypography.caption().copyWith(
+                                    color: VoetjeColors.textSecondary,
+                                  ),
                             ),
                           ),
                         ],

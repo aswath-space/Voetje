@@ -35,28 +35,28 @@ class _BudgetRingState extends State<BudgetRing> {
       centerContent = Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text(
+          Text(
             'Over budget',
-            style: TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.w600,
-              color: Color(0xFFEF5350),
-            ),
+            style: VoetjeTypography.caption().copyWith(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600,
+                  color: VoetjeColors.destructive,
+                ),
           ),
           Text(
             '+${overage.toStringAsFixed(1)} kg',
             style: const TextStyle(
               fontSize: 28,
               fontWeight: FontWeight.w700,
-              color: Color(0xFFEF5350),
+              color: VoetjeColors.destructive,
             ),
           ),
           Text(
             '${widget.totalCO2.toStringAsFixed(1)} of ${widget.budget.toStringAsFixed(1)} kg',
-            style: const TextStyle(
-              fontSize: 13,
-              color: Color(0xFF999999),
-            ),
+            style: VoetjeTypography.caption().copyWith(
+                  fontSize: 13,
+                  color: VoetjeColors.captionColor,
+                ),
           ),
         ],
       );
@@ -71,11 +71,9 @@ class _BudgetRingState extends State<BudgetRing> {
           ),
           Text(
             '${remaining.toStringAsFixed(1)} kg left',
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: Color(0xFFEF5350),
-            ),
+            style: VoetjeTypography.caption().copyWith(
+                  color: VoetjeColors.trackCoralText,
+                ),
           ),
         ],
       );
@@ -90,11 +88,9 @@ class _BudgetRingState extends State<BudgetRing> {
           ),
           Text(
             '${remaining.toStringAsFixed(1)} kg left',
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: Color(0xFFF9A825),
-            ),
+            style: VoetjeTypography.caption().copyWith(
+                  color: VoetjeColors.trackAmberText,
+                ),
           ),
         ],
       );
@@ -109,11 +105,10 @@ class _BudgetRingState extends State<BudgetRing> {
           ),
           Text(
             'of ${widget.budget.toStringAsFixed(1)} kg',
-            style: const TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.w500,
-              color: Color(0xFF999999),
-            ),
+            style: VoetjeTypography.caption().copyWith(
+                  fontSize: 13,
+                  color: VoetjeColors.captionColor,
+                ),
           ),
         ],
       );

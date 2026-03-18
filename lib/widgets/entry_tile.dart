@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../config/design_tokens.dart';
 
 class EntryTile extends StatelessWidget {
@@ -27,11 +26,11 @@ class EntryTile extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(14),
+          color: VoetjeColors.surface,
+          borderRadius: BorderRadius.circular(VoetjeRadius.input),
           boxShadow: const [
             BoxShadow(
-              color: Color(0x05000000),
+              color: VoetjeColors.shadowLight,
               blurRadius: 3,
               offset: Offset(0, 1),
             ),
@@ -46,7 +45,7 @@ class EntryTile extends StatelessWidget {
               height: 36,
               decoration: BoxDecoration(
                 color: VoetjeColors.categoryBackground(category),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(VoetjeRadius.iconContainer),
               ),
               alignment: Alignment.center,
               child: Icon(
@@ -62,31 +61,23 @@ class EntryTile extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: GoogleFonts.plusJakartaSans(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                      color: VoetjeColors.textPrimary,
-                    ),
+                    style: VoetjeTypography.bodyEmphasis(),
                   ),
                   if (subtitle != null)
                     Text(
                       subtitle!,
-                      style: GoogleFonts.plusJakartaSans(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500,
-                        color: VoetjeColors.captionColor,
-                      ),
+                      style: VoetjeTypography.caption().copyWith(
+                            color: VoetjeColors.captionColor,
+                          ),
                     ),
                 ],
               ),
             ),
             Text(
               kgValue,
-              style: GoogleFonts.plusJakartaSans(
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-                color: VoetjeColors.textSecondary,
-              ),
+              style: VoetjeTypography.bodyEmphasis().copyWith(
+                    color: VoetjeColors.textSecondary,
+                  ),
             ),
           ],
         ),
@@ -105,9 +96,9 @@ class EntryTile extends StatelessWidget {
           padding: const EdgeInsets.only(right: 16),
           decoration: BoxDecoration(
             color: VoetjeColors.destructive,
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(VoetjeRadius.input),
           ),
-          child: const Icon(Icons.delete_outline, color: Colors.white, size: 20),
+          child: const Icon(Icons.delete_outline, color: VoetjeColors.surface, size: 20),
         ),
         onDismissed: (_) => onDismissed!(),
         child: _buildTile(),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:carbon_tracker/config/design_tokens.dart';
 import 'package:carbon_tracker/models/emission_entry.dart';
@@ -161,23 +160,22 @@ class _TransportBodyState extends State<_TransportBody> {
                 inputFormatters: [
                   FilteringTextInputFormatter.allow(RegExp(r'[\d.]')),
                 ],
-                style: GoogleFonts.plusJakartaSans(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w500,
-                  color: VoetjeColors.textPrimary,
-                ),
+                style: VoetjeTypography.caption().copyWith(
+                      fontSize: 13,
+                      color: VoetjeColors.textPrimary,
+                    ),
                 decoration: InputDecoration(
                   hintText: 'Enter distance',
-                  hintStyle: GoogleFonts.plusJakartaSans(
-                    fontSize: 13,
-                    color: VoetjeColors.textMuted,
-                  ),
+                  hintStyle: VoetjeTypography.caption().copyWith(
+                        fontSize: 13,
+                        color: VoetjeColors.textMuted,
+                      ),
                   suffixText: provider.unitLabel,
-                  suffixStyle: GoogleFonts.plusJakartaSans(
-                    fontSize: 13,
-                    color: VoetjeColors.labelColor,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  suffixStyle: VoetjeTypography.caption().copyWith(
+                        fontSize: 13,
+                        color: VoetjeColors.labelColor,
+                        fontWeight: FontWeight.w600,
+                      ),
                   contentPadding: const EdgeInsets.symmetric(
                     horizontal: 14,
                     vertical: 12,
@@ -203,16 +201,15 @@ class _TransportBodyState extends State<_TransportBody> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 12, vertical: 6),
                     decoration: BoxDecoration(
-                      color: const Color(0x99FFFFFF),
-                      borderRadius: BorderRadius.circular(14),
+                      color: VoetjeColors.stillToLogBg,
+                      borderRadius: BorderRadius.circular(VoetjeRadius.input),
                     ),
                     child: Text(
                       '$d ${provider.unitLabel}',
-                      style: GoogleFonts.plusJakartaSans(
-                        fontSize: 10,
-                        color: VoetjeColors.textMuted,
-                        fontWeight: FontWeight.w500,
-                      ),
+                      style: VoetjeTypography.caption().copyWith(
+                            fontSize: 10,
+                            color: VoetjeColors.textMuted,
+                          ),
                     ),
                   ),
                 );
@@ -245,11 +242,7 @@ class _TransportBodyState extends State<_TransportBody> {
                   const SizedBox(width: 12),
                   Text(
                     '$_passengers',
-                    style: GoogleFonts.plusJakartaSans(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700,
-                      color: VoetjeColors.textPrimary,
-                    ),
+                    style: VoetjeTypography.sectionHeader(),
                   ),
                   const SizedBox(width: 12),
                   _PassengerButton(
@@ -263,10 +256,10 @@ class _TransportBodyState extends State<_TransportBody> {
                       _passengers > 1
                           ? 'Emissions split $_passengers ways'
                           : 'Just you',
-                      style: GoogleFonts.plusJakartaSans(
-                        fontSize: 12,
-                        color: VoetjeColors.textMuted,
-                      ),
+                      style: VoetjeTypography.caption().copyWith(
+                            fontSize: 12,
+                            color: VoetjeColors.textMuted,
+                          ),
                     ),
                   ),
                 ],
@@ -284,16 +277,16 @@ class _TransportBodyState extends State<_TransportBody> {
             ),
             child: TextField(
               controller: _noteController,
-              style: GoogleFonts.plusJakartaSans(
-                fontSize: 13,
-                color: VoetjeColors.textPrimary,
-              ),
+              style: VoetjeTypography.caption().copyWith(
+                    fontSize: 13,
+                    color: VoetjeColors.textPrimary,
+                  ),
               decoration: InputDecoration(
                 hintText: 'Add a note (optional)',
-                hintStyle: GoogleFonts.plusJakartaSans(
-                  fontSize: 13,
-                  color: VoetjeColors.textMuted,
-                ),
+                hintStyle: VoetjeTypography.caption().copyWith(
+                      fontSize: 13,
+                      color: VoetjeColors.textMuted,
+                    ),
                 prefixIcon: const Icon(
                   Icons.note_alt_outlined,
                   color: VoetjeColors.textMuted,
@@ -320,7 +313,7 @@ class _TransportBodyState extends State<_TransportBody> {
                 boxShadow: _canSave
                     ? [
                         BoxShadow(
-                          color: const Color(0xFF1B5E20).withValues(alpha: 0.25),
+                          color: VoetjeColors.primary.withValues(alpha: 0.25),
                           blurRadius: 12,
                           offset: const Offset(0, 4),
                         ),
@@ -341,11 +334,7 @@ class _TransportBodyState extends State<_TransportBody> {
                 onPressed: _canSave ? _save : null,
                 child: Text(
                   'Save Trip',
-                  style: GoogleFonts.plusJakartaSans(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.white,
-                  ),
+                  style: VoetjeTypography.buttonLabel().copyWith(fontSize: 14),
                 ),
               ),
             ),
@@ -372,7 +361,7 @@ class _TransportBodyState extends State<_TransportBody> {
             const EdgeInsets.symmetric(horizontal: 16, vertical: 13),
         decoration: BoxDecoration(
           color: VoetjeColors.surface,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(VoetjeRadius.input),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: 0.05),
@@ -391,11 +380,10 @@ class _TransportBodyState extends State<_TransportBody> {
             const SizedBox(width: 12),
             Text(
               DateFormat('EEEE, MMM d, y').format(_selectedDate),
-              style: GoogleFonts.plusJakartaSans(
-                fontSize: 13,
-                fontWeight: FontWeight.w500,
-                color: VoetjeColors.textPrimary,
-              ),
+              style: VoetjeTypography.caption().copyWith(
+                    fontSize: 13,
+                    color: VoetjeColors.textPrimary,
+                  ),
             ),
             const Spacer(),
             if (_isToday)
@@ -408,11 +396,11 @@ class _TransportBodyState extends State<_TransportBody> {
                 ),
                 child: Text(
                   'Today',
-                  style: GoogleFonts.plusJakartaSans(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w600,
-                    color: VoetjeColors.primaryMedium,
-                  ),
+                  style: VoetjeTypography.caption().copyWith(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w600,
+                        color: VoetjeColors.primaryMedium,
+                      ),
                 ),
               ),
           ],
@@ -526,10 +514,10 @@ class _TransportBodyState extends State<_TransportBody> {
           Text(
             '${_distanceController.text} ${context.read<EmissionProvider>().unitLabel}'
             ' \u00b7 ${_selectedMode?.label ?? ''}',
-            style: GoogleFonts.plusJakartaSans(
-              fontSize: 11,
-              color: VoetjeColors.textMuted,
-            ),
+            style: VoetjeTypography.caption().copyWith(
+                  fontSize: 11,
+                  color: VoetjeColors.textMuted,
+                ),
           ),
         ],
       ],
@@ -592,7 +580,7 @@ class _TransportBodyState extends State<_TransportBody> {
         scaffoldMsg.showSnackBar(
           SnackBar(
             content: Text('Failed to save: $e'),
-            backgroundColor: Colors.red.shade700,
+            backgroundColor: VoetjeColors.destructive,
             behavior: SnackBarBehavior.floating,
           ),
         );
@@ -704,7 +692,7 @@ class _ModeGrid extends StatelessWidget {
                       color: isSelected
                           ? VoetjeColors.primary
                           : VoetjeColors.surface,
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(VoetjeRadius.chip),
                       border: isSelected
                           ? null
                           : Border.all(
@@ -733,13 +721,12 @@ class _ModeGrid extends StatelessWidget {
                         const SizedBox(width: 6),
                         Text(
                           mode.label,
-                          style: GoogleFonts.plusJakartaSans(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                            color: isSelected
-                                ? Colors.white
-                                : VoetjeColors.textSecondary,
-                          ),
+                          style: VoetjeTypography.caption().copyWith(
+                                fontSize: 12,
+                                color: isSelected
+                                    ? VoetjeColors.surface
+                                    : VoetjeColors.textSecondary,
+                              ),
                         ),
                       ],
                     ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../config/design_tokens.dart';
 
 class StillToLogCard extends StatelessWidget {
@@ -20,7 +19,7 @@ class StillToLogCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(14),
+      borderRadius: BorderRadius.circular(VoetjeRadius.input),
       child: Container(
         decoration: BoxDecoration(
           color: VoetjeColors.stillToLogBg,
@@ -28,7 +27,7 @@ class StillToLogCard extends StatelessWidget {
             color: VoetjeColors.dashedBorder,
             width: 1.5,
           ),
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(VoetjeRadius.input),
         ),
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
         child: Column(
@@ -51,11 +50,10 @@ class StillToLogCard extends StatelessWidget {
             const SizedBox(height: 4),
             Text(
               label,
-              style: GoogleFonts.plusJakartaSans(
-                fontSize: 13,
-                fontWeight: FontWeight.w500,
-                color: VoetjeColors.textMuted,
-              ),
+              style: VoetjeTypography.caption().copyWith(
+                    fontSize: 13,
+                    color: VoetjeColors.textMuted,
+                  ),
             ),
           ],
         ),

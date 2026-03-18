@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:carbon_tracker/config/design_tokens.dart';
 import 'package:carbon_tracker/models/emission_entry.dart';
 import 'package:carbon_tracker/providers/emission_provider.dart';
@@ -163,11 +162,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
                         const SizedBox(height: 12),
                         Text(
                           'No entries logged yet',
-                          style: GoogleFonts.plusJakartaSans(
-                            color: VoetjeColors.textMuted,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                          ),
+                          style: VoetjeTypography.caption().copyWith(
+                                color: VoetjeColors.textMuted,
+                              ),
                         ),
                       ],
                     ),
@@ -325,28 +322,28 @@ class _WeeklySummaryCard extends StatelessWidget {
           color: isDown
               ? const Color(0xFFE8F5E9)
               : const Color(0xFFFFF8E1),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(VoetjeRadius.chip),
         ),
         child: Text(
           '${isDown ? '↓' : '↑'} ${pct.toStringAsFixed(0)}%',
-          style: GoogleFonts.plusJakartaSans(
-            fontSize: 12,
-            fontWeight: FontWeight.w700,
-            color: isDown
-                ? VoetjeColors.primaryMedium
-                : VoetjeColors.trackAmberText,
-          ),
+          style: VoetjeTypography.caption().copyWith(
+                fontSize: 12,
+                fontWeight: FontWeight.w700,
+                color: isDown
+                    ? VoetjeColors.primaryMedium
+                    : VoetjeColors.trackAmberText,
+              ),
         ),
       );
     }
 
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
+        color: VoetjeColors.surface,
+        borderRadius: BorderRadius.circular(VoetjeRadius.card + 2),
         boxShadow: const [
           BoxShadow(
-            color: Color(0x08000000),
+            color: VoetjeColors.shadowMedium,
             blurRadius: 6,
             offset: Offset(0, 2),
           ),
@@ -367,11 +364,9 @@ class _WeeklySummaryCard extends StatelessWidget {
           const SizedBox(height: 4),
           Text(
             '${weekCO2.toStringAsFixed(1)} kg CO₂',
-            style: GoogleFonts.plusJakartaSans(
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
-              color: VoetjeColors.primaryMedium,
-            ),
+            style: VoetjeTypography.sectionHeader().copyWith(
+                  color: VoetjeColors.primaryMedium,
+                ),
           ),
           const SizedBox(height: 12),
           SizedBox(
@@ -441,13 +436,13 @@ class _MiniBarChart extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 4),
                   child: Text(
                     isToday ? 'Today' : DateFormat('E').format(days[idx]),
-                    style: GoogleFonts.plusJakartaSans(
-                      fontSize: 11,
-                      fontWeight: isToday ? FontWeight.w700 : FontWeight.w500,
-                      color: isToday
-                          ? VoetjeColors.primary
-                          : VoetjeColors.textMuted,
-                    ),
+                    style: VoetjeTypography.caption().copyWith(
+                          fontSize: 11,
+                          fontWeight: isToday ? FontWeight.w700 : FontWeight.w500,
+                          color: isToday
+                              ? VoetjeColors.primary
+                              : VoetjeColors.textMuted,
+                        ),
                   ),
                 );
               },
@@ -473,7 +468,7 @@ class _MiniBarChart extends StatelessWidget {
           } else if (overBudget) {
             barColor = VoetjeColors.trackAmberText;
           } else {
-            barColor = const Color(0xFFC6DAC2);
+            barColor = VoetjeColors.progressTrack;
           }
           return BarChartGroupData(
             x: i,
@@ -516,7 +511,7 @@ class _FilterChip extends StatelessWidget {
         duration: const Duration(milliseconds: 150),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
         decoration: BoxDecoration(
-          color: selected ? VoetjeColors.primary : Colors.white,
+          color: selected ? VoetjeColors.primary : VoetjeColors.surface,
           borderRadius: BorderRadius.circular(VoetjeRadius.chip),
           border: Border.all(
             color: selected
@@ -526,11 +521,11 @@ class _FilterChip extends StatelessWidget {
         ),
         child: Text(
           label,
-          style: GoogleFonts.plusJakartaSans(
-            fontSize: 13,
-            fontWeight: FontWeight.w600,
-            color: selected ? Colors.white : VoetjeColors.textMuted,
-          ),
+          style: VoetjeTypography.caption().copyWith(
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+                color: selected ? VoetjeColors.surface : VoetjeColors.textMuted,
+              ),
         ),
       ),
     );

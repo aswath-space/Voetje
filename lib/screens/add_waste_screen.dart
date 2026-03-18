@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:carbon_tracker/config/design_tokens.dart';
 import 'package:carbon_tracker/models/emission_entry.dart';
@@ -68,11 +67,7 @@ class _AddWasteScreenState extends State<AddWasteScreen> {
           children: [
             Text(
               'How full are your bins this week?',
-              style: GoogleFonts.plusJakartaSans(
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-                color: VoetjeColors.textPrimary,
-              ),
+              style: VoetjeTypography.sectionHeader(),
             ),
             const SizedBox(height: 4),
             Text(
@@ -115,11 +110,7 @@ class _AddWasteScreenState extends State<AddWasteScreen> {
                 icon: const Icon(Icons.check, color: Colors.white),
                 label: Text(
                   'Save This Week',
-                  style: GoogleFonts.plusJakartaSans(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.white,
-                  ),
+                  style: VoetjeTypography.buttonLabel(),
                 ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: VoetjeColors.primary,
@@ -263,7 +254,7 @@ class _BinSlider extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 12),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: VoetjeColors.surface,
           borderRadius: BorderRadius.circular(VoetjeRadius.card),
           border: Border.all(
             color: isSelected
@@ -273,7 +264,7 @@ class _BinSlider extends StatelessWidget {
           ),
           boxShadow: const [
             BoxShadow(
-              color: Color(0x05000000),
+              color: VoetjeColors.shadowLight,
               blurRadius: 3,
               offset: Offset(0, 1),
             )
@@ -287,11 +278,10 @@ class _BinSlider extends StatelessWidget {
               Text(bin.emoji, style: const TextStyle(fontSize: 22)),
               const SizedBox(width: 10),
               Text(bin.label,
-                  style: GoogleFonts.plusJakartaSans(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 14,
-                    color: VoetjeColors.textPrimary,
-                  )),
+                  style: VoetjeTypography.caption().copyWith(
+                        fontWeight: FontWeight.w700,
+                        color: VoetjeColors.textPrimary,
+                      )),
               const Spacer(),
               _BinIcon(fill: fill, color: _binColor(bin)),
             ]),
@@ -355,7 +345,7 @@ class _BagCounter extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 12),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: VoetjeColors.surface,
           borderRadius: BorderRadius.circular(VoetjeRadius.card),
           border: Border.all(
             color: isSelected
@@ -365,7 +355,7 @@ class _BagCounter extends StatelessWidget {
           ),
           boxShadow: const [
             BoxShadow(
-              color: Color(0x05000000),
+              color: VoetjeColors.shadowLight,
               blurRadius: 3,
               offset: Offset(0, 1),
             )
@@ -382,11 +372,10 @@ class _BagCounter extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(bin.label,
-                      style: GoogleFonts.plusJakartaSans(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 14,
-                        color: VoetjeColors.textPrimary,
-                      )),
+                      style: VoetjeTypography.caption().copyWith(
+                            fontWeight: FontWeight.w700,
+                            color: VoetjeColors.textPrimary,
+                          )),
                   Text(
                       '≈ ${WasteCalculator.kgFromBagCount(count.toDouble()).toStringAsFixed(0)} kg',
                       style: VoetjeTypography.caption()),
@@ -399,11 +388,10 @@ class _BagCounter extends StatelessWidget {
                   color: VoetjeColors.primaryMedium),
             ),
             Text('$count',
-                style: GoogleFonts.plusJakartaSans(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w700,
-                  color: VoetjeColors.textPrimary,
-                )),
+                style: VoetjeTypography.pageQuestion().copyWith(
+                      fontSize: 22,
+                      color: VoetjeColors.textPrimary,
+                    )),
             IconButton(
               onPressed:
                   count < 20 ? () => onChanged(count + 1) : null,
@@ -507,13 +495,13 @@ class _CO2PreviewCard extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: VoetjeColors.surface,
         borderRadius: BorderRadius.circular(VoetjeRadius.card),
         border: Border.all(
             color: VoetjeColors.primaryMedium, width: 1.5),
         boxShadow: const [
           BoxShadow(
-            color: Color(0x05000000),
+            color: VoetjeColors.shadowLight,
             blurRadius: 3,
             offset: Offset(0, 1),
           )
@@ -528,11 +516,10 @@ class _CO2PreviewCard extends StatelessWidget {
             const SizedBox(width: 8),
             Text(
               '${totalCO2.toStringAsFixed(2)} kg CO\u2082 this week',
-              style: GoogleFonts.plusJakartaSans(
-                fontWeight: FontWeight.w700,
-                fontSize: 14,
-                color: VoetjeColors.primaryMedium,
-              ),
+              style: VoetjeTypography.caption().copyWith(
+                    fontWeight: FontWeight.w700,
+                    color: VoetjeColors.primaryMedium,
+                  ),
             ),
           ]),
           if (setup.hasRecycling) ...[
@@ -563,11 +550,7 @@ class _SetupPrompt extends StatelessWidget {
             const SizedBox(height: 16),
             Text(
               'Set up Waste tracking first',
-              style: GoogleFonts.plusJakartaSans(
-                fontSize: 17,
-                fontWeight: FontWeight.w700,
-                color: VoetjeColors.textPrimary,
-              ),
+              style: VoetjeTypography.sectionHeader().copyWith(fontSize: 17),
             ),
             const SizedBox(height: 8),
             Text(
@@ -597,11 +580,7 @@ class _SetupPrompt extends StatelessWidget {
                 ),
                 child: Text(
                   'Set up now',
-                  style: GoogleFonts.plusJakartaSans(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.white,
-                  ),
+                  style: VoetjeTypography.buttonLabel(),
                 ),
               ),
             ),

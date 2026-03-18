@@ -1,6 +1,5 @@
 // lib/screens/splash_nudge_screen.dart
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:carbon_tracker/config/design_tokens.dart';
 import 'package:carbon_tracker/data/nudge_messages.dart';
@@ -93,11 +92,9 @@ class _SplashNudgeScreenState extends State<SplashNudgeScreen>
                         const SizedBox(height: 12),
                         Text(
                           'Voetje',
-                          style: GoogleFonts.plusJakartaSans(
-                            fontSize: 28,
-                            fontWeight: FontWeight.w700,
-                            color: VoetjeColors.primary,
-                          ),
+                          style: VoetjeTypography.pageTitle().copyWith(
+                                fontSize: 28,
+                              ),
                           textAlign: TextAlign.center,
                         ),
                         const SizedBox(height: 48),
@@ -109,12 +106,11 @@ class _SplashNudgeScreenState extends State<SplashNudgeScreen>
                           const SizedBox(height: 16),
                           Text(
                             msg.text,
-                            style: GoogleFonts.plusJakartaSans(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w500,
-                              color: const Color(0xFF5A755A),
-                              height: 1.6,
-                            ),
+                            style: VoetjeTypography.caption().copyWith(
+                                  fontSize: 13,
+                                  color: VoetjeColors.textSecondary,
+                                  height: 1.6,
+                                ),
                             textAlign: TextAlign.center,
                           ),
                         ] else
@@ -143,7 +139,7 @@ class _SplashNudgeScreenState extends State<SplashNudgeScreen>
                           Container(
                             height: 3,
                             width: double.infinity,
-                            color: const Color(0xFFC6DAC2),
+                            color: VoetjeColors.progressTrack,
                           ),
                           // Fill
                           FractionallySizedBox(

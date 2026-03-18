@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:carbon_tracker/config/design_tokens.dart';
 import 'package:carbon_tracker/models/meal_type.dart';
@@ -63,13 +62,14 @@ class _AddFoodScreenState extends State<AddFoodScreen> {
       if (mounted) {
         scaffoldMsg.showSnackBar(SnackBar(
           content: Text('Failed to save: $e'),
-          backgroundColor: Colors.red.shade700,
+          backgroundColor: VoetjeColors.destructive,
         ));
       }
     }
   }
 
   Future<void> _save() async {
+
     if (_selectedMeal == null) return;
     final provider = context.read<EmissionProvider>();
     final scaffoldMsg = ScaffoldMessenger.of(context);
@@ -86,7 +86,7 @@ class _AddFoodScreenState extends State<AddFoodScreen> {
       if (mounted) {
         scaffoldMsg.showSnackBar(SnackBar(
           content: Text('Failed to save: $e'),
-          backgroundColor: Colors.red.shade700,
+          backgroundColor: VoetjeColors.destructive,
         ));
       }
     }
@@ -155,13 +155,13 @@ class _AddFoodScreenState extends State<AddFoodScreen> {
                             const SizedBox(height: 2),
                             Text(
                               slot.label,
-                              style: GoogleFonts.plusJakartaSans(
-                                fontSize: 11,
-                                fontWeight: FontWeight.w600,
-                                color: isSelected
-                                    ? Colors.white
-                                    : VoetjeColors.textMuted,
-                              ),
+                              style: VoetjeTypography.caption().copyWith(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w600,
+                                    color: isSelected
+                                        ? VoetjeColors.surface
+                                        : VoetjeColors.textMuted,
+                                  ),
                               textAlign: TextAlign.center,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
@@ -232,10 +232,10 @@ class _AddFoodScreenState extends State<AddFoodScreen> {
                       Expanded(
                         child: Text(
                           'Somewhere in between?  "Mostly veg with a bit of meat"',
-                          style: GoogleFonts.plusJakartaSans(
-                            fontSize: 12,
-                            color: VoetjeColors.textSecondary,
-                          ),
+                          style: VoetjeTypography.caption().copyWith(
+                                fontSize: 12,
+                                color: VoetjeColors.textSecondary,
+                              ),
                         ),
                       ),
                     ],
@@ -255,16 +255,16 @@ class _AddFoodScreenState extends State<AddFoodScreen> {
                 ),
                 child: TextField(
                   controller: _noteController,
-                  style: GoogleFonts.plusJakartaSans(
-                    fontSize: 13,
-                    color: VoetjeColors.textPrimary,
-                  ),
+                  style: VoetjeTypography.caption().copyWith(
+                        fontSize: 13,
+                        color: VoetjeColors.textPrimary,
+                      ),
                   decoration: InputDecoration(
                     hintText: 'e.g. homemade vegan curry (optional)',
-                    hintStyle: GoogleFonts.plusJakartaSans(
-                      fontSize: 13,
-                      color: VoetjeColors.textMuted,
-                    ),
+                    hintStyle: VoetjeTypography.caption().copyWith(
+                          fontSize: 13,
+                          color: VoetjeColors.textMuted,
+                        ),
                     prefixIcon: const Icon(
                       Icons.note_alt_outlined,
                       color: VoetjeColors.textMuted,
@@ -291,7 +291,7 @@ class _AddFoodScreenState extends State<AddFoodScreen> {
                     boxShadow: _selectedMeal != null
                         ? [
                             BoxShadow(
-                              color: const Color(0xFF1B5E20)
+                              color: VoetjeColors.primary
                                   .withValues(alpha: 0.25),
                               blurRadius: 12,
                               offset: const Offset(0, 4),
@@ -313,11 +313,7 @@ class _AddFoodScreenState extends State<AddFoodScreen> {
                     onPressed: _selectedMeal != null ? _save : null,
                     child: Text(
                       'Save Meal',
-                      style: GoogleFonts.plusJakartaSans(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                      ),
+                      style: VoetjeTypography.buttonLabel().copyWith(fontSize: 14),
                     ),
                   ),
                 ),
@@ -376,11 +372,11 @@ class _MealTypeCard extends StatelessWidget {
             Text(
               meal.label,
               textAlign: TextAlign.center,
-              style: GoogleFonts.plusJakartaSans(
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
-                color: VoetjeColors.textPrimary,
-              ),
+              style: VoetjeTypography.caption().copyWith(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: VoetjeColors.textPrimary,
+                  ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
@@ -388,10 +384,9 @@ class _MealTypeCard extends StatelessWidget {
             Text(
               _mealDescriptions[meal] ?? '',
               textAlign: TextAlign.center,
-              style: GoogleFonts.plusJakartaSans(
-                fontSize: 10,
-                color: VoetjeColors.captionColor,
-              ),
+              style: VoetjeTypography.caption().copyWith(
+                    fontSize: 10,
+                  ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),

@@ -364,7 +364,7 @@ class SettingsScreen extends StatelessWidget {
           ),
           TextButton(
             onPressed: () => Navigator.pop(ctx, true),
-            style: TextButton.styleFrom(foregroundColor: Colors.red),
+            style: TextButton.styleFrom(foregroundColor: VoetjeColors.destructive),
             child: const Text('Delete Everything'),
           ),
         ],
@@ -407,10 +407,10 @@ class _SettingsCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: VoetjeColors.surface,
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(VoetjeRadius.card + 2),
         boxShadow: const [
           BoxShadow(
-            color: Color(0x05000000),
+            color: VoetjeColors.shadowLight,
             blurRadius: 3,
             offset: Offset(0, 1),
           ),
@@ -549,7 +549,7 @@ class _UnitSegmentedControl extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
-                  color: selected ? Colors.white : VoetjeColors.textMuted,
+                  color: selected ? VoetjeColors.surface : VoetjeColors.textMuted,
                 ),
               ),
             ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:carbon_tracker/config/theme.dart';
+import 'package:carbon_tracker/config/design_tokens.dart';
 
 /// The "send me some love" page.
 /// Multiple donation/tip options — no pressure, no paywalls.
@@ -96,14 +96,14 @@ class SupportScreen extends StatelessWidget {
             const SizedBox(height: 12),
             _SupportOption(
               icon: Icons.star_outline,
-              iconColor: AppColors.accent,
+              iconColor: VoetjeColors.shopping,
               title: 'Star on GitHub',
               subtitle: 'Help others discover this project',
               url: _links['github_repo']!,
             ),
             const _SupportOption(
               icon: Icons.share,
-              iconColor: AppColors.primary,
+              iconColor: VoetjeColors.primaryMedium,
               title: 'Tell a Friend',
               subtitle: 'Word of mouth is the best marketing',
               url: '', // handled with share

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../config/design_tokens.dart';
 
 class SectionHeader extends StatelessWidget {
@@ -28,11 +27,10 @@ class SectionHeader extends StatelessWidget {
             onTap: onAction,
             child: Text(
               actionLabel!,
-              style: GoogleFonts.plusJakartaSans(
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-                color: VoetjeColors.primaryMedium,
-              ),
+              style: VoetjeTypography.caption().copyWith(
+                    fontWeight: FontWeight.w600,
+                    color: VoetjeColors.primaryMedium,
+                  ),
             ),
           ),
       ],

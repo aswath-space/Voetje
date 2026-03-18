@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:carbon_tracker/config/design_tokens.dart';
 import 'package:carbon_tracker/models/waste_setup.dart';
@@ -55,7 +54,7 @@ class _WasteSetupScreenState extends State<WasteSetupScreen> {
                       decoration: BoxDecoration(
                         color: isFilled
                             ? VoetjeColors.primaryMedium
-                            : const Color(0xFFC6DAC2),
+                            : VoetjeColors.progressTrack,
                         borderRadius: BorderRadius.circular(2),
                       ),
                     ),
@@ -124,11 +123,7 @@ class _GreenPillButton extends StatelessWidget {
         ),
         child: Text(
           label,
-          style: GoogleFonts.plusJakartaSans(
-            fontSize: 15,
-            fontWeight: FontWeight.w700,
-            color: Colors.white,
-          ),
+          style: VoetjeTypography.buttonLabel(),
         ),
       ),
     );
@@ -155,11 +150,7 @@ class _BinSelectionStep extends StatelessWidget {
         children: [
           Text(
             'What bins do you have at home?',
-            style: GoogleFonts.plusJakartaSans(
-              fontSize: 22,
-              fontWeight: FontWeight.w700,
-              color: VoetjeColors.primary,
-            ),
+            style: VoetjeTypography.pageQuestion(),
           ),
           const SizedBox(height: 6),
           Text(
@@ -215,7 +206,7 @@ class _BinTile extends StatelessWidget {
             borderRadius: BorderRadius.circular(VoetjeRadius.input),
             boxShadow: const [
               BoxShadow(
-                color: Color(0x05000000),
+                color: VoetjeColors.shadowLight,
                 blurRadius: 3,
                 offset: Offset(0, 1),
               )
@@ -228,11 +219,10 @@ class _BinTile extends StatelessWidget {
               Expanded(
                 child: Text(
                   bin.label,
-                  style: GoogleFonts.plusJakartaSans(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 14,
-                    color: VoetjeColors.textPrimary,
-                  ),
+                  style: VoetjeTypography.caption().copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: VoetjeColors.textPrimary,
+                      ),
                 ),
               ),
               Icon(
@@ -271,11 +261,7 @@ class _HousingTypeStep extends StatelessWidget {
         children: [
           Text(
             'Do you have your own bins?',
-            style: GoogleFonts.plusJakartaSans(
-              fontSize: 22,
-              fontWeight: FontWeight.w700,
-              color: VoetjeColors.primary,
-            ),
+            style: VoetjeTypography.pageQuestion(),
           ),
           const SizedBox(height: 6),
           Text(
@@ -303,7 +289,7 @@ class _HousingTypeStep extends StatelessWidget {
                           BorderRadius.circular(VoetjeRadius.input),
                       boxShadow: const [
                         BoxShadow(
-                          color: Color(0x05000000),
+                          color: VoetjeColors.shadowLight,
                           blurRadius: 3,
                           offset: Offset(0, 1),
                         )
@@ -317,11 +303,10 @@ class _HousingTypeStep extends StatelessWidget {
                         Expanded(
                           child: Text(
                             h.label,
-                            style: GoogleFonts.plusJakartaSans(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              color: VoetjeColors.textPrimary,
-                            ),
+                            style: VoetjeTypography.caption().copyWith(
+                                  fontWeight: FontWeight.w600,
+                                  color: VoetjeColors.textPrimary,
+                                ),
                           ),
                         ),
                         Icon(

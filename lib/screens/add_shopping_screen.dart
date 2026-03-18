@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:carbon_tracker/config/design_tokens.dart';
 import 'package:carbon_tracker/data/item_catalog.dart';
@@ -68,15 +67,14 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
             style: VoetjeTypography.body(),
             decoration: InputDecoration(
               hintText: 'Search: "jeans", "phone"...',
-              hintStyle: GoogleFonts.plusJakartaSans(
-                fontSize: 13,
-                fontWeight: FontWeight.w500,
-                color: VoetjeColors.textMuted,
-              ),
+              hintStyle: VoetjeTypography.caption().copyWith(
+                    fontSize: 13,
+                    color: VoetjeColors.textMuted,
+                  ),
               prefixIcon:
                   const Icon(Icons.search, color: VoetjeColors.textMuted),
               filled: true,
-              fillColor: Colors.white,
+              fillColor: VoetjeColors.surface,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(VoetjeRadius.input),
                 borderSide: const BorderSide(
@@ -131,7 +129,7 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                             decoration: BoxDecoration(
                               color: isSelected
                                   ? VoetjeColors.primary
-                                  : Colors.white,
+                                  : VoetjeColors.surface,
                               borderRadius:
                                   BorderRadius.circular(VoetjeRadius.chip),
                               border: Border.all(
@@ -143,13 +141,13 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                             ),
                             child: Text(
                               '${cat.emoji} ${cat.label}',
-                              style: GoogleFonts.plusJakartaSans(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                                color: isSelected
-                                    ? Colors.white
-                                    : VoetjeColors.textMuted,
-                              ),
+                              style: VoetjeTypography.caption().copyWith(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w600,
+                                    color: isSelected
+                                        ? VoetjeColors.surface
+                                        : VoetjeColors.textMuted,
+                                  ),
                             ),
                           ),
                         ),
@@ -237,7 +235,7 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                   borderRadius: BorderRadius.circular(VoetjeRadius.card),
                   boxShadow: const [
                     BoxShadow(
-                      color: Color(0x05000000),
+                      color: VoetjeColors.shadowLight,
                       blurRadius: 3,
                       offset: Offset(0, 1),
                     )
@@ -250,10 +248,9 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                   children: [
                     Text(
                         'NEW ${item.name} = ${item.co2KgNew.toStringAsFixed(0)} kg CO₂',
-                        style: GoogleFonts.plusJakartaSans(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 15,
-                            color: VoetjeColors.textPrimary)),
+                        style: VoetjeTypography.bodyEmphasis().copyWith(
+                              fontWeight: FontWeight.w700,
+                            )),
                     const SizedBox(height: 8),
                     Text('That\'s the same as:',
                         style: VoetjeTypography.caption()),
@@ -295,7 +292,7 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                                 ? (isSecondHand
                                     ? VoetjeColors.primary
                                     : VoetjeColors.primary)
-                                : Colors.white,
+                                : VoetjeColors.surface,
                             borderRadius:
                                 BorderRadius.circular(VoetjeRadius.card),
                             border: Border.all(
@@ -314,21 +311,22 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                                     const TextStyle(fontSize: 22)),
                             const SizedBox(height: 4),
                             Text(c.label,
-                                style: GoogleFonts.plusJakartaSans(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600,
-                                  color: isSelected
-                                      ? Colors.white
-                                      : VoetjeColors.textPrimary,
-                                )),
+                                style: VoetjeTypography.caption().copyWith(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600,
+                                      color: isSelected
+                                          ? VoetjeColors.surface
+                                          : VoetjeColors.textPrimary,
+                                    )),
                             Text(
                                 '${ShoppingCalculator.co2(item, c).toStringAsFixed(1)} kg',
-                                style: GoogleFonts.plusJakartaSans(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 13,
-                                    color: isSelected
-                                        ? Colors.white
-                                        : VoetjeColors.textPrimary)),
+                                style: VoetjeTypography.caption().copyWith(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13,
+                                      color: isSelected
+                                          ? VoetjeColors.surface
+                                          : VoetjeColors.textPrimary,
+                                    )),
                           ]),
                         ),
                       ),
@@ -341,10 +339,11 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                 const SizedBox(height: 10),
                 Text(
                     'Choosing second-hand saves ${saved.toStringAsFixed(1)} kg CO₂!',
-                    style: GoogleFonts.plusJakartaSans(
-                        color: VoetjeColors.primaryMedium,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 13)),
+                    style: VoetjeTypography.caption().copyWith(
+                          color: VoetjeColors.primaryMedium,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 13,
+                        )),
               ],
 
               const Spacer(),
@@ -355,11 +354,7 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                   icon: const Icon(Icons.check, color: Colors.white),
                   label: Text(
                     'Log ${item.name} (${_condition.label})',
-                    style: GoogleFonts.plusJakartaSans(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
-                    ),
+                    style: VoetjeTypography.buttonLabel(),
                   ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: VoetjeColors.primary,
@@ -433,11 +428,11 @@ class _ItemCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: VoetjeColors.surface,
           borderRadius: BorderRadius.circular(VoetjeRadius.card),
           boxShadow: const [
             BoxShadow(
-              color: Color(0x05000000),
+              color: VoetjeColors.shadowLight,
               blurRadius: 3,
               offset: Offset(0, 1),
             )
@@ -479,11 +474,10 @@ class _ItemCard extends StatelessWidget {
                 ),
                 child: Text(
                   categoryLabel,
-                  style: GoogleFonts.plusJakartaSans(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w600,
-                    color: VoetjeColors.labelColor,
-                  ),
+                  style: VoetjeTypography.sectionLabel().copyWith(
+                        fontSize: 10,
+                        letterSpacing: 0,
+                      ),
                 ),
               ),
           ],

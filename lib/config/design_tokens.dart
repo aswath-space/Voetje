@@ -51,6 +51,13 @@ class VoetjeColors {
   static const Color dashedBorder = Color(0xFFA8C4A4);
   static const Color divider = Color(0xFFF0F4EE);
 
+  // Shadows
+  static const Color shadowLight = Color(0x05000000);
+  static const Color shadowMedium = Color(0x08000000);
+
+  // Progress bar track
+  static const Color progressTrack = Color(0xFFC6DAC2);
+
   // Destructive
   static const Color destructive = Color(0xFFEF5350);
 
@@ -119,40 +126,58 @@ class VoetjeRadius {
 
 class VoetjeTypography {
   static TextStyle heroNumber() => GoogleFonts.plusJakartaSans(
-        fontSize: 28,
+        fontSize: 40,
         fontWeight: FontWeight.w700,
         color: VoetjeColors.textPrimary,
       );
 
   static TextStyle pageTitle() => GoogleFonts.plusJakartaSans(
-        fontSize: 20,
+        fontSize: 26,
         fontWeight: FontWeight.w700,
         letterSpacing: -0.3,
         color: VoetjeColors.primary,
       );
 
   static TextStyle sectionHeader() => GoogleFonts.plusJakartaSans(
-        fontSize: 14,
+        fontSize: 18,
         fontWeight: FontWeight.w700,
         color: VoetjeColors.textPrimary,
       );
 
   static TextStyle sectionLabel() => GoogleFonts.plusJakartaSans(
-        fontSize: 11,
+        fontSize: 13,
         fontWeight: FontWeight.w700,
         letterSpacing: 0.8,
         color: VoetjeColors.labelColor,
       );
 
   static TextStyle body() => GoogleFonts.plusJakartaSans(
-        fontSize: 13,
+        fontSize: 16,
         fontWeight: FontWeight.w500,
         color: VoetjeColors.textPrimary,
       );
 
   static TextStyle caption() => GoogleFonts.plusJakartaSans(
-        fontSize: 11,
+        fontSize: 14,
         fontWeight: FontWeight.w500,
         color: VoetjeColors.captionColor,
+      );
+
+  static TextStyle bodyEmphasis() => GoogleFonts.plusJakartaSans(
+        fontSize: 15,
+        fontWeight: FontWeight.w600,
+        color: VoetjeColors.textPrimary,
+      );
+
+  static TextStyle pageQuestion() => GoogleFonts.plusJakartaSans(
+        fontSize: 22,
+        fontWeight: FontWeight.w700,
+        color: VoetjeColors.primary,
+      );
+
+  static TextStyle buttonLabel() => GoogleFonts.plusJakartaSans(
+        fontSize: 15,
+        fontWeight: FontWeight.w700,
+        color: Colors.white,
       );
 }

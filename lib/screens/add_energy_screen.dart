@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show FilteringTextInputFormatter;
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:carbon_tracker/config/design_tokens.dart';
 import 'package:carbon_tracker/data/country_defaults.dart';
@@ -226,11 +225,7 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
                 const SizedBox(height: 16),
                 Text(
                   'Set up Energy tracking',
-                  style: GoogleFonts.plusJakartaSans(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                    color: VoetjeColors.textPrimary,
-                  ),
+                  style: VoetjeTypography.sectionHeader(),
                 ),
                 const SizedBox(height: 8),
                 Text(
@@ -258,11 +253,7 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
                       ),
                     ),
                     child: Text('Set up now',
-                        style: GoogleFonts.plusJakartaSans(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white,
-                        )),
+                        style: VoetjeTypography.buttonLabel()),
                   ),
                 ),
               ],
@@ -293,7 +284,7 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
               borderRadius: BorderRadius.circular(VoetjeRadius.card),
               boxShadow: const [
                 BoxShadow(
-                  color: Color(0x05000000),
+                  color: VoetjeColors.shadowLight,
                   blurRadius: 3,
                   offset: Offset(0, 1),
                 )
@@ -324,7 +315,7 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
               borderRadius: BorderRadius.circular(VoetjeRadius.card),
               boxShadow: const [
                 BoxShadow(
-                  color: Color(0x05000000),
+                  color: VoetjeColors.shadowLight,
                   blurRadius: 3,
                   offset: Offset(0, 1),
                 )
@@ -354,11 +345,11 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
                           () => _useElectricCost = !_useElectricCost),
                       child: Text(
                         _useElectricCost ? 'Use kWh' : 'Use cost',
-                        style: GoogleFonts.plusJakartaSans(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                          color: VoetjeColors.primaryMedium,
-                        ),
+                        style: VoetjeTypography.caption().copyWith(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                              color: VoetjeColors.primaryMedium,
+                            ),
                       ),
                     ),
                   ],
@@ -369,11 +360,10 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
                       size: 14, color: VoetjeColors.textMuted),
                   label: Text(
                     'Where do I find kWh on my bill?',
-                    style: GoogleFonts.plusJakartaSans(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                      color: VoetjeColors.textMuted,
-                    ),
+                    style: VoetjeTypography.caption().copyWith(
+                          fontSize: 12,
+                          color: VoetjeColors.textMuted,
+                        ),
                   ),
                   style: TextButton.styleFrom(
                     padding: EdgeInsets.zero,
@@ -397,7 +387,7 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
                 borderRadius: BorderRadius.circular(VoetjeRadius.card),
                 boxShadow: const [
                   BoxShadow(
-                    color: Color(0x05000000),
+                    color: VoetjeColors.shadowLight,
                     blurRadius: 3,
                     offset: Offset(0, 1),
                   )
@@ -424,11 +414,11 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
                         setState(() => _useGasCost = !_useGasCost),
                     child: Text(
                       _useGasCost ? 'Use kWh' : 'Use cost',
-                      style: GoogleFonts.plusJakartaSans(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: VoetjeColors.primaryMedium,
-                      ),
+                      style: VoetjeTypography.caption().copyWith(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                            color: VoetjeColors.primaryMedium,
+                          ),
                     ),
                   ),
                 ],
@@ -455,11 +445,7 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
               ),
               child: Text(
                 'Save Bill',
-                style: GoogleFonts.plusJakartaSans(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white,
-                ),
+                style: VoetjeTypography.buttonLabel(),
               ),
             ),
           ),
@@ -477,11 +463,10 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
       style: VoetjeTypography.body(),
       decoration: InputDecoration(
         labelText: labelText,
-        labelStyle: GoogleFonts.plusJakartaSans(
-          fontSize: 13,
-          fontWeight: FontWeight.w500,
-          color: VoetjeColors.textMuted,
-        ),
+        labelStyle: VoetjeTypography.caption().copyWith(
+              fontSize: 13,
+              color: VoetjeColors.textMuted,
+            ),
         filled: true,
         fillColor: Colors.white,
         border: OutlineInputBorder(
@@ -531,10 +516,7 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
           children: [
             Text(
               'Finding kWh on your bill',
-              style: GoogleFonts.plusJakartaSans(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 18,
-                  color: VoetjeColors.textPrimary),
+              style: VoetjeTypography.sectionHeader(),
             ),
             const SizedBox(height: 8),
             Text(
@@ -561,11 +543,7 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
                   ),
                 ),
                 child: Text('Got it',
-                    style: GoogleFonts.plusJakartaSans(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
-                    )),
+                    style: VoetjeTypography.buttonLabel().copyWith(fontSize: 14)),
               ),
             ),
           ],
@@ -635,8 +613,10 @@ class _MonthPickerDialogState extends State<_MonthPickerDialog> {
           if (isCurrent)
             Text(
               'Current month',
-              style: TextStyle(
-                  fontSize: 12, color: Colors.grey.shade600),
+              style: VoetjeTypography.caption().copyWith(
+                    fontSize: 12,
+                    color: VoetjeColors.textMuted,
+                  ),
             ),
         ],
       ),
