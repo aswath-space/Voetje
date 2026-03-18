@@ -137,18 +137,19 @@ class _DashboardContent extends StatelessWidget {
           child: CustomScrollView(
             slivers: [
               SliverToBoxAdapter(
-                child: SizedBox(height: MediaQuery.of(context).padding.top + 16),
+                child: SizedBox(height: MediaQuery.of(context).padding.top + 24),
               ),
               SliverPadding(
                 padding: const EdgeInsets.symmetric(horizontal: VoetjeSpacing.screenEdge),
                 sliver: SliverList.list(
                   children: [
-                    // Hero ring — ~55% of screen width like Digital Wellbeing
+                    // Hero ring — 65% of screen width, centered with breathing room
+                    const SizedBox(height: 8),
                     Center(
                       child: BudgetRing(
                         totalCO2: provider.todayCO2,
                         categoryBreakdown: breakdown,
-                        size: MediaQuery.of(context).size.width * 0.55,
+                        size: MediaQuery.of(context).size.width * 0.65,
                       ),
                     ),
 
@@ -191,6 +192,27 @@ class _DashboardContent extends StatelessWidget {
 
                     const SizedBox(height: VoetjeSpacing.cardGap),
 
+                    // Still to log (if any) — shown first so users can act immediately
+                    if (stillToLog.isNotEmpty)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: VoetjeSpacing.cardGap),
+                        child: Row(
+                          children: [
+                            for (int i = 0; i < stillToLog.length; i++) ...[
+                              if (i > 0) const SizedBox(width: VoetjeSpacing.cardGap),
+                              Expanded(
+                                child: StillToLogCard(
+                                  label: stillToLog[i]['label'] as String,
+                                  icon: Icons.restaurant,
+                                  color: VoetjeColors.primaryMedium,
+                                  onTap: () => _showCategoryPicker(context, initialCategory: 'food'),
+                                ),
+                              ),
+                            ],
+                          ],
+                        ),
+                      ),
+
                     // Logged entries
                     ...loggedEntries.map((entry) => Padding(
                       padding: const EdgeInsets.only(bottom: VoetjeSpacing.cardGap),
@@ -225,27 +247,6 @@ class _DashboardContent extends StatelessWidget {
                               ),
                             ],
                           ),
-                        ),
-                      ),
-
-                    // Still to log (if any)
-                    if (stillToLog.isNotEmpty)
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: VoetjeSpacing.cardGap),
-                        child: Row(
-                          children: [
-                            for (int i = 0; i < stillToLog.length; i++) ...[
-                              if (i > 0) const SizedBox(width: VoetjeSpacing.cardGap),
-                              Expanded(
-                                child: StillToLogCard(
-                                  label: stillToLog[i]['label'] as String,
-                                  icon: Icons.restaurant,
-                                  color: VoetjeColors.primaryMedium,
-                                  onTap: () => _showCategoryPicker(context, initialCategory: 'food'),
-                                ),
-                              ),
-                            ],
-                          ],
                         ),
                       ),
 

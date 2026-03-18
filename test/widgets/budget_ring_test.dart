@@ -75,6 +75,7 @@ void main() {
         body: Center(
           child: BudgetRing(
             totalCO2: 7.3,
+            size: 250,
             categoryBreakdown: {'transport': 3.0, 'food': 4.3},
           ),
         ),

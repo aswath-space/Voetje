@@ -34,13 +34,11 @@ I'm transparent about this because I think it matters. Every emission factor is 
 
 ## Screenshots
 
-> Early build — updated screenshots coming soon.
-
 <p float="left">
-  <img src="dev/Screenshots/20260317_FirstVMTest/Screenshot_1773776207.png" width="200" />
-  <img src="dev/Screenshots/20260317_FirstVMTest/Screenshot_1773776226.png" width="200" />
-  <img src="dev/Screenshots/20260317_FirstVMTest/Screenshot_1773776244.png" width="200" />
-  <img src="dev/Screenshots/20260317_FirstVMTest/Screenshot_1773776261.png" width="200" />
+  <img src="dev/Screenshots/20260318_postUIfix/Screenshot_1773863966.png" width="200" />
+  <img src="dev/Screenshots/20260318_postUIfix/Screenshot_1773863969.png" width="200" />
+  <img src="dev/Screenshots/20260318_postUIfix/Screenshot_1773863972.png" width="200" />
+  <img src="dev/Screenshots/20260318_postUIfix/Screenshot_1773863993.png" width="200" />
 </p>
 
 ## Getting started

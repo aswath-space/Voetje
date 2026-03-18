@@ -174,7 +174,7 @@ class VoetjeIconSize {
 
 class VoetjeTypography {
   static TextStyle heroNumber() => GoogleFonts.plusJakartaSans(
-        fontSize: 40,
+        fontSize: 48,
         fontWeight: FontWeight.w700,
         color: VoetjeColors.textPrimary,
       );

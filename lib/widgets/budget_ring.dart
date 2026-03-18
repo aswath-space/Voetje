@@ -38,7 +38,7 @@ class _BudgetRingState extends State<BudgetRing> {
           Text(
             'Over budget',
             style: VoetjeTypography.caption().copyWith(
-                  fontSize: 13,
+                  fontSize: 16,
                   fontWeight: FontWeight.w600,
                   color: VoetjeColors.destructive,
                 ),
@@ -46,7 +46,7 @@ class _BudgetRingState extends State<BudgetRing> {
           Text(
             '+${overage.toStringAsFixed(1)} kg',
             style: const TextStyle(
-              fontSize: 28,
+              fontSize: 36,
               fontWeight: FontWeight.w700,
               color: VoetjeColors.destructive,
             ),
@@ -54,7 +54,7 @@ class _BudgetRingState extends State<BudgetRing> {
           Text(
             '${widget.totalCO2.toStringAsFixed(1)} of ${widget.budget.toStringAsFixed(1)} kg',
             style: VoetjeTypography.caption().copyWith(
-                  fontSize: 13,
+                  fontSize: 15,
                   color: VoetjeColors.captionColor,
                 ),
           ),
@@ -72,6 +72,7 @@ class _BudgetRingState extends State<BudgetRing> {
           Text(
             '${remaining.toStringAsFixed(1)} kg left',
             style: VoetjeTypography.caption().copyWith(
+                  fontSize: 16,
                   color: VoetjeColors.trackCoralText,
                 ),
           ),
@@ -89,6 +90,7 @@ class _BudgetRingState extends State<BudgetRing> {
           Text(
             '${remaining.toStringAsFixed(1)} kg left',
             style: VoetjeTypography.caption().copyWith(
+                  fontSize: 16,
                   color: VoetjeColors.trackAmberText,
                 ),
           ),
@@ -106,7 +108,7 @@ class _BudgetRingState extends State<BudgetRing> {
           Text(
             'of ${widget.budget.toStringAsFixed(1)} kg',
             style: VoetjeTypography.caption().copyWith(
-                  fontSize: 13,
+                  fontSize: 16,
                   color: VoetjeColors.captionColor,
                 ),
           ),
@@ -151,7 +153,7 @@ class _BudgetRingPainter extends CustomPainter {
   final double ratio;
   final double animationValue;
 
-  static const double strokeWidth = 16.0;
+  static const double strokeWidth = 20.0;
   static const double gapDegrees = 2.0;
   static const double gapRadians = gapDegrees * math.pi / 180.0;
 
