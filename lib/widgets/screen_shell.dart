@@ -1,6 +1,19 @@
 import 'package:flutter/material.dart';
 import '../config/design_tokens.dart';
 
+/// Signals that descendants are inside an expanding bottom sheet.
+/// VoetjeScreenShell reads this to decide standalone vs embedded mode.
+class EmbeddedSheetScope extends InheritedWidget {
+  const EmbeddedSheetScope({super.key, required super.child});
+
+  static bool of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<EmbeddedSheetScope>() != null;
+  }
+
+  @override
+  bool updateShouldNotify(EmbeddedSheetScope oldWidget) => false;
+}
+
 /// A shared screen wrapper that provides consistent layout across the app.
 ///
 /// When [embedded] is true (inside expanding bottom sheet), skips the Scaffold
@@ -42,7 +55,10 @@ class VoetjeScreenShell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (embedded) {
+    // Auto-detect embedded mode from ancestor EmbeddedSheetScope
+    final isEmbedded = embedded || EmbeddedSheetScope.of(context);
+
+    if (isEmbedded) {
       // Inside sheet — no Scaffold, no status bar padding
       return Material(
         color: VoetjeColors.background,
@@ -50,7 +66,7 @@ class VoetjeScreenShell extends StatelessWidget {
           children: [
             if (title != null)
               Padding(
-                padding: const EdgeInsets.fromLTRB(4, 8, 16, 0),
+                padding: const EdgeInsets.fromLTRB(4, 20, 16, 0),
                 child: Row(
                   children: [
                     if (showBackButton)
@@ -64,7 +80,12 @@ class VoetjeScreenShell extends StatelessWidget {
                   ],
                 ),
               ),
-            Expanded(child: child),
+            Expanded(
+              child: SafeArea(
+                top: false,
+                child: child,
+              ),
+            ),
           ],
         ),
       );
@@ -81,7 +102,10 @@ class VoetjeScreenShell extends StatelessWidget {
               leading: showBackButton ? const BackButton() : null,
             )
           : null,
-      body: child,
+      body: SafeArea(
+        top: false,
+        child: child,
+      ),
     );
   }
 }

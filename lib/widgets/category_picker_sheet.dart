@@ -6,6 +6,7 @@ import 'package:carbon_tracker/screens/add_energy_screen.dart';
 import 'package:carbon_tracker/screens/add_shopping_screen.dart';
 import 'package:carbon_tracker/screens/add_waste_screen.dart';
 import 'package:carbon_tracker/models/meal_type.dart';
+import 'package:carbon_tracker/widgets/screen_shell.dart';
 
 /// A Duolingo-style expanding bottom sheet for logging emissions.
 ///
@@ -118,8 +119,10 @@ class _ExpandingLogSheetState extends State<_ExpandingLogSheet> {
 
     // Grid height: enough for the content (~45% of screen, min 320)
     // Form height: nearly full screen, leaving status bar visible
-    final gridHeight = (screenHeight * 0.45).clamp(320.0, screenHeight * 0.55);
-    final formHeight = screenHeight - topPadding - 8;
+    final bottomPadding = MediaQuery.of(context).padding.bottom;
+    final safeHeight = screenHeight - topPadding - bottomPadding;
+    final gridHeight = (safeHeight * 0.45).clamp(280.0, safeHeight * 0.55);
+    final formHeight = screenHeight - topPadding - bottomPadding - 8;
 
     return PopScope(
       canPop: !_showingForm,
@@ -139,17 +142,23 @@ class _ExpandingLogSheetState extends State<_ExpandingLogSheet> {
           borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
         ),
         clipBehavior: Clip.antiAlias,
-        child: Navigator(
-          key: _navigatorKey,
-          observers: [_observer],
-          onGenerateRoute: (_) => MaterialPageRoute(
-            builder: (_) => _CategoryGrid(
-              foodEnabled: widget.foodEnabled,
-              energyEnabled: widget.energyEnabled,
-              shoppingEnabled: widget.shoppingEnabled,
-              wasteEnabled: widget.wasteEnabled,
-              onCategoryTap: (category) => _pushForm(category),
-              onDismiss: () => Navigator.of(context).pop(),
+        child: MediaQuery.removePadding(
+          context: context,
+          removeTop: true,
+          child: EmbeddedSheetScope(
+            child: Navigator(
+              key: _navigatorKey,
+              observers: [_observer],
+              onGenerateRoute: (_) => MaterialPageRoute(
+                builder: (_) => _CategoryGrid(
+                  foodEnabled: widget.foodEnabled,
+                  energyEnabled: widget.energyEnabled,
+                  shoppingEnabled: widget.shoppingEnabled,
+                  wasteEnabled: widget.wasteEnabled,
+                  onCategoryTap: (category) => _pushForm(category),
+                  onDismiss: () => Navigator.of(context).pop(),
+                ),
+              ),
             ),
           ),
         ),

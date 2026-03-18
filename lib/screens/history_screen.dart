@@ -221,6 +221,10 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     ),
                   ),
                 ),
+
+              SliverToBoxAdapter(
+                child: SizedBox(height: MediaQuery.of(context).padding.bottom + 16),
+              ),
             ],
           ),
         ),

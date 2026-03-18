@@ -50,11 +50,11 @@ class SettingsScreen extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(title: const Text('Settings')),
           body: ListView(
-            padding: const EdgeInsets.fromLTRB(
+            padding: EdgeInsets.fromLTRB(
               VoetjeSpacing.screenEdge,
               VoetjeSpacing.sectionGap,
               VoetjeSpacing.screenEdge,
-              32,
+              MediaQuery.of(context).padding.bottom + 32,
             ),
             children: [
               // ── Card 1: YOUR PROFILE ────────────────────────────────
