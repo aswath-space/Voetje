@@ -152,12 +152,12 @@ class _DashboardContent extends StatelessWidget {
                       ),
                     ),
 
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 8),
 
                     // Category legend (small dots + labels)
                     _CategoryLegend(breakdown: breakdown),
 
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 8),
 
                     // "This week" pill
                     Center(
@@ -240,7 +240,7 @@ class _DashboardContent extends StatelessWidget {
                                 child: StillToLogCard(
                                   label: stillToLog[i]['label'] as String,
                                   icon: Icons.restaurant,
-                                  color: VoetjeColors.food,
+                                  color: VoetjeColors.primaryMedium,
                                   onTap: () => _showCategoryPicker(context, initialCategory: 'food'),
                                 ),
                               ),
@@ -257,10 +257,17 @@ class _DashboardContent extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: VoetjeColors.surfaceSubtle,
                         borderRadius: BorderRadius.circular(VoetjeRadius.input),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: VoetjeColors.shadowLight,
+                            blurRadius: 8,
+                            offset: Offset(0, 2),
+                          ),
+                        ],
                       ),
                       child: Row(
                         children: [
-                          Icon(nudge.icon, size: 20, color: VoetjeColors.primaryMedium),
+                          Icon(nudge.icon, size: 24, color: VoetjeColors.primaryMedium),
                           const SizedBox(width: 10),
                           Expanded(
                             child: Text(

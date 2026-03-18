@@ -52,8 +52,8 @@ class VoetjeColors {
   static const Color divider = Color(0xFFF0F4EE);
 
   // Shadows
-  static const Color shadowLight = Color(0x05000000);
-  static const Color shadowMedium = Color(0x08000000);
+  static const Color shadowLight = Color(0x12000000);
+  static const Color shadowMedium = Color(0x1A000000);
 
   // Progress bar track
   static const Color progressTrack = Color(0xFFC6DAC2);

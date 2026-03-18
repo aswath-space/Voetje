@@ -83,12 +83,12 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(VoetjeRadius.input),
                 borderSide: const BorderSide(
-                    color: VoetjeColors.border, width: 1.5),
+                    color: VoetjeColors.border, width: 1),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(VoetjeRadius.input),
                 borderSide: const BorderSide(
-                    color: VoetjeColors.primaryMedium, width: 2),
+                    color: VoetjeColors.primaryMedium, width: 1.5),
               ),
               contentPadding: const EdgeInsets.symmetric(
                   horizontal: 16, vertical: 14),
@@ -144,7 +144,7 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                               children: [
                                 Icon(
                                   cat.icon,
-                                  size: 14,
+                                  size: 20,
                                   color: isSelected
                                       ? VoetjeColors.surface
                                       : VoetjeColors.textMuted,
@@ -170,7 +170,7 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
               ),
             ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 6),
         ],
 
         // Results list
@@ -248,8 +248,8 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                   boxShadow: const [
                     BoxShadow(
                       color: VoetjeColors.shadowLight,
-                      blurRadius: 3,
-                      offset: Offset(0, 1),
+                      blurRadius: 8,
+                      offset: Offset(0, 2),
                     )
                   ],
                 ),
@@ -268,19 +268,19 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                         style: VoetjeTypography.caption()),
                     const SizedBox(height: 4),
                     Row(children: [
-                      const Icon(Icons.directions_car_outlined, size: 16, color: VoetjeColors.textMuted),
+                      const Icon(Icons.directions_car_outlined, size: 20, color: VoetjeColors.textMuted),
                       const SizedBox(width: 6),
                       Text('Driving ${drivingKm.toStringAsFixed(0)} km', style: VoetjeTypography.body()),
                     ]),
                     const SizedBox(height: 2),
                     Row(children: [
-                      const Icon(Icons.lunch_dining, size: 16, color: VoetjeColors.textMuted),
+                      const Icon(Icons.lunch_dining, size: 20, color: VoetjeColors.textMuted),
                       const SizedBox(width: 6),
                       Text('${beefMeals.toStringAsFixed(0)} beef meals', style: VoetjeTypography.body()),
                     ]),
                     const SizedBox(height: 2),
                     Row(children: [
-                      const Icon(Icons.smartphone_outlined, size: 16, color: VoetjeColors.textMuted),
+                      const Icon(Icons.smartphone_outlined, size: 20, color: VoetjeColors.textMuted),
                       const SizedBox(width: 6),
                       Text('${(item.co2KgNew / 0.008).toStringAsFixed(0)} smartphone charges', style: VoetjeTypography.body()),
                     ]),
@@ -298,7 +298,6 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                     .where((c) => c != ShoppingCondition.repaired)
                     .map((c) {
                   final isSelected = _condition == c;
-                  final isSecondHand = c == ShoppingCondition.secondHand;
                   return Expanded(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 4),
@@ -308,18 +307,14 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                           padding: const EdgeInsets.symmetric(
                               vertical: 14, horizontal: 8),
                           decoration: BoxDecoration(
-                            color: isSelected
-                                ? (isSecondHand
-                                    ? VoetjeColors.primary
-                                    : VoetjeColors.primary)
-                                : VoetjeColors.surface,
+                            color: VoetjeColors.surface,
                             borderRadius:
                                 BorderRadius.circular(VoetjeRadius.card),
                             border: Border.all(
                               color: isSelected
-                                  ? VoetjeColors.primary
+                                  ? VoetjeColors.primaryMedium
                                   : VoetjeColors.border,
-                              width: isSelected ? 2 : 1.5,
+                              width: isSelected ? 2 : 1,
                             ),
                           ),
                           child: Column(children: [
@@ -327,10 +322,10 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                               c == ShoppingCondition.newItem
                                   ? Icons.new_releases_outlined
                                   : Icons.recycling,
-                              size: 22,
+                              size: 28,
                               color: isSelected
-                                  ? VoetjeColors.surface
-                                  : VoetjeColors.textPrimary,
+                                  ? VoetjeColors.primaryMedium
+                                  : VoetjeColors.textMuted,
                             ),
                             const SizedBox(height: 4),
                             Text(c.label,
@@ -338,7 +333,7 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                                       fontSize: 12,
                                       fontWeight: FontWeight.w600,
                                       color: isSelected
-                                          ? VoetjeColors.surface
+                                          ? VoetjeColors.primaryMedium
                                           : VoetjeColors.textPrimary,
                                     )),
                             Text(
@@ -347,7 +342,7 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                                       fontWeight: FontWeight.w700,
                                       fontSize: 13,
                                       color: isSelected
-                                          ? VoetjeColors.surface
+                                          ? VoetjeColors.primaryMedium
                                           : VoetjeColors.textPrimary,
                                     )),
                           ]),
@@ -456,8 +451,8 @@ class _ItemCard extends StatelessWidget {
           boxShadow: const [
             BoxShadow(
               color: VoetjeColors.shadowLight,
-              blurRadius: 3,
-              offset: Offset(0, 1),
+              blurRadius: 8,
+              offset: Offset(0, 2),
             )
           ],
         ),
@@ -473,7 +468,7 @@ class _ItemCard extends StatelessWidget {
                     BorderRadius.circular(VoetjeRadius.iconContainer),
               ),
               alignment: Alignment.center,
-              child: Icon(icon, size: 22, color: VoetjeColors.textMuted),
+              child: Icon(icon, size: 26, color: VoetjeColors.textMuted),
             ),
             const SizedBox(width: 12),
             Expanded(

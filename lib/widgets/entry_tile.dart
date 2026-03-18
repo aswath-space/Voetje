@@ -31,8 +31,8 @@ class EntryTile extends StatelessWidget {
           boxShadow: const [
             BoxShadow(
               color: VoetjeColors.shadowLight,
-              blurRadius: 3,
-              offset: Offset(0, 1),
+              blurRadius: 8,
+              offset: Offset(0, 2),
             ),
           ],
         ),
@@ -50,7 +50,7 @@ class EntryTile extends StatelessWidget {
               alignment: Alignment.center,
               child: Icon(
                 icon,
-                size: 18,
+                size: 20,
                 color: VoetjeColors.categoryColor(category),
               ),
             ),

@@ -150,7 +150,7 @@ class _AddFoodScreenState extends State<AddFoodScreen> {
                           children: [
                             Icon(
                               slot.icon,
-                              size: 18,
+                              size: 22,
                               color: isSelected
                                   ? VoetjeColors.surface
                                   : VoetjeColors.textMuted,
@@ -177,12 +177,12 @@ class _AddFoodScreenState extends State<AddFoodScreen> {
                 );
               }).toList(),
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 16),
 
             // ── Meal type grid (only for non-snack slots) ────────────────
             if (_selectedSlot != MealSlot.snack) ...[
               Text('WHAT DID YOU EAT?', style: VoetjeTypography.sectionLabel()),
-              const SizedBox(height: 10),
+              const SizedBox(height: 8),
 
               GridView.count(
                 crossAxisCount: 2,
@@ -190,7 +190,7 @@ class _AddFoodScreenState extends State<AddFoodScreen> {
                 physics: const NeverScrollableScrollPhysics(),
                 mainAxisSpacing: 8,
                 crossAxisSpacing: 8,
-                childAspectRatio: 1.5,
+                childAspectRatio: 1.7,
                 children: [
                   MealType.plantBased,
                   MealType.chickenOrFish,
@@ -203,7 +203,7 @@ class _AddFoodScreenState extends State<AddFoodScreen> {
                 )).toList(),
               ),
 
-              const SizedBox(height: 8),
+              const SizedBox(height: 6),
 
               // "Somewhere in between" option
               GestureDetector(
@@ -229,7 +229,7 @@ class _AddFoodScreenState extends State<AddFoodScreen> {
                       Icon(
                         MealType.inBetween.icon,
                         color: MealType.inBetween.color,
-                        size: 20,
+                        size: 28,
                       ),
                       const SizedBox(width: 10),
                       Expanded(
@@ -246,7 +246,7 @@ class _AddFoodScreenState extends State<AddFoodScreen> {
                 ),
               ),
 
-              const SizedBox(height: 16),
+              const SizedBox(height: 10),
 
               // Note field
               Container(
@@ -271,7 +271,7 @@ class _AddFoodScreenState extends State<AddFoodScreen> {
                     prefixIcon: const Icon(
                       Icons.note_alt_outlined,
                       color: VoetjeColors.textMuted,
-                      size: 18,
+                      size: 20,
                     ),
                     contentPadding: const EdgeInsets.symmetric(
                         horizontal: 14, vertical: 12),
@@ -356,7 +356,7 @@ class _MealTypeCard extends StatelessWidget {
       onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 150),
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
           color: isSelected
               ? VoetjeColors.food.withValues(alpha: 0.07)
@@ -366,12 +366,19 @@ class _MealTypeCard extends StatelessWidget {
             width: isSelected ? 2 : 1.5,
           ),
           borderRadius: BorderRadius.circular(VoetjeRadius.input),
+          boxShadow: const [
+            BoxShadow(
+              color: VoetjeColors.shadowLight,
+              blurRadius: 8,
+              offset: Offset(0, 2),
+            ),
+          ],
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(meal.icon, color: meal.color, size: 24),
-            const SizedBox(height: 5),
+            Icon(meal.icon, color: meal.color, size: 32),
+            const SizedBox(height: 4),
             Text(
               meal.label,
               textAlign: TextAlign.center,
