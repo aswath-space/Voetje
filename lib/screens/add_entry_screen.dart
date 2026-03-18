@@ -11,24 +11,16 @@ import 'package:carbon_tracker/services/airport_service.dart';
 import 'package:carbon_tracker/services/haversine.dart';
 import 'package:carbon_tracker/widgets/airport_picker.dart';
 import 'package:carbon_tracker/widgets/route_picker.dart';
+import 'package:carbon_tracker/widgets/screen_shell.dart';
 
 class AddTransportScreen extends StatelessWidget {
   const AddTransportScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: VoetjeColors.background,
-      appBar: AppBar(
-        title: Text(
-          'Log a Trip',
-          style: VoetjeTypography.sectionHeader(),
-        ),
-        backgroundColor: VoetjeColors.background,
-        elevation: 0,
-        surfaceTintColor: Colors.transparent,
-      ),
-      body: const _TransportBody(),
+    return const VoetjeScreenShell(
+      title: 'Log Trip',
+      child: _TransportBody(),
     );
   }
 }

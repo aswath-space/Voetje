@@ -7,6 +7,7 @@ import 'package:carbon_tracker/models/shopping_item.dart';
 import 'package:carbon_tracker/providers/emission_provider.dart';
 import 'package:carbon_tracker/screens/second_hand_celebration_screen.dart';
 import 'package:carbon_tracker/services/shopping_calculator.dart';
+import 'package:carbon_tracker/widgets/screen_shell.dart';
 
 class AddShoppingScreen extends StatefulWidget {
   const AddShoppingScreen({super.key});
@@ -49,14 +50,9 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
   }
 
   Widget _buildBrowseView(BuildContext context) {
-    return Scaffold(
-      backgroundColor: VoetjeColors.background,
-      appBar: AppBar(
-        title: Text('Log a Purchase', style: VoetjeTypography.pageTitle()),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      body: Column(children: [
+    return VoetjeScreenShell(
+      title: 'Log a Purchase',
+      child: Column(children: [
         // Search field
         Padding(
           padding: const EdgeInsets.fromLTRB(
@@ -223,19 +219,14 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
     final drivingKm = ShoppingCalculator.drivingEquivalent(item.co2KgNew);
     final beefMeals = ShoppingCalculator.beefMealsEquivalent(item.co2KgNew);
 
-    return Scaffold(
-      backgroundColor: VoetjeColors.background,
-      appBar: AppBar(
-        title: Text(item.name, style: VoetjeTypography.pageTitle()),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: BackButton(
-            onPressed: () => setState(() {
-                  _selectedItem = null;
-                  _condition = ShoppingCondition.newItem;
-                })),
-      ),
-      body: Padding(
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) setState(() { _selectedItem = null; _condition = ShoppingCondition.newItem; });
+      },
+      child: VoetjeScreenShell(
+      title: item.name,
+      child: Padding(
         padding: const EdgeInsets.all(VoetjeSpacing.screenEdge),
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -390,6 +381,7 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
               ),
             ]),
       ),
+    ),
     );
   }
 

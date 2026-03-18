@@ -4,6 +4,7 @@ import 'package:carbon_tracker/config/design_tokens.dart';
 import 'package:carbon_tracker/models/meal_type.dart';
 import 'package:carbon_tracker/models/emission_entry.dart';
 import 'package:carbon_tracker/providers/emission_provider.dart';
+import 'package:carbon_tracker/widgets/screen_shell.dart';
 
 class AddFoodScreen extends StatefulWidget {
   final MealSlot? initialSlot;
@@ -94,18 +95,9 @@ class _AddFoodScreenState extends State<AddFoodScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: VoetjeColors.background,
-      appBar: AppBar(
-        title: Text(
-          'Log a Meal',
-          style: VoetjeTypography.sectionHeader(),
-        ),
-        backgroundColor: VoetjeColors.background,
-        elevation: 0,
-        surfaceTintColor: Colors.transparent,
-      ),
-      body: SingleChildScrollView(
+    return VoetjeScreenShell(
+      title: 'Log a Meal',
+      child: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(
           horizontal: VoetjeSpacing.screenEdge,
           vertical: 20,

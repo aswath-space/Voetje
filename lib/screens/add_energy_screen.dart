@@ -7,6 +7,7 @@ import 'package:carbon_tracker/models/emission_entry.dart';
 import 'package:carbon_tracker/services/energy_calculator.dart';
 import 'package:carbon_tracker/providers/emission_provider.dart';
 import 'package:carbon_tracker/screens/energy_setup_screen.dart';
+import 'package:carbon_tracker/widgets/screen_shell.dart';
 
 class AddEnergyScreen extends StatefulWidget {
   const AddEnergyScreen({super.key});
@@ -207,15 +208,9 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
     final profile = provider.energyProfile;
 
     if (profile == null) {
-      return Scaffold(
-        backgroundColor: VoetjeColors.background,
-        appBar: AppBar(
-          title: Text('Enter Energy Bill',
-              style: VoetjeTypography.pageTitle()),
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-        ),
-        body: Center(
+      return VoetjeScreenShell(
+        title: 'Enter Energy Bill',
+        child: Center(
           child: Padding(
             padding: const EdgeInsets.all(32),
             child: Column(
@@ -266,15 +261,9 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
     final country = CountryDefaults.forCode(profile.countryCode);
     final currencyLabel = 'Cost (${country.currencySymbol})';
 
-    return Scaffold(
-      backgroundColor: VoetjeColors.background,
-      appBar: AppBar(
-        title: Text('Enter Energy Bill',
-            style: VoetjeTypography.pageTitle()),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      body: ListView(
+    return VoetjeScreenShell(
+      title: 'Enter Energy Bill',
+      child: ListView(
         padding: const EdgeInsets.all(VoetjeSpacing.screenEdge),
         children: [
           // Month selector card
