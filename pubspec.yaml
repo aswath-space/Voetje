@@ -1,0 +1,65 @@
+name: carbon_tracker
+description: Voetje — a free, privacy-first personal CO2 emission tracker. Track transport, food, energy, shopping, and waste footprint.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State management
+  provider: ^6.1.1
+
+  # Local database
+  sqflite: ^2.3.2
+  path: ^1.9.0
+
+  # Typography
+  google_fonts: ^6.2.1
+
+  # Charts
+  fl_chart: ^1.1.1
+
+  # Date/time
+  intl: ^0.20.2
+
+  # URL launching
+  url_launcher: ^6.2.4
+
+  # Storage & preferences
+  shared_preferences: ^2.2.2
+
+  # Icons
+  cupertino_icons: ^1.0.6
+
+  # File handling for export/import
+  path_provider: ^2.1.2
+  file_picker: ^10.3.10
+  share_plus: ^12.0.1
+  marionette_flutter: ^0.4.0
+
+  # Location (single-shot GPS for saved places)
+  geolocator: ^14.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  sqflite_common_ffi: ^2.3.0
+  flutter_launcher_icons: ^0.14.3
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/voetje_icon_square.png"
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/voetje_icon_square.png"
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/

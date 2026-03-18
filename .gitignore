@@ -1,0 +1,69 @@
+# Claude Code artifacts (not shipped)
+docs/
+.claude/
+
+# Unused branding assets (source files, not in app)
+assets/voetje_logo.svg
+assets/voetje_logo_clean.png
+assets/voetje_logo_clean.svg
+
+# Git worktrees
+.worktrees/
+
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+.superpowers/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter metadata (IDE-generated, not project code)
+.metadata
+devtools_options.yaml
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
+# Unused desktop/web platforms
+windows/
+macos/
+linux/
+web/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release

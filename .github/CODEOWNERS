@@ -1,0 +1,3 @@
+# These files contain donation/payment links and must be reviewed by the maintainer.
+# Any PR modifying these files requires explicit approval.
+lib/screens/support_screen.dart @aswath-space
