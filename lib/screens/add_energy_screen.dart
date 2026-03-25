@@ -269,7 +269,7 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
           // Month selector card
           Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: VoetjeColors.surfaceOf(context),
               borderRadius: BorderRadius.circular(VoetjeRadius.card),
               boxShadow: const [
                 BoxShadow(
@@ -282,14 +282,14 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
             child: ListTile(
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-              leading: const Icon(Icons.calendar_month,
-                  color: VoetjeColors.primaryMedium),
+              leading: Icon(Icons.calendar_month,
+                  color: VoetjeColors.primaryMediumOf(context)),
               title: Text(
                 'Billing month: ${_billingMonth.year}/${_billingMonth.month.toString().padLeft(2, '0')}',
                 style: VoetjeTypography.body(),
               ),
-              trailing: const Icon(Icons.edit,
-                  size: 18, color: VoetjeColors.textMuted),
+              trailing: Icon(Icons.edit,
+                  size: 18, color: VoetjeColors.textMutedOf(context)),
               onTap: _pickMonth,
             ),
           ),
@@ -300,7 +300,7 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
           const SizedBox(height: 10),
           Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: VoetjeColors.surfaceOf(context),
               borderRadius: BorderRadius.circular(VoetjeRadius.card),
               boxShadow: const [
                 BoxShadow(
@@ -337,7 +337,7 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
                         style: VoetjeTypography.caption().copyWith(
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
-                              color: VoetjeColors.primaryMedium,
+                              color: VoetjeColors.primaryMediumOf(context),
                             ),
                       ),
                     ),
@@ -345,13 +345,13 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
                 ),
                 const SizedBox(height: 4),
                 TextButton.icon(
-                  icon: const Icon(Icons.help_outline,
-                      size: 14, color: VoetjeColors.textMuted),
+                  icon: Icon(Icons.help_outline,
+                      size: 14, color: VoetjeColors.textMutedOf(context)),
                   label: Text(
                     'Where do I find kWh on my bill?',
                     style: VoetjeTypography.caption().copyWith(
                           fontSize: 12,
-                          color: VoetjeColors.textMuted,
+                          color: VoetjeColors.textMutedOf(context),
                         ),
                   ),
                   style: TextButton.styleFrom(
@@ -372,7 +372,7 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
             const SizedBox(height: 10),
             Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: VoetjeColors.surfaceOf(context),
                 borderRadius: BorderRadius.circular(VoetjeRadius.card),
                 boxShadow: const [
                   BoxShadow(
@@ -406,7 +406,7 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
                       style: VoetjeTypography.caption().copyWith(
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
-                            color: VoetjeColors.primaryMedium,
+                            color: VoetjeColors.primaryMediumOf(context),
                           ),
                     ),
                   ),
@@ -454,24 +454,24 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
         labelText: labelText,
         labelStyle: VoetjeTypography.caption().copyWith(
               fontSize: 13,
-              color: VoetjeColors.textMuted,
+              color: VoetjeColors.textMutedOf(context),
             ),
         filled: true,
-        fillColor: Colors.white,
+        fillColor: VoetjeColors.surfaceOf(context),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(VoetjeRadius.input),
           borderSide:
-              const BorderSide(color: VoetjeColors.border, width: 1.5),
+              BorderSide(color: VoetjeColors.borderOf(context), width: 1.5),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(VoetjeRadius.input),
           borderSide:
-              const BorderSide(color: VoetjeColors.border, width: 1.5),
+              BorderSide(color: VoetjeColors.borderOf(context), width: 1.5),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(VoetjeRadius.input),
-          borderSide: const BorderSide(
-              color: VoetjeColors.primaryMedium, width: 2),
+          borderSide: BorderSide(
+              color: VoetjeColors.primaryMediumOf(context), width: 2),
         ),
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
@@ -604,7 +604,7 @@ class _MonthPickerDialogState extends State<_MonthPickerDialog> {
               'Current month',
               style: VoetjeTypography.caption().copyWith(
                     fontSize: 12,
-                    color: VoetjeColors.textMuted,
+                    color: VoetjeColors.textMutedOf(context),
                   ),
             ),
         ],

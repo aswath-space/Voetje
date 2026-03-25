@@ -28,6 +28,10 @@ class _BudgetRingState extends State<BudgetRing> {
     final remaining = widget.budget - widget.totalCO2;
     final overage = widget.totalCO2 - widget.budget;
 
+    // Theme-aware colors for ring center text
+    final heroColor = VoetjeColors.textPrimaryOf(context);
+    final captionColor = VoetjeColors.captionColorOf(context);
+
     Widget centerContent;
 
     if (ratio >= 1.0) {
@@ -55,7 +59,7 @@ class _BudgetRingState extends State<BudgetRing> {
             '${widget.totalCO2.toStringAsFixed(1)} of ${widget.budget.toStringAsFixed(1)} kg',
             style: VoetjeTypography.caption().copyWith(
                   fontSize: 15,
-                  color: VoetjeColors.captionColor,
+                  color: captionColor,
                 ),
           ),
         ],
@@ -67,7 +71,7 @@ class _BudgetRingState extends State<BudgetRing> {
         children: [
           Text(
             widget.totalCO2.toStringAsFixed(1),
-            style: VoetjeTypography.heroNumber(),
+            style: VoetjeTypography.heroNumber().copyWith(color: heroColor),
           ),
           Text(
             '${remaining.toStringAsFixed(1)} kg left',
@@ -85,7 +89,7 @@ class _BudgetRingState extends State<BudgetRing> {
         children: [
           Text(
             widget.totalCO2.toStringAsFixed(1),
-            style: VoetjeTypography.heroNumber(),
+            style: VoetjeTypography.heroNumber().copyWith(color: heroColor),
           ),
           Text(
             '${remaining.toStringAsFixed(1)} kg left',
@@ -103,13 +107,13 @@ class _BudgetRingState extends State<BudgetRing> {
         children: [
           Text(
             widget.totalCO2.toStringAsFixed(1),
-            style: VoetjeTypography.heroNumber(),
+            style: VoetjeTypography.heroNumber().copyWith(color: heroColor),
           ),
           Text(
             'of ${widget.budget.toStringAsFixed(1)} kg',
             style: VoetjeTypography.caption().copyWith(
                   fontSize: 16,
-                  color: VoetjeColors.captionColor,
+                  color: captionColor,
                 ),
           ),
         ],
@@ -135,6 +139,8 @@ class _BudgetRingState extends State<BudgetRing> {
                   categoryBreakdown: widget.categoryBreakdown,
                   ratio: ratio,
                   animationValue: animValue,
+                  trackNeutralColor: VoetjeColors.trackNeutralOf(context),
+                  borderColor: VoetjeColors.borderOf(context),
                 ),
               );
             },
@@ -152,6 +158,8 @@ class _BudgetRingPainter extends CustomPainter {
   final Map<String, double> categoryBreakdown;
   final double ratio;
   final double animationValue;
+  final Color trackNeutralColor;
+  final Color borderColor;
 
   static const double strokeWidth = 20.0;
   static const double gapDegrees = 2.0;
@@ -163,6 +171,8 @@ class _BudgetRingPainter extends CustomPainter {
     required this.categoryBreakdown,
     required this.ratio,
     this.animationValue = 1.0,
+    required this.trackNeutralColor,
+    required this.borderColor,
   });
 
   @override
@@ -172,6 +182,7 @@ class _BudgetRingPainter extends CustomPainter {
     final rect = Rect.fromCircle(center: center, radius: radius);
 
     // Determine track color based on ratio
+    // Note: trackNeutral uses a resolver but amber/coral are vivid enough for both themes
     Color trackColor;
     if (ratio >= 1.0) {
       trackColor = Colors.transparent;
@@ -180,12 +191,12 @@ class _BudgetRingPainter extends CustomPainter {
     } else if (ratio >= 0.6) {
       trackColor = VoetjeColors.trackAmber;
     } else {
-      trackColor = VoetjeColors.trackNeutral;
+      trackColor = trackNeutralColor;
     }
 
     // Draw border rings (inner + outer edge of the track)
     final borderPaint = Paint()
-      ..color = VoetjeColors.border.withValues(alpha: 0.6)
+      ..color = borderColor.withValues(alpha: 0.6)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.5;
     canvas.drawCircle(center, radius + strokeWidth / 2, borderPaint);
@@ -246,6 +257,8 @@ class _BudgetRingPainter extends CustomPainter {
         oldDelegate.budget != budget ||
         oldDelegate.categoryBreakdown != categoryBreakdown ||
         oldDelegate.ratio != ratio ||
-        oldDelegate.animationValue != animationValue;
+        oldDelegate.animationValue != animationValue ||
+        oldDelegate.trackNeutralColor != trackNeutralColor ||
+        oldDelegate.borderColor != borderColor;
   }
 }

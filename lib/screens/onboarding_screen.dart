@@ -52,7 +52,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: VoetjeColors.background,
+      backgroundColor: VoetjeColors.backgroundOf(context),
       body: SafeArea(
         child: Stack(
           children: [
@@ -75,8 +75,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             height: 3,
                             decoration: BoxDecoration(
                               color: isFilled
-                                  ? VoetjeColors.primaryMedium
-                                  : VoetjeColors.progressTrack,
+                                  ? VoetjeColors.primaryMediumOf(context)
+                                  : VoetjeColors.progressTrackOf(context),
                               borderRadius: BorderRadius.circular(2),
                             ),
                           ),
@@ -114,7 +114,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             child: Text(
                               'Back',
                               style: VoetjeTypography.caption().copyWith(
-                                    color: VoetjeColors.textMuted,
+                                    color: VoetjeColors.textMutedOf(context),
                                   ),
                             ),
                           )
@@ -148,7 +148,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     'Skip',
                     style: VoetjeTypography.caption().copyWith(
                           fontSize: 12,
-                          color: VoetjeColors.textMuted,
+                          color: VoetjeColors.textMutedOf(context),
                         ),
                   ),
                 ),
@@ -226,11 +226,11 @@ class _OnboardingPage extends StatelessWidget {
             width: 120,
             height: 120,
             decoration: BoxDecoration(
-              color: Colors.white.withValues(alpha: 0.6),
+              color: VoetjeColors.surfaceOf(context).withValues(alpha: 0.6),
               borderRadius: BorderRadius.circular(60),
             ),
             alignment: Alignment.center,
-            child: Icon(icon, size: VoetjeIconSize.xlargeIcon, color: VoetjeColors.primaryMedium),
+            child: Icon(icon, size: VoetjeIconSize.xlargeIcon, color: VoetjeColors.primaryMediumOf(context)),
           ),
           const SizedBox(height: 36),
           Text(
@@ -243,7 +243,7 @@ class _OnboardingPage extends StatelessWidget {
             description,
             style: VoetjeTypography.caption().copyWith(
                   fontSize: 13,
-                  color: VoetjeColors.textSecondary,
+                  color: VoetjeColors.textSecondaryOf(context),
                   height: 1.6,
                 ),
             textAlign: TextAlign.center,
@@ -287,7 +287,7 @@ class _CategorySelectionPageState extends State<_CategorySelectionPage> {
             'You can always change this in Settings.',
             style: VoetjeTypography.caption().copyWith(
                   fontSize: 13,
-                  color: VoetjeColors.textSecondary,
+                  color: VoetjeColors.textSecondaryOf(context),
                 ),
             textAlign: TextAlign.center,
           ),
@@ -385,7 +385,7 @@ class _CategorySelectionPageState extends State<_CategorySelectionPage> {
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white.withValues(alpha: 0.7),
+          color: VoetjeColors.surfaceOf(context).withValues(alpha: 0.7),
           borderRadius: BorderRadius.circular(VoetjeRadius.card),
         ),
         padding:
@@ -412,13 +412,13 @@ class _CategorySelectionPageState extends State<_CategorySelectionPage> {
                       style: VoetjeTypography.caption().copyWith(
                             fontWeight: FontWeight.w700,
                             fontSize: 13,
-                            color: VoetjeColors.textPrimary,
+                            color: VoetjeColors.textPrimaryOf(context),
                           )),
                   Text(
                     description,
                     style: VoetjeTypography.caption().copyWith(
                           fontSize: 11,
-                          color: VoetjeColors.textMuted,
+                          color: VoetjeColors.textMutedOf(context),
                         ),
                   ),
                 ],

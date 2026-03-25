@@ -206,8 +206,8 @@ class SettingsScreen extends StatelessWidget {
                     labelColor: VoetjeColors.destructive,
                     onTap: () => _clearData(context),
                   ),
-                  const Divider(
-                    color: VoetjeColors.divider,
+                  Divider(
+                    color: VoetjeColors.dividerOf(context),
                     height: 16,
                     thickness: 1,
                   ),
@@ -393,7 +393,9 @@ class _SectionLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 4),
-      child: Text(text, style: VoetjeTypography.sectionLabel()),
+      child: Text(text, style: VoetjeTypography.sectionLabel().copyWith(
+        color: VoetjeColors.labelColorOf(context),
+      )),
     );
   }
 }
@@ -406,7 +408,7 @@ class _SettingsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: VoetjeColors.surface,
+        color: VoetjeColors.surfaceOf(context),
         borderRadius: BorderRadius.circular(VoetjeRadius.card + 2),
         boxShadow: const [
           BoxShadow(
@@ -430,8 +432,8 @@ class _RowDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Divider(
-      color: VoetjeColors.divider,
+    return Divider(
+      color: VoetjeColors.dividerOf(context),
       height: 1,
       thickness: 1,
       indent: 16,
@@ -461,8 +463,8 @@ class _RowItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final effectiveIconColor = iconColor ?? VoetjeColors.textMuted;
-    final effectiveLabelColor = labelColor ?? VoetjeColors.textPrimary;
+    final effectiveIconColor = iconColor ?? VoetjeColors.textMutedOf(context);
+    final effectiveLabelColor = labelColor ?? VoetjeColors.textPrimaryOf(context);
 
     return InkWell(
       onTap: onTap,
@@ -487,7 +489,9 @@ class _RowItem extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 2),
-                        Text(subtitle!, style: VoetjeTypography.caption()),
+                        Text(subtitle!, style: VoetjeTypography.caption().copyWith(
+                          color: VoetjeColors.captionColorOf(context),
+                        )),
                       ],
                     )
                   : Text(
@@ -504,8 +508,8 @@ class _RowItem extends StatelessWidget {
               trailing!,
             ] else if (onTap != null) ...[
               const SizedBox(width: 8),
-              const Icon(Icons.chevron_right,
-                  size: VoetjeIconSize.smallIcon, color: VoetjeColors.border),
+              Icon(Icons.chevron_right,
+                  size: VoetjeIconSize.smallIcon, color: VoetjeColors.borderOf(context)),
             ],
           ],
         ),
@@ -527,7 +531,7 @@ class _UnitSegmentedControl extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: VoetjeColors.background,
+        color: VoetjeColors.backgroundOf(context),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
@@ -541,7 +545,7 @@ class _UnitSegmentedControl extends StatelessWidget {
               padding:
                   const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
               decoration: BoxDecoration(
-                color: selected ? VoetjeColors.primary : Colors.transparent,
+                color: selected ? VoetjeColors.primaryOf(context) : Colors.transparent,
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Text(
@@ -549,7 +553,7 @@ class _UnitSegmentedControl extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
-                  color: selected ? VoetjeColors.surface : VoetjeColors.textMuted,
+                  color: selected ? VoetjeColors.surfaceOf(context) : VoetjeColors.textMutedOf(context),
                 ),
               ),
             ),
@@ -588,7 +592,7 @@ class _CategoryRow extends StatelessWidget {
             width: VoetjeIconSize.smallContainer,
             height: VoetjeIconSize.smallContainer,
             decoration: BoxDecoration(
-              color: VoetjeColors.categoryBackground(category),
+              color: VoetjeColors.categoryBackgroundOf(context, category),
               borderRadius: BorderRadius.circular(VoetjeIconSize.smallRadius),
             ),
             child: Icon(
@@ -601,19 +605,19 @@ class _CategoryRow extends StatelessWidget {
           Expanded(
             child: Text(
               label,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
-                color: VoetjeColors.textPrimary,
+                color: VoetjeColors.textPrimaryOf(context),
               ),
             ),
           ),
           if (alwaysOn)
-            const Text(
+            Text(
               'Always on',
               style: TextStyle(
                 fontSize: 12,
-                color: VoetjeColors.captionColor,
+                color: VoetjeColors.captionColorOf(context),
               ),
             )
           else

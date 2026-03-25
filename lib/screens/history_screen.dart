@@ -98,7 +98,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     final provider = context.watch<EmissionProvider>();
 
     return Scaffold(
-      backgroundColor: VoetjeColors.background,
+      backgroundColor: VoetjeColors.backgroundOf(context),
       body: SafeArea(
         child: RefreshIndicator(
           onRefresh: () => _loadEntries(refresh: true),
@@ -107,8 +107,10 @@ class _HistoryScreenState extends State<HistoryScreen> {
               // ── Page title ──────────────────────────────────────────────
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 20, 20, 4),
-                  child: Text('History', style: VoetjeTypography.pageTitle()),
+                  padding: const EdgeInsets.fromLTRB(20, 24, 20, 4),
+                  child: Text('History', style: VoetjeTypography.pageTitle().copyWith(
+                    color: VoetjeColors.primaryOf(context),
+                  )),
                 ),
               ),
 
@@ -157,13 +159,13 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(Icons.history, size: VoetjeIconSize.xlargeIcon,
-                            color: VoetjeColors.border),
+                        Icon(Icons.history, size: VoetjeIconSize.xlargeIcon,
+                            color: VoetjeColors.borderOf(context)),
                         const SizedBox(height: 12),
                         Text(
                           'No entries logged yet',
                           style: VoetjeTypography.caption().copyWith(
-                                color: VoetjeColors.textMuted,
+                                color: VoetjeColors.textMutedOf(context),
                               ),
                         ),
                       ],
@@ -196,7 +198,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                 padding: const EdgeInsets.only(top: 12, bottom: 6),
                                 child: Text(
                                   _formatDateHeader(entry.date),
-                                  style: VoetjeTypography.sectionLabel(),
+                                  style: VoetjeTypography.sectionLabel().copyWith(
+                                    color: VoetjeColors.labelColorOf(context),
+                                  ),
                                 ),
                               ),
                             EntryTile(
@@ -315,6 +319,8 @@ class _WeeklySummaryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = VoetjeColors.isDark(context);
+
     // Trend badge
     Widget? trendBadge;
     if (previousWeekCO2 > 0) {
@@ -324,8 +330,8 @@ class _WeeklySummaryCard extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
         decoration: BoxDecoration(
           color: isDown
-              ? const Color(0xFFE8F5E9)
-              : const Color(0xFFFFF8E1),
+              ? (isDark ? const Color(0xFF1A3A1A) : const Color(0xFFE8F5E9))
+              : (isDark ? const Color(0xFF3A3018) : const Color(0xFFFFF8E1)),
           borderRadius: BorderRadius.circular(VoetjeRadius.chip),
         ),
         child: Text(
@@ -334,7 +340,7 @@ class _WeeklySummaryCard extends StatelessWidget {
                 fontSize: 12,
                 fontWeight: FontWeight.w700,
                 color: isDown
-                    ? VoetjeColors.primaryMedium
+                    ? (isDark ? VoetjeColors.darkAccent : VoetjeColors.primaryMedium)
                     : VoetjeColors.trackAmberText,
               ),
         ),
@@ -343,7 +349,7 @@ class _WeeklySummaryCard extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        color: VoetjeColors.surface,
+        color: VoetjeColors.surfaceOf(context),
         borderRadius: BorderRadius.circular(VoetjeRadius.card + 2),
         boxShadow: const [
           BoxShadow(
@@ -360,7 +366,9 @@ class _WeeklySummaryCard extends StatelessWidget {
           // Header row
           Row(
             children: [
-              Text('THIS WEEK', style: VoetjeTypography.sectionLabel()),
+              Text('THIS WEEK', style: VoetjeTypography.sectionLabel().copyWith(
+                color: VoetjeColors.labelColorOf(context),
+              )),
               const Spacer(),
               ?trendBadge,
             ],
@@ -369,7 +377,7 @@ class _WeeklySummaryCard extends StatelessWidget {
           Text(
             '${weekCO2.toStringAsFixed(1)} kg CO₂',
             style: VoetjeTypography.sectionHeader().copyWith(
-                  color: VoetjeColors.primaryMedium,
+                  color: isDark ? VoetjeColors.darkAccent : VoetjeColors.primaryMedium,
                 ),
           ),
           const SizedBox(height: 12),
@@ -392,6 +400,7 @@ class _MiniBarChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = VoetjeColors.isDark(context);
     final now = DateTime.now();
     final days = List.generate(7, (i) {
       return DateTime(now.year, now.month, now.day)
@@ -444,8 +453,8 @@ class _MiniBarChart extends StatelessWidget {
                           fontSize: 11,
                           fontWeight: isToday ? FontWeight.w700 : FontWeight.w500,
                           color: isToday
-                              ? VoetjeColors.primary
-                              : VoetjeColors.textMuted,
+                              ? VoetjeColors.primaryOf(context)
+                              : VoetjeColors.textMutedOf(context),
                         ),
                   ),
                 );
@@ -468,11 +477,11 @@ class _MiniBarChart extends StatelessWidget {
           final overBudget = value > budgetThreshold;
           final Color barColor;
           if (isToday) {
-            barColor = VoetjeColors.primaryMedium;
+            barColor = isDark ? VoetjeColors.darkAccent : VoetjeColors.primaryMedium;
           } else if (overBudget) {
             barColor = VoetjeColors.trackAmberText;
           } else {
-            barColor = VoetjeColors.progressTrack;
+            barColor = VoetjeColors.progressTrackOf(context);
           }
           return BarChartGroupData(
             x: i,
@@ -515,12 +524,12 @@ class _FilterChip extends StatelessWidget {
         duration: const Duration(milliseconds: 150),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
         decoration: BoxDecoration(
-          color: selected ? VoetjeColors.primary : VoetjeColors.surface,
+          color: selected ? VoetjeColors.primaryOf(context) : VoetjeColors.surfaceOf(context),
           borderRadius: BorderRadius.circular(VoetjeRadius.chip),
           border: Border.all(
             color: selected
-                ? VoetjeColors.primary
-                : VoetjeColors.border,
+                ? VoetjeColors.primaryOf(context)
+                : VoetjeColors.borderOf(context),
           ),
         ),
         child: Text(
@@ -528,7 +537,7 @@ class _FilterChip extends StatelessWidget {
           style: VoetjeTypography.caption().copyWith(
                 fontSize: 13,
                 fontWeight: FontWeight.w600,
-                color: selected ? VoetjeColors.surface : VoetjeColors.textMuted,
+                color: selected ? VoetjeColors.surfaceOf(context) : VoetjeColors.textMutedOf(context),
               ),
         ),
       ),

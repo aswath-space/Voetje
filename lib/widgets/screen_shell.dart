@@ -61,7 +61,7 @@ class VoetjeScreenShell extends StatelessWidget {
     if (isEmbedded) {
       // Inside sheet — no Scaffold, no status bar padding
       return Material(
-        color: VoetjeColors.background,
+        color: VoetjeColors.backgroundOf(context),
         child: Column(
           children: [
             if (title != null)
@@ -72,11 +72,13 @@ class VoetjeScreenShell extends StatelessWidget {
                     if (showBackButton)
                       IconButton(
                         icon: const Icon(Icons.arrow_back),
-                        color: VoetjeColors.textPrimary,
+                        color: VoetjeColors.textPrimaryOf(context),
                         onPressed: () => Navigator.of(context).pop(),
                       ),
                     if (!showBackButton) const SizedBox(width: 16),
-                    Text(title!, style: VoetjeTypography.pageTitle()),
+                    Text(title!, style: VoetjeTypography.pageTitle().copyWith(
+                      color: VoetjeColors.primaryOf(context),
+                    )),
                   ],
                 ),
               ),
@@ -93,7 +95,7 @@ class VoetjeScreenShell extends StatelessWidget {
 
     // Standalone screen — full Scaffold with AppBar
     return Scaffold(
-      backgroundColor: VoetjeColors.background,
+      backgroundColor: VoetjeColors.backgroundOf(context),
       appBar: title != null
           ? AppBar(
               title: Text(title!, style: VoetjeTypography.pageTitle()),

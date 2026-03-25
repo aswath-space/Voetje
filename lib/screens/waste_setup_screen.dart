@@ -29,7 +29,7 @@ class _WasteSetupScreenState extends State<WasteSetupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: VoetjeColors.background,
+      backgroundColor: VoetjeColors.backgroundOf(context),
       appBar: AppBar(
         title:
             Text('Waste Setup', style: VoetjeTypography.pageTitle()),
@@ -53,8 +53,8 @@ class _WasteSetupScreenState extends State<WasteSetupScreen> {
                       height: 3,
                       decoration: BoxDecoration(
                         color: isFilled
-                            ? VoetjeColors.primaryMedium
-                            : VoetjeColors.progressTrack,
+                            ? VoetjeColors.primaryMediumOf(context)
+                            : VoetjeColors.progressTrackOf(context),
                         borderRadius: BorderRadius.circular(2),
                       ),
                     ),
@@ -156,7 +156,7 @@ class _BinSelectionStep extends StatelessWidget {
           Text(
             'Tap all that apply.',
             style: VoetjeTypography.body()
-                .copyWith(color: VoetjeColors.textMuted),
+                .copyWith(color: VoetjeColors.textMutedOf(context)),
           ),
           const SizedBox(height: 20),
           ...BinType.values.map((bin) => _BinTile(
@@ -196,11 +196,11 @@ class _BinTile extends StatelessWidget {
           padding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: VoetjeColors.surfaceOf(context),
             border: Border.all(
               color: selected
-                  ? VoetjeColors.primaryMedium
-                  : VoetjeColors.border,
+                  ? VoetjeColors.primaryMediumOf(context)
+                  : VoetjeColors.borderOf(context),
               width: selected ? 2 : 1.5,
             ),
             borderRadius: BorderRadius.circular(VoetjeRadius.input),
@@ -214,14 +214,14 @@ class _BinTile extends StatelessWidget {
           ),
           child: Row(
             children: [
-              Icon(bin.icon, size: VoetjeIconSize.mediumIcon, color: VoetjeColors.primaryMedium),
+              Icon(bin.icon, size: VoetjeIconSize.mediumIcon, color: VoetjeColors.primaryMediumOf(context)),
               const SizedBox(width: 16),
               Expanded(
                 child: Text(
                   bin.label,
                   style: VoetjeTypography.caption().copyWith(
                         fontWeight: FontWeight.w600,
-                        color: VoetjeColors.textPrimary,
+                        color: VoetjeColors.textPrimaryOf(context),
                       ),
                 ),
               ),
@@ -230,8 +230,8 @@ class _BinTile extends StatelessWidget {
                     ? Icons.check_box
                     : Icons.check_box_outline_blank,
                 color: selected
-                    ? VoetjeColors.primaryMedium
-                    : VoetjeColors.border,
+                    ? VoetjeColors.primaryMediumOf(context)
+                    : VoetjeColors.borderOf(context),
               ),
             ],
           ),
@@ -267,7 +267,7 @@ class _HousingTypeStep extends StatelessWidget {
           Text(
             'This affects how we estimate your weekly waste.',
             style: VoetjeTypography.body()
-                .copyWith(color: VoetjeColors.textMuted),
+                .copyWith(color: VoetjeColors.textMutedOf(context)),
           ),
           const SizedBox(height: 20),
           ...HousingType.values.map((h) => Padding(
@@ -278,11 +278,11 @@ class _HousingTypeStep extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 16, vertical: 18),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: VoetjeColors.surfaceOf(context),
                       border: Border.all(
                         color: selected == h
-                            ? VoetjeColors.primaryMedium
-                            : VoetjeColors.border,
+                            ? VoetjeColors.primaryMediumOf(context)
+                            : VoetjeColors.borderOf(context),
                         width: selected == h ? 2 : 1.5,
                       ),
                       borderRadius:
@@ -297,14 +297,14 @@ class _HousingTypeStep extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
-                        Icon(h.icon, size: VoetjeIconSize.largeIcon, color: VoetjeColors.primaryMedium),
+                        Icon(h.icon, size: VoetjeIconSize.largeIcon, color: VoetjeColors.primaryMediumOf(context)),
                         const SizedBox(width: 16),
                         Expanded(
                           child: Text(
                             h.label,
                             style: VoetjeTypography.caption().copyWith(
                                   fontWeight: FontWeight.w600,
-                                  color: VoetjeColors.textPrimary,
+                                  color: VoetjeColors.textPrimaryOf(context),
                                 ),
                           ),
                         ),
@@ -313,8 +313,8 @@ class _HousingTypeStep extends StatelessWidget {
                               ? Icons.check_circle
                               : Icons.radio_button_unchecked,
                           color: selected == h
-                              ? VoetjeColors.primaryMedium
-                              : VoetjeColors.border,
+                              ? VoetjeColors.primaryMediumOf(context)
+                              : VoetjeColors.borderOf(context),
                         ),
                       ],
                     ),

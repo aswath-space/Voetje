@@ -22,9 +22,9 @@ class StillToLogCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(VoetjeRadius.input),
       child: Container(
         decoration: BoxDecoration(
-          color: VoetjeColors.stillToLogBg,
+          color: VoetjeColors.stillToLogBgOf(context),
           border: Border.all(
-            color: VoetjeColors.dashedBorder,
+            color: VoetjeColors.dashedBorderOf(context),
             width: 1.5,
           ),
           borderRadius: BorderRadius.circular(VoetjeRadius.input),
@@ -51,7 +51,7 @@ class StillToLogCard extends StatelessWidget {
             Text(
               label,
               style: VoetjeTypography.caption().copyWith(
-                    color: VoetjeColors.textMuted,
+                    color: VoetjeColors.textMutedOf(context),
                   ),
             ),
           ],

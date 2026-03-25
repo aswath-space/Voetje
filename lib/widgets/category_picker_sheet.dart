@@ -137,9 +137,9 @@ class _ExpandingLogSheetState extends State<_ExpandingLogSheet> {
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeOutCubic,
         height: _showingForm ? formHeight : gridHeight,
-        decoration: const BoxDecoration(
-          color: VoetjeColors.background,
-          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        decoration: BoxDecoration(
+          color: VoetjeColors.backgroundOf(context),
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
         ),
         clipBehavior: Clip.antiAlias,
         child: MediaQuery.removePadding(
@@ -225,7 +225,7 @@ class _CategoryGrid extends StatelessWidget {
 
     // Use a plain Material to avoid a nested Scaffold in the grid view.
     return Material(
-      color: VoetjeColors.background,
+      color: VoetjeColors.backgroundOf(context),
       child: SafeArea(
         top: false,
         child: SingleChildScrollView(
@@ -239,7 +239,7 @@ class _CategoryGrid extends StatelessWidget {
                   width: 40,
                   height: 4,
                   decoration: BoxDecoration(
-                    color: VoetjeColors.border,
+                    color: VoetjeColors.borderOf(context),
                     borderRadius: BorderRadius.circular(2),
                   ),
                 ),
@@ -248,7 +248,9 @@ class _CategoryGrid extends StatelessWidget {
               // Title
               Text(
                 'What are you logging?',
-                style: VoetjeTypography.sectionHeader(),
+                style: VoetjeTypography.sectionHeader().copyWith(
+                  color: VoetjeColors.textPrimaryOf(context),
+                ),
               ),
               const SizedBox(height: 16),
               // 2-column grid
@@ -292,11 +294,11 @@ class _CategoryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final iconBg = VoetjeColors.categoryBackground(category.key);
+    final iconBg = VoetjeColors.categoryBackgroundOf(context, category.key);
     final iconColor = VoetjeColors.categoryColor(category.key);
 
     return Material(
-      color: VoetjeColors.surface,
+      color: VoetjeColors.surfaceOf(context),
       borderRadius: BorderRadius.circular(VoetjeRadius.input),
       child: InkWell(
         borderRadius: BorderRadius.circular(VoetjeRadius.input),
@@ -304,7 +306,7 @@ class _CategoryTile extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(VoetjeRadius.input),
-            border: Border.all(color: VoetjeColors.border, width: 1.5),
+            border: Border.all(color: VoetjeColors.borderOf(context), width: 1.5),
           ),
           child: Center(
             child: Column(
@@ -324,7 +326,7 @@ class _CategoryTile extends StatelessWidget {
                   category.label,
                   style: VoetjeTypography.body().copyWith(
                     fontWeight: FontWeight.w600,
-                    color: VoetjeColors.textPrimary,
+                    color: VoetjeColors.textPrimaryOf(context),
                   ),
                 ),
               ],

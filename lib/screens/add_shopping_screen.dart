@@ -65,33 +65,33 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
               hintText: 'Search: "jeans", "phone"...',
               hintStyle: VoetjeTypography.caption().copyWith(
                     fontSize: 13,
-                    color: VoetjeColors.textMuted,
+                    color: VoetjeColors.textMutedOf(context),
                   ),
               prefixIcon:
-                  const Icon(Icons.search, color: VoetjeColors.textMuted),
+                  Icon(Icons.search, color: VoetjeColors.textMutedOf(context)),
               filled: true,
-              fillColor: VoetjeColors.surface,
+              fillColor: VoetjeColors.surfaceOf(context),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(VoetjeRadius.input),
-                borderSide: const BorderSide(
-                    color: VoetjeColors.border, width: 1.5),
+                borderSide: BorderSide(
+                    color: VoetjeColors.borderOf(context), width: 1.5),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(VoetjeRadius.input),
-                borderSide: const BorderSide(
-                    color: VoetjeColors.border, width: 1),
+                borderSide: BorderSide(
+                    color: VoetjeColors.borderOf(context), width: 1),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(VoetjeRadius.input),
-                borderSide: const BorderSide(
-                    color: VoetjeColors.primaryMedium, width: 1.5),
+                borderSide: BorderSide(
+                    color: VoetjeColors.primaryMediumOf(context), width: 1.5),
               ),
               contentPadding: const EdgeInsets.symmetric(
                   horizontal: 16, vertical: 14),
               suffixIcon: _searchCtrl.text.isNotEmpty
                   ? IconButton(
-                      icon: const Icon(Icons.clear,
-                          color: VoetjeColors.textMuted),
+                      icon: Icon(Icons.clear,
+                          color: VoetjeColors.textMutedOf(context)),
                       onPressed: () => _searchCtrl.clear())
                   : null,
             ),
@@ -125,13 +125,13 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                             decoration: BoxDecoration(
                               color: isSelected
                                   ? VoetjeColors.primary
-                                  : VoetjeColors.surface,
+                                  : VoetjeColors.surfaceOf(context),
                               borderRadius:
                                   BorderRadius.circular(VoetjeRadius.chip),
                               border: Border.all(
                                 color: isSelected
                                     ? VoetjeColors.primary
-                                    : VoetjeColors.border,
+                                    : VoetjeColors.borderOf(context),
                                 width: 1.5,
                               ),
                             ),
@@ -142,8 +142,8 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                                   cat.icon,
                                   size: VoetjeIconSize.smallIcon,
                                   color: isSelected
-                                      ? VoetjeColors.surface
-                                      : VoetjeColors.textMuted,
+                                      ? VoetjeColors.surfaceOf(context)
+                                      : VoetjeColors.textMutedOf(context),
                                 ),
                                 const SizedBox(width: 4),
                                 Text(
@@ -152,8 +152,8 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                                     fontSize: 12,
                                     fontWeight: FontWeight.w600,
                                     color: isSelected
-                                        ? VoetjeColors.surface
-                                        : VoetjeColors.textMuted,
+                                        ? VoetjeColors.surfaceOf(context)
+                                        : VoetjeColors.textMutedOf(context),
                                   ),
                                 ),
                               ],
@@ -234,7 +234,7 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
               // Impact card
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: VoetjeColors.surfaceOf(context),
                   borderRadius: BorderRadius.circular(VoetjeRadius.card),
                   boxShadow: const [
                     BoxShadow(
@@ -259,19 +259,19 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                         style: VoetjeTypography.caption()),
                     const SizedBox(height: 4),
                     Row(children: [
-                      const Icon(Icons.directions_car_outlined, size: VoetjeIconSize.smallIcon, color: VoetjeColors.textMuted),
+                      Icon(Icons.directions_car_outlined, size: VoetjeIconSize.smallIcon, color: VoetjeColors.textMutedOf(context)),
                       const SizedBox(width: 6),
                       Text('Driving ${drivingKm.toStringAsFixed(0)} km', style: VoetjeTypography.body()),
                     ]),
                     const SizedBox(height: 2),
                     Row(children: [
-                      const Icon(Icons.lunch_dining, size: VoetjeIconSize.smallIcon, color: VoetjeColors.textMuted),
+                      Icon(Icons.lunch_dining, size: VoetjeIconSize.smallIcon, color: VoetjeColors.textMutedOf(context)),
                       const SizedBox(width: 6),
                       Text('${beefMeals.toStringAsFixed(0)} beef meals', style: VoetjeTypography.body()),
                     ]),
                     const SizedBox(height: 2),
                     Row(children: [
-                      const Icon(Icons.smartphone_outlined, size: VoetjeIconSize.smallIcon, color: VoetjeColors.textMuted),
+                      Icon(Icons.smartphone_outlined, size: VoetjeIconSize.smallIcon, color: VoetjeColors.textMutedOf(context)),
                       const SizedBox(width: 6),
                       Text('${(item.co2KgNew / 0.008).toStringAsFixed(0)} smartphone charges', style: VoetjeTypography.body()),
                     ]),
@@ -298,13 +298,13 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                           padding: const EdgeInsets.symmetric(
                               vertical: 14, horizontal: 8),
                           decoration: BoxDecoration(
-                            color: VoetjeColors.surface,
+                            color: VoetjeColors.surfaceOf(context),
                             borderRadius:
                                 BorderRadius.circular(VoetjeRadius.card),
                             border: Border.all(
                               color: isSelected
-                                  ? VoetjeColors.primaryMedium
-                                  : VoetjeColors.border,
+                                  ? VoetjeColors.primaryMediumOf(context)
+                                  : VoetjeColors.borderOf(context),
                               width: isSelected ? 2 : 1,
                             ),
                           ),
@@ -315,8 +315,8 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                                   : Icons.recycling,
                               size: VoetjeIconSize.largeIcon,
                               color: isSelected
-                                  ? VoetjeColors.primaryMedium
-                                  : VoetjeColors.textMuted,
+                                  ? VoetjeColors.primaryMediumOf(context)
+                                  : VoetjeColors.textMutedOf(context),
                             ),
                             const SizedBox(height: 4),
                             Text(c.label,
@@ -324,8 +324,8 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                                       fontSize: 12,
                                       fontWeight: FontWeight.w600,
                                       color: isSelected
-                                          ? VoetjeColors.primaryMedium
-                                          : VoetjeColors.textPrimary,
+                                          ? VoetjeColors.primaryMediumOf(context)
+                                          : VoetjeColors.textPrimaryOf(context),
                                     )),
                             Text(
                                 '${ShoppingCalculator.co2(item, c).toStringAsFixed(1)} kg',
@@ -333,8 +333,8 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                                       fontWeight: FontWeight.w700,
                                       fontSize: 13,
                                       color: isSelected
-                                          ? VoetjeColors.primaryMedium
-                                          : VoetjeColors.textPrimary,
+                                          ? VoetjeColors.primaryMediumOf(context)
+                                          : VoetjeColors.textPrimaryOf(context),
                                     )),
                           ]),
                         ),
@@ -349,7 +349,7 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
                 Text(
                     'Choosing second-hand saves ${saved.toStringAsFixed(1)} kg CO₂!',
                     style: VoetjeTypography.caption().copyWith(
-                          color: VoetjeColors.primaryMedium,
+                          color: VoetjeColors.primaryMediumOf(context),
                           fontWeight: FontWeight.w600,
                           fontSize: 13,
                         )),
@@ -438,7 +438,7 @@ class _ItemCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: VoetjeColors.surface,
+          color: VoetjeColors.surfaceOf(context),
           borderRadius: BorderRadius.circular(VoetjeRadius.card),
           boxShadow: const [
             BoxShadow(
@@ -455,12 +455,12 @@ class _ItemCard extends StatelessWidget {
               width: VoetjeIconSize.smallContainer,
               height: VoetjeIconSize.smallContainer,
               decoration: BoxDecoration(
-                color: VoetjeColors.background,
+                color: VoetjeColors.backgroundOf(context),
                 borderRadius:
                     BorderRadius.circular(VoetjeIconSize.smallRadius),
               ),
               alignment: Alignment.center,
-              child: Icon(icon, size: VoetjeIconSize.smallIcon, color: VoetjeColors.textMuted),
+              child: Icon(icon, size: VoetjeIconSize.smallIcon, color: VoetjeColors.textMutedOf(context)),
             ),
             const SizedBox(width: 12),
             Expanded(
@@ -478,7 +478,7 @@ class _ItemCard extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(
                     horizontal: 8, vertical: 3),
                 decoration: BoxDecoration(
-                  color: VoetjeColors.background,
+                  color: VoetjeColors.backgroundOf(context),
                   borderRadius:
                       BorderRadius.circular(VoetjeRadius.chip),
                 ),

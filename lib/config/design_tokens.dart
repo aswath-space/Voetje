@@ -70,6 +70,53 @@ class VoetjeColors {
   static const Color darkTextMuted = Color(0xFF6A6A6A);
   static const Color darkAccent = Color(0xFF66BB6A);
 
+  // ── Theme-aware resolvers ──────────────────────────────────────────────
+  static bool isDark(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.dark;
+
+  static Color backgroundOf(BuildContext context) =>
+      isDark(context) ? darkBackground : background;
+  static Color surfaceOf(BuildContext context) =>
+      isDark(context) ? darkSurface : surface;
+  static Color surfaceSubtleOf(BuildContext context) =>
+      isDark(context) ? const Color(0xFF243024) : surfaceSubtle;
+  static Color stillToLogBgOf(BuildContext context) =>
+      isDark(context) ? const Color(0x33FFFFFF) : stillToLogBg;
+
+  static Color textPrimaryOf(BuildContext context) =>
+      isDark(context) ? darkTextPrimary : textPrimary;
+  static Color textSecondaryOf(BuildContext context) =>
+      isDark(context) ? darkTextSecondary : textSecondary;
+  static Color textMutedOf(BuildContext context) =>
+      isDark(context) ? const Color(0xFF8A9A8A) : textMuted;
+  static Color labelColorOf(BuildContext context) =>
+      isDark(context) ? darkTextSecondary : labelColor;
+  static Color captionColorOf(BuildContext context) =>
+      isDark(context) ? const Color(0xFF8A9A8A) : captionColor;
+  static Color primaryOf(BuildContext context) =>
+      isDark(context) ? darkAccent : primary;
+  static Color primaryMediumOf(BuildContext context) =>
+      isDark(context) ? darkAccent : primaryMedium;
+
+  static Color borderOf(BuildContext context) =>
+      isDark(context) ? const Color(0xFF3A4A3A) : border;
+  static Color dashedBorderOf(BuildContext context) =>
+      isDark(context) ? const Color(0xFF4A6A4A) : dashedBorder;
+  static Color dividerOf(BuildContext context) =>
+      isDark(context) ? const Color(0xFF2A3A2A) : divider;
+  static Color progressTrackOf(BuildContext context) =>
+      isDark(context) ? const Color(0xFF3A5A3A) : progressTrack;
+  static Color trackNeutralOf(BuildContext context) =>
+      isDark(context) ? const Color(0xFF3A3A3A) : trackNeutral;
+  static Color inactiveNavOf(BuildContext context) =>
+      isDark(context) ? darkTextMuted : inactiveNav;
+
+  static Color categoryBackgroundOf(BuildContext context, String category) {
+    if (!isDark(context)) return categoryBackground(category);
+    // In dark mode, use the category color at low opacity
+    return categoryColor(category).withValues(alpha: 0.15);
+  }
+
   // Helper methods
   static Color categoryColor(String category) {
     switch (category.toLowerCase()) {

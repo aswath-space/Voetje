@@ -141,9 +141,9 @@ class _TransportBodyState extends State<_TransportBody> {
             const SizedBox(height: 8),
             Container(
               decoration: BoxDecoration(
-                color: VoetjeColors.surface,
+                color: VoetjeColors.surfaceOf(context),
                 borderRadius: BorderRadius.circular(VoetjeRadius.input),
-                border: Border.all(color: VoetjeColors.border, width: 1.5),
+                border: Border.all(color: VoetjeColors.borderOf(context), width: 1.5),
               ),
               child: TextField(
                 controller: _distanceController,
@@ -154,18 +154,18 @@ class _TransportBodyState extends State<_TransportBody> {
                 ],
                 style: VoetjeTypography.caption().copyWith(
                       fontSize: 13,
-                      color: VoetjeColors.textPrimary,
+                      color: VoetjeColors.textPrimaryOf(context),
                     ),
                 decoration: InputDecoration(
                   hintText: 'Enter distance',
                   hintStyle: VoetjeTypography.caption().copyWith(
                         fontSize: 13,
-                        color: VoetjeColors.textMuted,
+                        color: VoetjeColors.textMutedOf(context),
                       ),
                   suffixText: provider.unitLabel,
                   suffixStyle: VoetjeTypography.caption().copyWith(
                         fontSize: 13,
-                        color: VoetjeColors.labelColor,
+                        color: VoetjeColors.labelColorOf(context),
                         fontWeight: FontWeight.w600,
                       ),
                   contentPadding: const EdgeInsets.symmetric(
@@ -200,7 +200,7 @@ class _TransportBodyState extends State<_TransportBody> {
                       '$d ${provider.unitLabel}',
                       style: VoetjeTypography.caption().copyWith(
                             fontSize: 10,
-                            color: VoetjeColors.textMuted,
+                            color: VoetjeColors.textMutedOf(context),
                           ),
                     ),
                   ),
@@ -220,9 +220,9 @@ class _TransportBodyState extends State<_TransportBody> {
               padding:
                   const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
               decoration: BoxDecoration(
-                color: VoetjeColors.surface,
+                color: VoetjeColors.surfaceOf(context),
                 borderRadius: BorderRadius.circular(VoetjeRadius.input),
-                border: Border.all(color: VoetjeColors.border, width: 1.5),
+                border: Border.all(color: VoetjeColors.borderOf(context), width: 1.5),
               ),
               child: Row(
                 children: [
@@ -250,7 +250,7 @@ class _TransportBodyState extends State<_TransportBody> {
                           : 'Just you',
                       style: VoetjeTypography.caption().copyWith(
                             fontSize: 12,
-                            color: VoetjeColors.textMuted,
+                            color: VoetjeColors.textMutedOf(context),
                           ),
                     ),
                   ),
@@ -263,25 +263,25 @@ class _TransportBodyState extends State<_TransportBody> {
           // Note field
           Container(
             decoration: BoxDecoration(
-              color: VoetjeColors.surface,
+              color: VoetjeColors.surfaceOf(context),
               borderRadius: BorderRadius.circular(VoetjeRadius.input),
-              border: Border.all(color: VoetjeColors.border, width: 1.5),
+              border: Border.all(color: VoetjeColors.borderOf(context), width: 1.5),
             ),
             child: TextField(
               controller: _noteController,
               style: VoetjeTypography.caption().copyWith(
                     fontSize: 13,
-                    color: VoetjeColors.textPrimary,
+                    color: VoetjeColors.textPrimaryOf(context),
                   ),
               decoration: InputDecoration(
                 hintText: 'Add a note (optional)',
                 hintStyle: VoetjeTypography.caption().copyWith(
                       fontSize: 13,
-                      color: VoetjeColors.textMuted,
+                      color: VoetjeColors.textMutedOf(context),
                     ),
-                prefixIcon: const Icon(
+                prefixIcon: Icon(
                   Icons.note_alt_outlined,
-                  color: VoetjeColors.textMuted,
+                  color: VoetjeColors.textMutedOf(context),
                   size: 18,
                 ),
                 contentPadding: const EdgeInsets.symmetric(
@@ -316,7 +316,7 @@ class _TransportBodyState extends State<_TransportBody> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: _canSave
                       ? VoetjeColors.primary
-                      : VoetjeColors.border,
+                      : VoetjeColors.borderOf(context),
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
@@ -352,7 +352,7 @@ class _TransportBodyState extends State<_TransportBody> {
         padding:
             const EdgeInsets.symmetric(horizontal: 16, vertical: 13),
         decoration: BoxDecoration(
-          color: VoetjeColors.surface,
+          color: VoetjeColors.surfaceOf(context),
           borderRadius: BorderRadius.circular(VoetjeRadius.input),
           boxShadow: [
             BoxShadow(
@@ -364,17 +364,17 @@ class _TransportBodyState extends State<_TransportBody> {
         ),
         child: Row(
           children: [
-            const Icon(
+            Icon(
               Icons.calendar_today,
               size: 18,
-              color: VoetjeColors.textMuted,
+              color: VoetjeColors.textMutedOf(context),
             ),
             const SizedBox(width: 12),
             Text(
               DateFormat('EEEE, MMM d, y').format(_selectedDate),
               style: VoetjeTypography.caption().copyWith(
                     fontSize: 13,
-                    color: VoetjeColors.textPrimary,
+                    color: VoetjeColors.textPrimaryOf(context),
                   ),
             ),
             const Spacer(),
@@ -383,7 +383,7 @@ class _TransportBodyState extends State<_TransportBody> {
                 padding: const EdgeInsets.symmetric(
                     horizontal: 8, vertical: 3),
                 decoration: BoxDecoration(
-                  color: VoetjeColors.primaryMedium.withValues(alpha: 0.12),
+                  color: VoetjeColors.primaryMediumOf(context).withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
@@ -391,7 +391,7 @@ class _TransportBodyState extends State<_TransportBody> {
                   style: VoetjeTypography.caption().copyWith(
                         fontSize: 10,
                         fontWeight: FontWeight.w600,
-                        color: VoetjeColors.primaryMedium,
+                        color: VoetjeColors.primaryMediumOf(context),
                       ),
                 ),
               ),
@@ -508,7 +508,7 @@ class _TransportBodyState extends State<_TransportBody> {
             ' \u00b7 ${_selectedMode?.label ?? ''}',
             style: VoetjeTypography.caption().copyWith(
                   fontSize: 11,
-                  color: VoetjeColors.textMuted,
+                  color: VoetjeColors.textMutedOf(context),
                 ),
           ),
         ],
@@ -604,13 +604,13 @@ class _PassengerButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: enabled
               ? VoetjeColors.primary.withValues(alpha: 0.1)
-              : VoetjeColors.border.withValues(alpha: 0.4),
+              : VoetjeColors.borderOf(context).withValues(alpha: 0.4),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Icon(
           icon,
           size: 16,
-          color: enabled ? VoetjeColors.primary : VoetjeColors.textMuted,
+          color: enabled ? VoetjeColors.primary : VoetjeColors.textMutedOf(context),
         ),
       ),
     );
@@ -683,12 +683,12 @@ class _ModeGrid extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: isSelected
                           ? VoetjeColors.primary
-                          : VoetjeColors.surface,
+                          : VoetjeColors.surfaceOf(context),
                       borderRadius: BorderRadius.circular(VoetjeRadius.chip),
                       border: isSelected
                           ? null
                           : Border.all(
-                              color: VoetjeColors.border, width: 1.5),
+                              color: VoetjeColors.borderOf(context), width: 1.5),
                       boxShadow: isSelected
                           ? [
                               BoxShadow(
@@ -716,8 +716,8 @@ class _ModeGrid extends StatelessWidget {
                           style: VoetjeTypography.caption().copyWith(
                                 fontSize: 12,
                                 color: isSelected
-                                    ? VoetjeColors.surface
-                                    : VoetjeColors.textSecondary,
+                                    ? VoetjeColors.surfaceOf(context)
+                                    : VoetjeColors.textSecondaryOf(context),
                               ),
                         ),
                       ],

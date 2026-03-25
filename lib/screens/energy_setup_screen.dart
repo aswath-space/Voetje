@@ -45,7 +45,7 @@ class _EnergySetupScreenState extends State<EnergySetupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: VoetjeColors.background,
+      backgroundColor: VoetjeColors.backgroundOf(context),
       appBar: AppBar(
         title: Text('Set up Energy Tracking',
             style: VoetjeTypography.pageTitle()),
@@ -69,8 +69,8 @@ class _EnergySetupScreenState extends State<EnergySetupScreen> {
                       height: 3,
                       decoration: BoxDecoration(
                         color: isFilled
-                            ? VoetjeColors.primaryMedium
-                            : VoetjeColors.progressTrack,
+                            ? VoetjeColors.primaryMediumOf(context)
+                            : VoetjeColors.progressTrackOf(context),
                         borderRadius: BorderRadius.circular(2),
                       ),
                     ),
@@ -179,12 +179,12 @@ class _SelectionCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: VoetjeColors.surfaceOf(context),
           borderRadius: BorderRadius.circular(VoetjeRadius.input),
           border: Border.all(
             color: selected
-                ? VoetjeColors.primaryMedium
-                : VoetjeColors.border,
+                ? VoetjeColors.primaryMediumOf(context)
+                : VoetjeColors.borderOf(context),
             width: selected ? 2 : 1.5,
           ),
           boxShadow: const [
@@ -206,8 +206,8 @@ class _SelectionCard extends StatelessWidget {
                   ? Icons.check_box
                   : Icons.check_box_outline_blank,
               color: selected
-                  ? VoetjeColors.primaryMedium
-                  : VoetjeColors.border,
+                  ? VoetjeColors.primaryMediumOf(context)
+                  : VoetjeColors.borderOf(context),
             ),
           ],
         ),
@@ -323,7 +323,7 @@ class _CountryPageState extends State<_CountryPage> {
                 '← Back to countries',
                 style: VoetjeTypography.caption().copyWith(
                       fontSize: 13,
-                      color: VoetjeColors.textMuted,
+                      color: VoetjeColors.textMutedOf(context),
                     ),
               ),
             ),
@@ -347,29 +347,29 @@ class _CountryPageState extends State<_CountryPage> {
               hintText: 'Search country...',
               hintStyle: VoetjeTypography.caption().copyWith(
                     fontSize: 13,
-                    color: VoetjeColors.textMuted,
+                    color: VoetjeColors.textMutedOf(context),
                   ),
-              prefixIcon: const Icon(Icons.search,
-                  color: VoetjeColors.textMuted),
+              prefixIcon: Icon(Icons.search,
+                  color: VoetjeColors.textMutedOf(context)),
               filled: true,
-              fillColor: Colors.white,
+              fillColor: VoetjeColors.surfaceOf(context),
               border: OutlineInputBorder(
                 borderRadius:
                     BorderRadius.circular(VoetjeRadius.input),
-                borderSide: const BorderSide(
-                    color: VoetjeColors.border, width: 1.5),
+                borderSide: BorderSide(
+                    color: VoetjeColors.borderOf(context), width: 1.5),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius:
                     BorderRadius.circular(VoetjeRadius.input),
-                borderSide: const BorderSide(
-                    color: VoetjeColors.border, width: 1.5),
+                borderSide: BorderSide(
+                    color: VoetjeColors.borderOf(context), width: 1.5),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius:
                     BorderRadius.circular(VoetjeRadius.input),
-                borderSide: const BorderSide(
-                    color: VoetjeColors.primaryMedium, width: 2),
+                borderSide: BorderSide(
+                    color: VoetjeColors.primaryMediumOf(context), width: 2),
               ),
               contentPadding: const EdgeInsets.symmetric(
                   horizontal: 16, vertical: 14),
@@ -431,7 +431,7 @@ class _HeatingPage extends StatelessWidget {
           const SizedBox(height: 6),
           Text('Select all that apply',
               style: VoetjeTypography.body()
-                  .copyWith(color: VoetjeColors.textMuted)),
+                  .copyWith(color: VoetjeColors.textMutedOf(context))),
           const SizedBox(height: 16),
           Expanded(
             child: GridView.count(
@@ -455,13 +455,13 @@ class _HeatingPage extends StatelessWidget {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: VoetjeColors.surfaceOf(context),
                       borderRadius:
                           BorderRadius.circular(VoetjeRadius.input),
                       border: Border.all(
                         color: isSelected
-                            ? VoetjeColors.primaryMedium
-                            : VoetjeColors.border,
+                            ? VoetjeColors.primaryMediumOf(context)
+                            : VoetjeColors.borderOf(context),
                         width: isSelected ? 2 : 1.5,
                       ),
                       boxShadow: const [
@@ -478,16 +478,16 @@ class _HeatingPage extends StatelessWidget {
                         children: [
                           Icon(type.icon, size: VoetjeIconSize.mediumIcon,
                               color: isSelected
-                                  ? VoetjeColors.primaryMedium
-                                  : VoetjeColors.textMuted),
+                                  ? VoetjeColors.primaryMediumOf(context)
+                                  : VoetjeColors.textMutedOf(context)),
                           Text(type.label,
                               textAlign: TextAlign.center,
                               style: VoetjeTypography.caption().copyWith(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w600,
                                     color: isSelected
-                                        ? VoetjeColors.primaryMedium
-                                        : VoetjeColors.textPrimary,
+                                        ? VoetjeColors.primaryMediumOf(context)
+                                        : VoetjeColors.textPrimaryOf(context),
                                   )),
                         ],
                       ),
@@ -609,11 +609,11 @@ class _MethodCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: VoetjeColors.surfaceOf(context),
           border: Border.all(
             color: badge != null
-                ? VoetjeColors.primaryMedium
-                : VoetjeColors.border,
+                ? VoetjeColors.primaryMediumOf(context)
+                : VoetjeColors.borderOf(context),
             width: badge != null ? 2 : 1.5,
           ),
           borderRadius: BorderRadius.circular(VoetjeRadius.input),
@@ -628,7 +628,7 @@ class _MethodCard extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Row(
           children: [
-            Icon(icon, size: VoetjeIconSize.largeIcon, color: VoetjeColors.primaryMedium),
+            Icon(icon, size: VoetjeIconSize.largeIcon, color: VoetjeColors.primaryMediumOf(context)),
             const SizedBox(width: 12),
             Expanded(
               child: Column(
@@ -658,7 +658,7 @@ class _MethodCard extends StatelessWidget {
                   ),
                   Text(subtitle,
                       style: VoetjeTypography.body()
-                          .copyWith(color: VoetjeColors.textMuted)),
+                          .copyWith(color: VoetjeColors.textMutedOf(context))),
                 ],
               ),
             ),

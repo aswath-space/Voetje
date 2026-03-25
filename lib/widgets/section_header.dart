@@ -29,7 +29,7 @@ class SectionHeader extends StatelessWidget {
               actionLabel!,
               style: VoetjeTypography.caption().copyWith(
                     fontWeight: FontWeight.w600,
-                    color: VoetjeColors.primaryMedium,
+                    color: VoetjeColors.primaryMediumOf(context),
                   ),
             ),
           ),

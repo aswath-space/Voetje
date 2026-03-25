@@ -40,9 +40,9 @@ class _HomeScreenState extends State<HomeScreen> {
         currentIndex: _currentIndex,
         onTap: (i) => setState(() => _currentIndex = i),
         elevation: 0,
-        backgroundColor: VoetjeColors.surface,
-        selectedItemColor: VoetjeColors.primary,
-        unselectedItemColor: VoetjeColors.inactiveNav,
+        backgroundColor: VoetjeColors.surfaceOf(context),
+        selectedItemColor: VoetjeColors.primaryOf(context),
+        unselectedItemColor: VoetjeColors.inactiveNavOf(context),
         type: BottomNavigationBarType.fixed,
         selectedLabelStyle: VoetjeTypography.caption().copyWith(
           fontSize: 11,
@@ -167,14 +167,14 @@ class _DashboardContent extends StatelessWidget {
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
                           decoration: BoxDecoration(
-                            color: VoetjeColors.surfaceSubtle,
+                            color: VoetjeColors.surfaceSubtleOf(context),
                             borderRadius: BorderRadius.circular(VoetjeRadius.chip),
                           ),
                           child: Text(
                             'This week: ${provider.weekCO2.toStringAsFixed(1)} kg \u2192',
                             style: VoetjeTypography.caption().copyWith(
                                   fontWeight: FontWeight.w600,
-                                  color: VoetjeColors.textSecondary,
+                                  color: VoetjeColors.textSecondaryOf(context),
                                 ),
                           ),
                         ),
@@ -232,18 +232,20 @@ class _DashboardContent extends StatelessWidget {
                         child: Center(
                           child: Column(
                             children: [
-                              const Icon(Icons.eco_outlined, size: VoetjeIconSize.xlargeIcon, color: VoetjeColors.textMuted),
+                              Icon(Icons.eco_outlined, size: VoetjeIconSize.xlargeIcon, color: VoetjeColors.textMutedOf(context)),
                               const SizedBox(height: 8),
                               Text(
                                 'Nothing logged yet today',
                                 style: VoetjeTypography.body().copyWith(
-                                      color: VoetjeColors.textMuted,
+                                      color: VoetjeColors.textMutedOf(context),
                                     ),
                               ),
                               const SizedBox(height: 4),
                               Text(
                                 'Tap "+ Add" to start tracking',
-                                style: VoetjeTypography.caption(),
+                                style: VoetjeTypography.caption().copyWith(
+                                  color: VoetjeColors.captionColorOf(context),
+                                ),
                               ),
                             ],
                           ),
@@ -256,7 +258,7 @@ class _DashboardContent extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: VoetjeColors.surfaceSubtle,
+                        color: VoetjeColors.surfaceSubtleOf(context),
                         borderRadius: BorderRadius.circular(VoetjeRadius.input),
                         boxShadow: const [
                           BoxShadow(
@@ -268,13 +270,13 @@ class _DashboardContent extends StatelessWidget {
                       ),
                       child: Row(
                         children: [
-                          Icon(nudge.icon, size: VoetjeIconSize.mediumIcon, color: VoetjeColors.primaryMedium),
+                          Icon(nudge.icon, size: VoetjeIconSize.mediumIcon, color: VoetjeColors.isDark(context) ? VoetjeColors.darkAccent : VoetjeColors.primaryMedium),
                           const SizedBox(width: 10),
                           Expanded(
                             child: Text(
                               nudge.text,
                               style: VoetjeTypography.caption().copyWith(
-                                    color: VoetjeColors.textSecondary,
+                                    color: VoetjeColors.textSecondaryOf(context),
                                   ),
                             ),
                           ),
@@ -408,7 +410,9 @@ class _CategoryLegend extends StatelessWidget {
             const SizedBox(width: 4),
             Text(
               cat[0].toUpperCase() + cat.substring(1),
-              style: VoetjeTypography.caption(),
+              style: VoetjeTypography.caption().copyWith(
+                color: VoetjeColors.captionColorOf(context),
+              ),
             ),
           ],
         );

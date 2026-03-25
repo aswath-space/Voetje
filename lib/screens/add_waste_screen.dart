@@ -54,7 +54,7 @@ class _AddWasteScreenState extends State<AddWasteScreen> {
                   ? 'Drag the slider to match your bin level.'
                   : 'Enter how many bags you put out this week.',
               style: VoetjeTypography.body().copyWith(
-                  color: VoetjeColors.textMuted),
+                  color: VoetjeColors.textMutedOf(context)),
             ),
             const SizedBox(height: 20),
             ...bins.map((bin) => isOwn
@@ -233,12 +233,12 @@ class _BinSlider extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 12),
       child: Container(
         decoration: BoxDecoration(
-          color: VoetjeColors.surface,
+          color: VoetjeColors.surfaceOf(context),
           borderRadius: BorderRadius.circular(VoetjeRadius.card),
           border: Border.all(
             color: isSelected
-                ? VoetjeColors.primaryMedium
-                : VoetjeColors.border,
+                ? VoetjeColors.primaryMediumOf(context)
+                : VoetjeColors.borderOf(context),
             width: isSelected ? 2 : 1.5,
           ),
           boxShadow: const [
@@ -259,7 +259,7 @@ class _BinSlider extends StatelessWidget {
               Text(bin.label,
                   style: VoetjeTypography.caption().copyWith(
                         fontWeight: FontWeight.w700,
-                        color: VoetjeColors.textPrimary,
+                        color: VoetjeColors.textPrimaryOf(context),
                       )),
               const Spacer(),
               _BinIcon(fill: fill, color: _binColor(bin)),
@@ -269,7 +269,7 @@ class _BinSlider extends StatelessWidget {
               data: SliderTheme.of(context).copyWith(
                 activeTrackColor: _binColor(bin),
                 thumbColor: _binColor(bin),
-                inactiveTrackColor: VoetjeColors.border,
+                inactiveTrackColor: VoetjeColors.borderOf(context),
                 overlayColor:
                     _binColor(bin).withValues(alpha: 0.12),
               ),
@@ -324,12 +324,12 @@ class _BagCounter extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 12),
       child: Container(
         decoration: BoxDecoration(
-          color: VoetjeColors.surface,
+          color: VoetjeColors.surfaceOf(context),
           borderRadius: BorderRadius.circular(VoetjeRadius.card),
           border: Border.all(
             color: isSelected
-                ? VoetjeColors.primaryMedium
-                : VoetjeColors.border,
+                ? VoetjeColors.primaryMediumOf(context)
+                : VoetjeColors.borderOf(context),
             width: isSelected ? 2 : 1.5,
           ),
           boxShadow: const [
@@ -344,7 +344,7 @@ class _BagCounter extends StatelessWidget {
             const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Row(
           children: [
-            Icon(bin.icon, size: VoetjeIconSize.mediumIcon, color: VoetjeColors.textMuted),
+            Icon(bin.icon, size: VoetjeIconSize.mediumIcon, color: VoetjeColors.textMutedOf(context)),
             const SizedBox(width: 10),
             Expanded(
               child: Column(
@@ -353,7 +353,7 @@ class _BagCounter extends StatelessWidget {
                   Text(bin.label,
                       style: VoetjeTypography.caption().copyWith(
                             fontWeight: FontWeight.w700,
-                            color: VoetjeColors.textPrimary,
+                            color: VoetjeColors.textPrimaryOf(context),
                           )),
                   Text(
                       '≈ ${WasteCalculator.kgFromBagCount(count.toDouble()).toStringAsFixed(0)} kg',
@@ -363,19 +363,19 @@ class _BagCounter extends StatelessWidget {
             ),
             IconButton(
               onPressed: count > 0 ? () => onChanged(count - 1) : null,
-              icon: const Icon(Icons.remove_circle_outline,
-                  color: VoetjeColors.primaryMedium),
+              icon: Icon(Icons.remove_circle_outline,
+                  color: VoetjeColors.primaryMediumOf(context)),
             ),
             Text('$count',
                 style: VoetjeTypography.pageQuestion().copyWith(
                       fontSize: 22,
-                      color: VoetjeColors.textPrimary,
+                      color: VoetjeColors.textPrimaryOf(context),
                     )),
             IconButton(
               onPressed:
                   count < 20 ? () => onChanged(count + 1) : null,
-              icon: const Icon(Icons.add_circle_outline,
-                  color: VoetjeColors.primaryMedium),
+              icon: Icon(Icons.add_circle_outline,
+                  color: VoetjeColors.primaryMediumOf(context)),
             ),
             const SizedBox(width: 4),
             Text('bags', style: VoetjeTypography.caption()),
@@ -474,10 +474,10 @@ class _CO2PreviewCard extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        color: VoetjeColors.surface,
+        color: VoetjeColors.surfaceOf(context),
         borderRadius: BorderRadius.circular(VoetjeRadius.card),
         border: Border.all(
-            color: VoetjeColors.primaryMedium, width: 1.5),
+            color: VoetjeColors.primaryMediumOf(context), width: 1.5),
         boxShadow: const [
           BoxShadow(
             color: VoetjeColors.shadowLight,
@@ -491,13 +491,13 @@ class _CO2PreviewCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(children: [
-            const Icon(Icons.recycling, color: VoetjeColors.primaryMedium),
+            Icon(Icons.recycling, color: VoetjeColors.primaryMediumOf(context)),
             const SizedBox(width: 8),
             Text(
               '${totalCO2.toStringAsFixed(2)} kg CO\u2082 this week',
               style: VoetjeTypography.caption().copyWith(
                     fontWeight: FontWeight.w700,
-                    color: VoetjeColors.primaryMedium,
+                    color: VoetjeColors.primaryMediumOf(context),
                   ),
             ),
           ]),
@@ -525,7 +525,7 @@ class _SetupPrompt extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.recycling, size: VoetjeIconSize.xlargeIcon, color: VoetjeColors.primaryMedium),
+            Icon(Icons.recycling, size: VoetjeIconSize.xlargeIcon, color: VoetjeColors.primaryMediumOf(context)),
             const SizedBox(height: 16),
             Text(
               'Set up Waste tracking first',
@@ -536,7 +536,7 @@ class _SetupPrompt extends StatelessWidget {
               'Tell us which bins you use — takes 30 seconds.',
               textAlign: TextAlign.center,
               style: VoetjeTypography.body()
-                  .copyWith(color: VoetjeColors.textMuted),
+                  .copyWith(color: VoetjeColors.textMutedOf(context)),
             ),
             const SizedBox(height: 20),
             SizedBox(

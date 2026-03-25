@@ -21,12 +21,12 @@ class EntryTile extends StatelessWidget {
   final VoidCallback? onTap;
   final VoidCallback? onDismissed;
 
-  Widget _buildTile() {
+  Widget _buildTile(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: VoetjeColors.surface,
+          color: VoetjeColors.surfaceOf(context),
           borderRadius: BorderRadius.circular(VoetjeRadius.input),
           boxShadow: const [
             BoxShadow(
@@ -44,7 +44,7 @@ class EntryTile extends StatelessWidget {
               width: VoetjeIconSize.smallContainer,
               height: VoetjeIconSize.smallContainer,
               decoration: BoxDecoration(
-                color: VoetjeColors.categoryBackground(category),
+                color: VoetjeColors.categoryBackgroundOf(context, category),
                 borderRadius: BorderRadius.circular(VoetjeIconSize.smallRadius),
               ),
               alignment: Alignment.center,
@@ -61,13 +61,15 @@ class EntryTile extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: VoetjeTypography.bodyEmphasis(),
+                    style: VoetjeTypography.bodyEmphasis().copyWith(
+                      color: VoetjeColors.textPrimaryOf(context),
+                    ),
                   ),
                   if (subtitle != null)
                     Text(
                       subtitle!,
                       style: VoetjeTypography.caption().copyWith(
-                            color: VoetjeColors.captionColor,
+                            color: VoetjeColors.captionColorOf(context),
                           ),
                     ),
                 ],
@@ -76,7 +78,7 @@ class EntryTile extends StatelessWidget {
             Text(
               kgValue,
               style: VoetjeTypography.bodyEmphasis().copyWith(
-                    color: VoetjeColors.textSecondary,
+                    color: VoetjeColors.textSecondaryOf(context),
                   ),
             ),
           ],
@@ -101,9 +103,9 @@ class EntryTile extends StatelessWidget {
           child: const Icon(Icons.delete_outline, color: VoetjeColors.surface, size: 20),
         ),
         onDismissed: (_) => onDismissed!(),
-        child: _buildTile(),
+        child: _buildTile(context),
       );
     }
-    return _buildTile();
+    return _buildTile(context);
   }
 }

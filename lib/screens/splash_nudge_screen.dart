@@ -72,7 +72,7 @@ class _SplashNudgeScreenState extends State<SplashNudgeScreen>
     final msg = _message;
 
     return Scaffold(
-      backgroundColor: VoetjeColors.background,
+      backgroundColor: VoetjeColors.backgroundOf(context),
       body: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: () => _navigate(provider),
@@ -102,14 +102,14 @@ class _SplashNudgeScreenState extends State<SplashNudgeScreen>
                           Icon(
                             msg.icon,
                             size: VoetjeIconSize.mediumIcon,
-                            color: VoetjeColors.primaryMedium,
+                            color: VoetjeColors.primaryMediumOf(context),
                           ),
                           const SizedBox(height: 16),
                           Text(
                             msg.text,
                             style: VoetjeTypography.caption().copyWith(
                                   fontSize: 13,
-                                  color: VoetjeColors.textSecondary,
+                                  color: VoetjeColors.textSecondaryOf(context),
                                   height: 1.6,
                                 ),
                             textAlign: TextAlign.center,
@@ -140,14 +140,14 @@ class _SplashNudgeScreenState extends State<SplashNudgeScreen>
                           Container(
                             height: 3,
                             width: double.infinity,
-                            color: VoetjeColors.progressTrack,
+                            color: VoetjeColors.progressTrackOf(context),
                           ),
                           // Fill
                           FractionallySizedBox(
                             widthFactor: _progress.value,
                             child: Container(
                               height: 3,
-                              color: VoetjeColors.primaryMedium,
+                              color: VoetjeColors.primaryMediumOf(context),
                             ),
                           ),
                         ],
