@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 class VoetjeColors {
   // Backgrounds
   static const Color background = Color(0xFFE4F0E2);
-  static const Color surface = Color(0xFFFFFFFF);
+  static const Color surface = Color(0xFFFAFBFA);
   static const Color surfaceSubtle = Color(0xFFFAFAFA);
   static const Color stillToLogBg = Color(0x99FFFFFF);
 
@@ -110,11 +110,15 @@ class VoetjeColors {
       isDark(context) ? const Color(0xFF3A3A3A) : trackNeutral;
   static Color inactiveNavOf(BuildContext context) =>
       isDark(context) ? darkTextMuted : inactiveNav;
+  static Color disabledButtonOf(BuildContext context) =>
+      isDark(context) ? const Color(0xFF3A4A3A) : border;
+  static Color disabledButtonFgOf(BuildContext context) =>
+      isDark(context) ? const Color(0xFF6A6A6A) : const Color(0xFFA0B8A0);
 
   static Color categoryBackgroundOf(BuildContext context, String category) {
     if (!isDark(context)) return categoryBackground(category);
-    // In dark mode, use the category color at low opacity
-    return categoryColor(category).withValues(alpha: 0.15);
+    // In dark mode, use the category color at higher opacity for visibility
+    return categoryColor(category).withValues(alpha: 0.20);
   }
 
   // Helper methods

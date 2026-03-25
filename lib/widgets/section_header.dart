@@ -20,7 +20,9 @@ class SectionHeader extends StatelessWidget {
       children: [
         Text(
           label.toUpperCase(),
-          style: VoetjeTypography.sectionLabel(),
+          style: VoetjeTypography.sectionLabel().copyWith(
+            color: VoetjeColors.labelColorOf(context),
+          ),
         ),
         if (actionLabel != null)
           GestureDetector(

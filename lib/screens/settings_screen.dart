@@ -231,17 +231,17 @@ class SettingsScreen extends StatelessWidget {
                     ),
                   ),
                   const _RowDivider(),
-                  const _RowItem(
+                  Builder(builder: (context) => _RowItem(
                     icon: Icons.info_outline,
                     label: 'About Voetje',
                     trailing: Text(
                       'v1.0.0',
                       style: TextStyle(
                         fontSize: 13,
-                        color: VoetjeColors.captionColor,
+                        color: VoetjeColors.captionColorOf(context),
                       ),
                     ),
-                  ),
+                  )),
                 ],
               ),
             ],

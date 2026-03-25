@@ -340,7 +340,7 @@ class _WeeklySummaryCard extends StatelessWidget {
                 fontSize: 12,
                 fontWeight: FontWeight.w700,
                 color: isDown
-                    ? (isDark ? VoetjeColors.darkAccent : VoetjeColors.primaryMedium)
+                    ? VoetjeColors.primaryMediumOf(context)
                     : VoetjeColors.trackAmberText,
               ),
         ),
@@ -377,7 +377,7 @@ class _WeeklySummaryCard extends StatelessWidget {
           Text(
             '${weekCO2.toStringAsFixed(1)} kg CO₂',
             style: VoetjeTypography.sectionHeader().copyWith(
-                  color: isDark ? VoetjeColors.darkAccent : VoetjeColors.primaryMedium,
+                  color: VoetjeColors.primaryMediumOf(context),
                 ),
           ),
           const SizedBox(height: 12),
@@ -400,7 +400,6 @@ class _MiniBarChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = VoetjeColors.isDark(context);
     final now = DateTime.now();
     final days = List.generate(7, (i) {
       return DateTime(now.year, now.month, now.day)
@@ -477,7 +476,7 @@ class _MiniBarChart extends StatelessWidget {
           final overBudget = value > budgetThreshold;
           final Color barColor;
           if (isToday) {
-            barColor = isDark ? VoetjeColors.darkAccent : VoetjeColors.primaryMedium;
+            barColor = VoetjeColors.primaryMediumOf(context);
           } else if (overBudget) {
             barColor = VoetjeColors.trackAmberText;
           } else {
@@ -537,7 +536,7 @@ class _FilterChip extends StatelessWidget {
           style: VoetjeTypography.caption().copyWith(
                 fontSize: 13,
                 fontWeight: FontWeight.w600,
-                color: selected ? VoetjeColors.surfaceOf(context) : VoetjeColors.textMutedOf(context),
+                color: selected ? Colors.white : VoetjeColors.textMutedOf(context),
               ),
         ),
       ),

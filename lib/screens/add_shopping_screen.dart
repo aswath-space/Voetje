@@ -280,7 +280,9 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
               ),
               const SizedBox(height: 20),
               Text('WAS THIS...',
-                  style: VoetjeTypography.sectionLabel()),
+                  style: VoetjeTypography.sectionLabel().copyWith(
+                    color: VoetjeColors.labelColorOf(context),
+                  )),
               const SizedBox(height: 10),
 
               // Condition selector

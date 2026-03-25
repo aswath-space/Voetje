@@ -95,7 +95,7 @@ class _AddWasteScreenState extends State<AddWasteScreen> {
                   backgroundColor: VoetjeColors.primary,
                   foregroundColor: Colors.white,
                   disabledBackgroundColor:
-                      VoetjeColors.border,
+                      VoetjeColors.disabledButtonOf(context),
                   elevation: 2,
                   shadowColor:
                       VoetjeColors.primary.withValues(alpha: 0.4),

@@ -296,7 +296,9 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
           const SizedBox(height: 20),
 
           // Electricity section
-          Text('ELECTRICITY', style: VoetjeTypography.sectionLabel()),
+          Text('ELECTRICITY', style: VoetjeTypography.sectionLabel().copyWith(
+            color: VoetjeColors.labelColorOf(context),
+          )),
           const SizedBox(height: 10),
           Container(
             decoration: BoxDecoration(
@@ -368,7 +370,9 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
           // Gas section — only shown for countries with gas heating data
           if (country.hasGas) ...[
             const SizedBox(height: 20),
-            Text('GAS', style: VoetjeTypography.sectionLabel()),
+            Text('GAS', style: VoetjeTypography.sectionLabel().copyWith(
+              color: VoetjeColors.labelColorOf(context),
+            )),
             const SizedBox(height: 10),
             Container(
               decoration: BoxDecoration(

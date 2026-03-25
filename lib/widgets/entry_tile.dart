@@ -100,7 +100,7 @@ class EntryTile extends StatelessWidget {
             color: VoetjeColors.destructive,
             borderRadius: BorderRadius.circular(VoetjeRadius.input),
           ),
-          child: const Icon(Icons.delete_outline, color: VoetjeColors.surface, size: 20),
+          child: const Icon(Icons.delete_outline, color: Colors.white, size: 20),
         ),
         onDismissed: (_) => onDismissed!(),
         child: _buildTile(context),

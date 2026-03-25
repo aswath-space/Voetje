@@ -113,7 +113,7 @@ class _GreenPillButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: VoetjeColors.primary,
           foregroundColor: Colors.white,
-          disabledBackgroundColor: VoetjeColors.border,
+          disabledBackgroundColor: VoetjeColors.disabledButtonOf(context),
           elevation: 2,
           shadowColor: VoetjeColors.primary.withValues(alpha: 0.4),
           shape: RoundedRectangleBorder(

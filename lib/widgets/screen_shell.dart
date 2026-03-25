@@ -98,7 +98,9 @@ class VoetjeScreenShell extends StatelessWidget {
       backgroundColor: VoetjeColors.backgroundOf(context),
       appBar: title != null
           ? AppBar(
-              title: Text(title!, style: VoetjeTypography.pageTitle()),
+              title: Text(title!, style: VoetjeTypography.pageTitle().copyWith(
+                color: VoetjeColors.primaryOf(context),
+              )),
               backgroundColor: Colors.transparent,
               elevation: 0,
               leading: showBackButton ? const BackButton() : null,

@@ -270,7 +270,7 @@ class _DashboardContent extends StatelessWidget {
                       ),
                       child: Row(
                         children: [
-                          Icon(nudge.icon, size: VoetjeIconSize.mediumIcon, color: VoetjeColors.isDark(context) ? VoetjeColors.darkAccent : VoetjeColors.primaryMedium),
+                          Icon(nudge.icon, size: VoetjeIconSize.mediumIcon, color: VoetjeColors.primaryMediumOf(context)),
                           const SizedBox(width: 10),
                           Expanded(
                             child: Text(

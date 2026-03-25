@@ -109,7 +109,9 @@ class _TransportBodyState extends State<_TransportBody> {
 
           Text(
             'HOW DID YOU TRAVEL?',
-            style: VoetjeTypography.sectionLabel(),
+            style: VoetjeTypography.sectionLabel().copyWith(
+              color: VoetjeColors.labelColorOf(context),
+            ),
           ),
           const SizedBox(height: 12),
           _ModeGrid(selectedMode: _selectedMode, onSelect: _selectMode),
@@ -136,7 +138,9 @@ class _TransportBodyState extends State<_TransportBody> {
           ] else ...[
             Text(
               'DISTANCE',
-              style: VoetjeTypography.sectionLabel(),
+              style: VoetjeTypography.sectionLabel().copyWith(
+              color: VoetjeColors.labelColorOf(context),
+            ),
             ),
             const SizedBox(height: 8),
             Container(
@@ -193,7 +197,7 @@ class _TransportBodyState extends State<_TransportBody> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 12, vertical: 6),
                     decoration: BoxDecoration(
-                      color: VoetjeColors.stillToLogBg,
+                      color: VoetjeColors.stillToLogBgOf(context),
                       borderRadius: BorderRadius.circular(VoetjeRadius.input),
                     ),
                     child: Text(
@@ -213,7 +217,9 @@ class _TransportBodyState extends State<_TransportBody> {
           if (_showPassengers) ...[
             Text(
               'PASSENGERS (INCLUDING YOU)',
-              style: VoetjeTypography.sectionLabel(),
+              style: VoetjeTypography.sectionLabel().copyWith(
+              color: VoetjeColors.labelColorOf(context),
+            ),
             ),
             const SizedBox(height: 10),
             Container(
@@ -316,7 +322,7 @@ class _TransportBodyState extends State<_TransportBody> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: _canSave
                       ? VoetjeColors.primary
-                      : VoetjeColors.borderOf(context),
+                      : VoetjeColors.disabledButtonOf(context),
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
@@ -477,7 +483,9 @@ class _TransportBodyState extends State<_TransportBody> {
       children: [
         Text(
           'FLIGHT ROUTE',
-          style: VoetjeTypography.sectionLabel(),
+          style: VoetjeTypography.sectionLabel().copyWith(
+            color: VoetjeColors.labelColorOf(context),
+          ),
         ),
         const SizedBox(height: 8),
         AirportPicker(
@@ -666,7 +674,9 @@ class _ModeGrid extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 8, top: 4),
               child: Text(
                 group.key,
-                style: VoetjeTypography.sectionLabel(),
+                style: VoetjeTypography.sectionLabel().copyWith(
+              color: VoetjeColors.labelColorOf(context),
+            ),
               ),
             ),
             Wrap(
