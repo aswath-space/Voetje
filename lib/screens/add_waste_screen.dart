@@ -7,6 +7,7 @@ import 'package:carbon_tracker/providers/emission_provider.dart';
 import 'package:carbon_tracker/screens/waste_setup_screen.dart';
 import 'package:carbon_tracker/services/waste_calculator.dart';
 import 'package:carbon_tracker/widgets/screen_shell.dart';
+import 'package:carbon_tracker/widgets/voetje_button.dart';
 
 class AddWasteScreen extends StatefulWidget {
   const AddWasteScreen({super.key});
@@ -79,32 +80,12 @@ class _AddWasteScreenState extends State<AddWasteScreen> {
                   isOwn: isOwn),
               const SizedBox(height: 24),
             ],
-            SizedBox(
-              width: double.infinity,
-              height: 52,
-              child: ElevatedButton.icon(
-                onPressed: _hasAnyInput(bins, isOwn)
-                    ? () => _save(context, setup)
-                    : null,
-                icon: const Icon(Icons.check, color: Colors.white),
-                label: Text(
-                  'Save This Week',
-                  style: VoetjeTypography.buttonLabel(),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: VoetjeColors.primary,
-                  foregroundColor: Colors.white,
-                  disabledBackgroundColor:
-                      VoetjeColors.disabledButtonOf(context),
-                  elevation: 2,
-                  shadowColor:
-                      VoetjeColors.primary.withValues(alpha: 0.4),
-                  shape: RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.circular(VoetjeRadius.card),
-                  ),
-                ),
-              ),
+            VoetjeButton(
+              label: 'Save This Week',
+              icon: Icons.check,
+              onPressed: _hasAnyInput(bins, isOwn)
+                  ? () => _save(context, setup)
+                  : null,
             ),
             const SizedBox(height: 32),
           ],
@@ -296,10 +277,10 @@ class _BinSlider extends StatelessWidget {
 
   Color _binColor(BinType bin) {
     return switch (bin) {
-      BinType.generalWaste => Colors.grey.shade600,
-      BinType.recycling => Colors.blue,
-      BinType.foodWaste => Colors.amber.shade700,
-      BinType.compost => Colors.green,
+      BinType.generalWaste => VoetjeColors.binGeneralWaste,
+      BinType.recycling => VoetjeColors.binRecycling,
+      BinType.foodWaste => VoetjeColors.binFoodWaste,
+      BinType.compost => VoetjeColors.binCompost,
     };
   }
 }
@@ -399,7 +380,13 @@ class _BinIcon extends StatelessWidget {
     return SizedBox(
       width: 36,
       height: 44,
-      child: CustomPaint(painter: _BinPainter(fill: fill, color: color)),
+      child: CustomPaint(
+        painter: _BinPainter(
+          fill: fill,
+          color: color,
+          borderColor: VoetjeColors.borderOf(context),
+        ),
+      ),
     );
   }
 }
@@ -407,13 +394,14 @@ class _BinIcon extends StatelessWidget {
 class _BinPainter extends CustomPainter {
   final double fill;
   final Color color;
+  final Color borderColor;
 
-  _BinPainter({required this.fill, required this.color});
+  _BinPainter({required this.fill, required this.color, required this.borderColor});
 
   @override
   void paint(Canvas canvas, Size size) {
     final outline = Paint()
-      ..color = Colors.grey.shade400
+      ..color = borderColor
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.5;
     final fill_ = Paint()
@@ -435,7 +423,7 @@ class _BinPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_BinPainter old) =>
-      old.fill != fill || old.color != color;
+      old.fill != fill || old.color != color || old.borderColor != borderColor;
 }
 
 // ─── CO2 preview card ─────────────────────────────────────────────────────────
@@ -539,28 +527,11 @@ class _SetupPrompt extends StatelessWidget {
                   .copyWith(color: VoetjeColors.textMutedOf(context)),
             ),
             const SizedBox(height: 20),
-            SizedBox(
-              width: double.infinity,
-              height: 52,
-              child: ElevatedButton(
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (_) => const WasteSetupScreen()),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: VoetjeColors.primary,
-                  foregroundColor: Colors.white,
-                  elevation: 2,
-                  shape: RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.circular(VoetjeRadius.card),
-                  ),
-                ),
-                child: Text(
-                  'Set up now',
-                  style: VoetjeTypography.buttonLabel(),
-                ),
+            VoetjeButton(
+              label: 'Set up now',
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const WasteSetupScreen()),
               ),
             ),
           ],

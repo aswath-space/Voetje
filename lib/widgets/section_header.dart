@@ -25,8 +25,13 @@ class SectionHeader extends StatelessWidget {
           ),
         ),
         if (actionLabel != null)
-          GestureDetector(
-            onTap: onAction,
+          TextButton(
+            onPressed: onAction,
+            style: TextButton.styleFrom(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              minimumSize: Size.zero,
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            ),
             child: Text(
               actionLabel!,
               style: VoetjeTypography.caption().copyWith(

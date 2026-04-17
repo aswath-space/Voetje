@@ -8,6 +8,7 @@ import 'package:carbon_tracker/services/energy_calculator.dart';
 import 'package:carbon_tracker/providers/emission_provider.dart';
 import 'package:carbon_tracker/screens/energy_setup_screen.dart';
 import 'package:carbon_tracker/widgets/screen_shell.dart';
+import 'package:carbon_tracker/widgets/voetje_button.dart';
 
 class AddEnergyScreen extends StatefulWidget {
   const AddEnergyScreen({super.key});
@@ -229,26 +230,12 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
                   style: VoetjeTypography.body(),
                 ),
                 const SizedBox(height: 24),
-                SizedBox(
-                  width: double.infinity,
-                  height: 52,
-                  child: ElevatedButton(
-                    onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (_) => const EnergySetupScreen()),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: VoetjeColors.primary,
-                      foregroundColor: Colors.white,
-                      elevation: 2,
-                      shape: RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.circular(VoetjeRadius.card),
-                      ),
-                    ),
-                    child: Text('Set up now',
-                        style: VoetjeTypography.buttonLabel()),
+                VoetjeButton(
+                  label: 'Set up now',
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => const EnergySetupScreen()),
                   ),
                 ),
               ],
@@ -420,28 +407,7 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
           ],
 
           const SizedBox(height: 32),
-          SizedBox(
-            width: double.infinity,
-            height: 52,
-            child: ElevatedButton(
-              onPressed: _save,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: VoetjeColors.primary,
-                foregroundColor: Colors.white,
-                elevation: 2,
-                shadowColor:
-                    VoetjeColors.primary.withValues(alpha: 0.4),
-                shape: RoundedRectangleBorder(
-                  borderRadius:
-                      BorderRadius.circular(VoetjeRadius.card),
-                ),
-              ),
-              child: Text(
-                'Save Bill',
-                style: VoetjeTypography.buttonLabel(),
-              ),
-            ),
-          ),
+          VoetjeButton(label: 'Save Bill', onPressed: _save),
         ],
       ),
     );
@@ -522,22 +488,9 @@ class _AddEnergyScreenState extends State<AddEnergyScreen> {
               style: VoetjeTypography.body(),
             ),
             const SizedBox(height: 12),
-            SizedBox(
-              width: double.infinity,
-              height: 48,
-              child: ElevatedButton(
-                onPressed: () => Navigator.pop(context),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: VoetjeColors.primary,
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.circular(VoetjeRadius.card),
-                  ),
-                ),
-                child: Text('Got it',
-                    style: VoetjeTypography.buttonLabel().copyWith(fontSize: 14)),
-              ),
+            VoetjeButton(
+              label: 'Got it',
+              onPressed: () => Navigator.pop(context),
             ),
           ],
         ),
@@ -594,8 +547,7 @@ class _MonthPickerDialogState extends State<_MonthPickerDialog> {
               ),
               Text(
                 '${_month.year}/${_month.month.toString().padLeft(2, '0')}',
-                style: const TextStyle(
-                    fontSize: 20, fontWeight: FontWeight.bold),
+                style: VoetjeTypography.pageQuestion().copyWith(fontSize: 20),
               ),
               IconButton(
                 icon: const Icon(Icons.chevron_right),

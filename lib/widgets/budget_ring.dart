@@ -2,6 +2,7 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import '../config/design_tokens.dart';
+// Ring dimension tokens are defined in VoetjeRing (design_tokens.dart).
 
 class BudgetRing extends StatefulWidget {
   final double totalCO2;
@@ -21,7 +22,26 @@ class BudgetRing extends StatefulWidget {
   State<BudgetRing> createState() => _BudgetRingState();
 }
 
-class _BudgetRingState extends State<BudgetRing> {
+class _BudgetRingState extends State<BudgetRing>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _ctrl;
+
+  @override
+  void initState() {
+    super.initState();
+    _ctrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 400),
+    );
+    _ctrl.forward();
+  }
+
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final ratio = widget.budget > 0 ? widget.totalCO2 / widget.budget : 0.0;
@@ -126,11 +146,9 @@ class _BudgetRingState extends State<BudgetRing> {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          TweenAnimationBuilder<double>(
-            tween: Tween<double>(begin: 0.0, end: 1.0),
-            duration: const Duration(milliseconds: 400),
-            curve: Curves.easeOutCubic,
-            builder: (context, animValue, child) {
+          AnimatedBuilder(
+            animation: _ctrl,
+            builder: (context, child) {
               return CustomPaint(
                 size: Size(widget.size, widget.size),
                 painter: _BudgetRingPainter(
@@ -138,8 +156,10 @@ class _BudgetRingState extends State<BudgetRing> {
                   budget: widget.budget,
                   categoryBreakdown: widget.categoryBreakdown,
                   ratio: ratio,
-                  animationValue: animValue,
+                  animationValue: Curves.easeOutCubic.transform(_ctrl.value),
                   trackNeutralColor: VoetjeColors.trackNeutralOf(context),
+                  trackAmberColor: VoetjeColors.trackAmberOf(context),
+                  trackCoralColor: VoetjeColors.trackCoralOf(context),
                   borderColor: VoetjeColors.borderOf(context),
                 ),
               );
@@ -159,9 +179,11 @@ class _BudgetRingPainter extends CustomPainter {
   final double ratio;
   final double animationValue;
   final Color trackNeutralColor;
+  final Color trackAmberColor;
+  final Color trackCoralColor;
   final Color borderColor;
 
-  static const double strokeWidth = 20.0;
+  static const double strokeWidth = VoetjeRing.strokeWidth;
   static const double gapDegrees = 2.0;
   static const double gapRadians = gapDegrees * math.pi / 180.0;
 
@@ -172,6 +194,8 @@ class _BudgetRingPainter extends CustomPainter {
     required this.ratio,
     this.animationValue = 1.0,
     required this.trackNeutralColor,
+    required this.trackAmberColor,
+    required this.trackCoralColor,
     required this.borderColor,
   });
 
@@ -181,15 +205,14 @@ class _BudgetRingPainter extends CustomPainter {
     final radius = (size.width / 2) - strokeWidth / 2;
     final rect = Rect.fromCircle(center: center, radius: radius);
 
-    // Determine track color based on ratio
-    // Note: trackNeutral uses a resolver but amber/coral are vivid enough for both themes
+    // Determine track color based on ratio — all resolved from context-aware tokens
     Color trackColor;
     if (ratio >= 1.0) {
       trackColor = Colors.transparent;
     } else if (ratio >= 0.9) {
-      trackColor = VoetjeColors.trackCoral;
+      trackColor = trackCoralColor;
     } else if (ratio >= 0.6) {
-      trackColor = VoetjeColors.trackAmber;
+      trackColor = trackAmberColor;
     } else {
       trackColor = trackNeutralColor;
     }
@@ -259,6 +282,8 @@ class _BudgetRingPainter extends CustomPainter {
         oldDelegate.ratio != ratio ||
         oldDelegate.animationValue != animationValue ||
         oldDelegate.trackNeutralColor != trackNeutralColor ||
+        oldDelegate.trackAmberColor != trackAmberColor ||
+        oldDelegate.trackCoralColor != trackCoralColor ||
         oldDelegate.borderColor != borderColor;
   }
 }

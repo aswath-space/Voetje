@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:carbon_tracker/config/design_tokens.dart';
 import 'package:carbon_tracker/data/country_defaults.dart';
 import 'package:carbon_tracker/models/energy_profile.dart';
 import 'package:carbon_tracker/providers/emission_provider.dart';
+import 'package:carbon_tracker/widgets/voetje_button.dart';
 
 class EnergySetupScreen extends StatefulWidget {
   const EnergySetupScreen({super.key});
@@ -126,39 +128,6 @@ class _EnergySetupScreenState extends State<EnergySetupScreen> {
   }
 }
 
-// ─── Shared next/save pill button ─────────────────────────────────────────────
-
-class _GreenPillButton extends StatelessWidget {
-  final String label;
-  final VoidCallback? onPressed;
-
-  const _GreenPillButton({required this.label, this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: 52,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: VoetjeColors.primary,
-          foregroundColor: Colors.white,
-          disabledBackgroundColor: VoetjeColors.disabledButtonOf(context),
-          elevation: 2,
-          shadowColor: VoetjeColors.primary.withValues(alpha: 0.4),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(VoetjeRadius.card),
-          ),
-        ),
-        child: Text(
-          label,
-          style: VoetjeTypography.buttonLabel(),
-        ),
-      ),
-    );
-  }
-}
 
 // ─── Shared selection card ────────────────────────────────────────────────────
 
@@ -203,8 +172,8 @@ class _SelectionCard extends StatelessWidget {
             const SizedBox(width: 8),
             Icon(
               selected
-                  ? Icons.check_box
-                  : Icons.check_box_outline_blank,
+                  ? Icons.check_circle
+                  : Icons.radio_button_unchecked,
               color: selected
                   ? VoetjeColors.primaryMediumOf(context)
                   : VoetjeColors.borderOf(context),
@@ -498,7 +467,7 @@ class _HeatingPage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          _GreenPillButton(label: 'Next →', onPressed: onNext),
+          VoetjeButton(label: 'Next →', onPressed: onNext),
         ],
       ),
     );

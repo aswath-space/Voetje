@@ -159,7 +159,7 @@ class SettingsScreen extends StatelessWidget {
                   const _RowDivider(),
                   _CategoryRow(
                     category: 'shopping',
-                    icon: Icons.shopping_bag,
+                    icon: Icons.shopping_bag_outlined,
                     label: 'Shopping',
                     value: s.shopping,
                     onChanged: (v) {
@@ -409,7 +409,7 @@ class _SettingsCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: VoetjeColors.surfaceOf(context),
-        borderRadius: BorderRadius.circular(VoetjeRadius.card + 2),
+        borderRadius: BorderRadius.circular(VoetjeRadius.cardLarge),
         boxShadow: const [
           BoxShadow(
             color: VoetjeColors.shadowLight,
@@ -553,7 +553,7 @@ class _UnitSegmentedControl extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
-                  color: selected ? VoetjeColors.surfaceOf(context) : VoetjeColors.textMutedOf(context),
+                  color: selected ? Colors.white : VoetjeColors.textMutedOf(context),
                 ),
               ),
             ),

@@ -149,7 +149,7 @@ class _DashboardContent extends StatelessWidget {
                       child: BudgetRing(
                         totalCO2: provider.todayCO2,
                         categoryBreakdown: breakdown,
-                        size: MediaQuery.of(context).size.width * 0.65,
+                        size: MediaQuery.of(context).size.width * VoetjeRing.screenWidthFraction,
                       ),
                     ),
 
@@ -378,7 +378,7 @@ class _DashboardContent extends StatelessWidget {
       case EmissionCategory.energy:
         return Icons.bolt;
       case EmissionCategory.shopping:
-        return Icons.shopping_bag;
+        return Icons.shopping_bag_outlined;
       case EmissionCategory.waste:
         return Icons.recycling;
     }

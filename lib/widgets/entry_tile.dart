@@ -22,8 +22,9 @@ class EntryTile extends StatelessWidget {
   final VoidCallback? onDismissed;
 
   Widget _buildTile(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
+      borderRadius: BorderRadius.circular(VoetjeRadius.input),
       child: Container(
         decoration: BoxDecoration(
           color: VoetjeColors.surfaceOf(context),
@@ -61,6 +62,8 @@ class EntryTile extends StatelessWidget {
                 children: [
                   Text(
                     title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: VoetjeTypography.bodyEmphasis().copyWith(
                       color: VoetjeColors.textPrimaryOf(context),
                     ),

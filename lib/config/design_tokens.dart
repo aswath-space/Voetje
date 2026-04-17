@@ -40,6 +40,12 @@ class VoetjeColors {
   static const Color trackAmberText = Color(0xFFF9A825);
   static const Color trackCoralText = Color(0xFFEF5350);
 
+  // Bin category colors (used in waste forms)
+  static const Color binGeneralWaste = Color(0xFF78909C); // blue-grey
+  static const Color binRecycling = Color(0xFF42A5F5);    // blue
+  static const Color binFoodWaste = Color(0xFFFFA726);    // amber
+  static const Color binCompost = Color(0xFF66BB6A);      // green
+
   // Neutrals
   static const Color textPrimary = Color(0xFF1A2E1A);
   static const Color textSecondary = Color(0xFF4A5E4A);
@@ -108,6 +114,11 @@ class VoetjeColors {
       isDark(context) ? const Color(0xFF3A5A3A) : progressTrack;
   static Color trackNeutralOf(BuildContext context) =>
       isDark(context) ? const Color(0xFF3A3A3A) : trackNeutral;
+  // Darker, more visible track ring colors for dark mode
+  static Color trackAmberOf(BuildContext context) =>
+      isDark(context) ? const Color(0xFF5A4010) : trackAmber;
+  static Color trackCoralOf(BuildContext context) =>
+      isDark(context) ? const Color(0xFF5A1C1C) : trackCoral;
   static Color inactiveNavOf(BuildContext context) =>
       isDark(context) ? darkTextMuted : inactiveNav;
   static Color disabledButtonOf(BuildContext context) =>
@@ -157,6 +168,14 @@ class VoetjeColors {
   }
 }
 
+class VoetjeRing {
+  /// Stroke width of the budget ring arc.
+  static const double strokeWidth = 20.0;
+
+  /// The ring diameter as a fraction of screen width on the home dashboard.
+  static const double screenWidthFraction = 0.65;
+}
+
 class VoetjeSpacing {
   static const double screenEdge = 24;
   static const double cardPadding = 14;
@@ -168,6 +187,7 @@ class VoetjeSpacing {
 
 class VoetjeRadius {
   static const double card = 16;
+  static const double cardLarge = 18;
   static const double chip = 20;
   static const double iconContainer = 10;
   static const double iconContainerMedium = 12;

@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:carbon_tracker/config/design_tokens.dart';
 import 'package:carbon_tracker/providers/emission_provider.dart';
 import 'package:carbon_tracker/screens/home_screen.dart';
+import 'package:carbon_tracker/widgets/voetje_button.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -179,23 +180,8 @@ class _PillButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: VoetjeColors.primary,
-        foregroundColor: Colors.white,
-        elevation: 2,
-        shadowColor: VoetjeColors.primary.withValues(alpha: 0.35),
-        padding:
-            const EdgeInsets.symmetric(horizontal: 28, vertical: 12),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
-        ),
-      ),
-      child: Text(
-        label,
-        style: VoetjeTypography.buttonLabel().copyWith(fontSize: 14),
-      ),
+    return SizedBox(
+      child: VoetjeButton(label: label, onPressed: onPressed),
     );
   }
 }
@@ -343,28 +329,7 @@ class _CategorySelectionPageState extends State<_CategorySelectionPage> {
             onChanged: (v) => setState(() => _waste = v),
           ),
           const SizedBox(height: 28),
-          SizedBox(
-            width: double.infinity,
-            height: 52,
-            child: ElevatedButton(
-              onPressed: _getStarted,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: VoetjeColors.primary,
-                foregroundColor: Colors.white,
-                elevation: 2,
-                shadowColor:
-                    VoetjeColors.primary.withValues(alpha: 0.35),
-                shape: RoundedRectangleBorder(
-                  borderRadius:
-                      BorderRadius.circular(VoetjeRadius.card),
-                ),
-              ),
-              child: Text(
-                'Get Started',
-                style: VoetjeTypography.buttonLabel(),
-              ),
-            ),
-          ),
+          VoetjeButton(label: 'Get Started', onPressed: _getStarted),
           const SizedBox(height: 16),
         ],
       ),
@@ -385,8 +350,9 @@ class _CategorySelectionPageState extends State<_CategorySelectionPage> {
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: Container(
         decoration: BoxDecoration(
-          color: VoetjeColors.surfaceOf(context).withValues(alpha: 0.7),
+          color: VoetjeColors.surfaceOf(context),
           borderRadius: BorderRadius.circular(VoetjeRadius.card),
+          border: Border.all(color: VoetjeColors.borderOf(context), width: 1),
         ),
         padding:
             const EdgeInsets.symmetric(horizontal: 14, vertical: 10),

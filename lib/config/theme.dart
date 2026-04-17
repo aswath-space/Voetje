@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:carbon_tracker/config/design_tokens.dart';
 
-// ignore_for_file: deprecated_member_use_from_same_package
-
-/// Legacy color constants kept for incremental migration of existing screens.
-/// Migrate usages to [VoetjeColors] and remove this class once all screens
-/// have been updated.
+/// Legacy color constants — one remaining consumer: transport_mode.dart.
+/// Migrate that file to [VoetjeColors] and delete this class.
 @Deprecated('Use VoetjeColors from design_tokens.dart instead')
 class AppColors {
   static const primary = Color(0xFF2E7D32);
@@ -120,11 +117,14 @@ class AppTheme {
         ).copyWith(
           primary: VoetjeColors.darkAccent,
         ),
-        appBarTheme: const AppBarTheme(
+        appBarTheme: AppBarTheme(
           centerTitle: true,
           elevation: 0,
           backgroundColor: Colors.transparent,
           foregroundColor: VoetjeColors.darkTextPrimary,
+          titleTextStyle: VoetjeTypography.pageTitle().copyWith(
+            color: VoetjeColors.darkAccent,
+          ),
         ),
         cardTheme: CardThemeData(
           elevation: 0.5,

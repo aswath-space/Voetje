@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:carbon_tracker/config/design_tokens.dart';
 import 'package:carbon_tracker/services/airport_service.dart';
 
 /// Single-airport picker used in the transport form for flight entries.
@@ -126,37 +128,68 @@ class _AirportPickerState extends State<AirportPicker> {
   }
 
   Widget _buildDropdown() {
-    return Positioned(
-      width: 300,
-      child: CompositedTransformFollower(
-        link: _layerLink,
-        showWhenUnlinked: false,
-        offset: const Offset(0, 52),
-        child: Material(
-          elevation: 4,
-          borderRadius: BorderRadius.circular(8),
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxHeight: 240),
-            child: ListView.builder(
-              padding: EdgeInsets.zero,
-              shrinkWrap: true,
-              itemCount: _results.length,
-              itemBuilder: (context, i) {
-                final a = _results[i];
-                return ListTile(
-                  dense: true,
-                  leading: Text(
-                    a.iata,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'monospace',
-                    ),
+    // Width adapts to screen — take the full field width minus outer margins.
+    // We don't have MediaQuery here (overlay context may differ), so use a
+    // LayoutBuilder-safe approach: fill available width via Positioned.fill
+    // in a later step. For now anchor to the transform target width naturally.
+    return CompositedTransformFollower(
+      link: _layerLink,
+      showWhenUnlinked: false,
+      offset: const Offset(0, 52),
+      child: Align(
+        alignment: Alignment.topLeft,
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(minWidth: 200, maxWidth: 380, maxHeight: 240),
+          child: Material(
+            elevation: 4,
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(VoetjeRadius.input),
+            child: Builder(
+              builder: (ctx) => Container(
+                decoration: BoxDecoration(
+                  color: VoetjeColors.surfaceOf(ctx),
+                  borderRadius: BorderRadius.circular(VoetjeRadius.input),
+                  border: Border.all(color: VoetjeColors.borderOf(ctx)),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(VoetjeRadius.input),
+                  child: ListView.builder(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    itemCount: _results.length,
+                    itemBuilder: (context, i) {
+                      final a = _results[i];
+                      return ListTile(
+                        dense: true,
+                        leading: Text(
+                          a.iata,
+                          style: GoogleFonts.robotoMono(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 13,
+                            color: VoetjeColors.textPrimaryOf(context),
+                          ),
+                        ),
+                        title: Text(
+                          a.name,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: VoetjeTypography.caption().copyWith(
+                            color: VoetjeColors.textPrimaryOf(context),
+                          ),
+                        ),
+                        subtitle: Text(
+                          '${a.city}, ${a.country}',
+                          style: VoetjeTypography.caption().copyWith(
+                            fontSize: 12,
+                            color: VoetjeColors.captionColorOf(context),
+                          ),
+                        ),
+                        onTap: () => _pick(a),
+                      );
+                    },
                   ),
-                  title: Text(a.name, maxLines: 1, overflow: TextOverflow.ellipsis),
-                  subtitle: Text('${a.city}, ${a.country}'),
-                  onTap: () => _pick(a),
-                );
-              },
+                ),
+              ),
             ),
           ),
         ),
@@ -186,7 +219,7 @@ class _AirportPickerState extends State<AirportPicker> {
               counterText: '',
               prefixIcon: const Icon(Icons.flight),
               suffixIcon: _selected != null
-                  ? const Icon(Icons.check_circle, color: Colors.green)
+                  ? const Icon(Icons.check_circle, color: VoetjeColors.primaryLight)
                   : null,
             ),
             onChanged: _onTextChanged,
@@ -196,9 +229,9 @@ class _AirportPickerState extends State<AirportPicker> {
               padding: const EdgeInsets.only(left: 12, top: 2),
               child: Text(
                 subtitle,
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: Colors.grey.shade600,
-                    ),
+                style: VoetjeTypography.caption().copyWith(
+                  color: VoetjeColors.captionColorOf(context),
+                ),
               ),
             ),
         ],

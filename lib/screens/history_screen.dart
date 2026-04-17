@@ -107,7 +107,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
               // ── Page title ──────────────────────────────────────────────
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 24, 20, 4),
+                  padding: const EdgeInsets.fromLTRB(VoetjeSpacing.screenEdge, 24, VoetjeSpacing.screenEdge, 4),
                   child: Text('History', style: VoetjeTypography.pageTitle().copyWith(
                     color: VoetjeColors.primaryOf(context),
                   )),
@@ -117,7 +117,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
               // ── Weekly summary card ──────────────────────────────────────
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: VoetjeSpacing.screenEdge, vertical: 8),
                   child: _WeeklySummaryCard(
                     weekCO2: provider.weekCO2,
                     previousWeekCO2: provider.previousWeekCO2,
@@ -132,7 +132,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                   height: 44,
                   child: ListView.separated(
                     scrollDirection: Axis.horizontal,
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    padding: const EdgeInsets.symmetric(horizontal: VoetjeSpacing.screenEdge),
                     itemCount: _categories.length,
                     separatorBuilder: (_, _) => const SizedBox(width: 8),
                     itemBuilder: (context, i) {
@@ -167,6 +167,14 @@ class _HistoryScreenState extends State<HistoryScreen> {
                           style: VoetjeTypography.caption().copyWith(
                                 color: VoetjeColors.textMutedOf(context),
                               ),
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          'Head to the Today tab to start tracking',
+                          style: VoetjeTypography.caption().copyWith(
+                                color: VoetjeColors.captionColorOf(context),
+                              ),
+                          textAlign: TextAlign.center,
                         ),
                       ],
                     ),
@@ -297,7 +305,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
       case EmissionCategory.energy:
         return Icons.bolt;
       case EmissionCategory.shopping:
-        return Icons.shopping_bag;
+        return Icons.shopping_bag_outlined;
       case EmissionCategory.waste:
         return Icons.recycling;
     }
@@ -350,7 +358,7 @@ class _WeeklySummaryCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: VoetjeColors.surfaceOf(context),
-        borderRadius: BorderRadius.circular(VoetjeRadius.card + 2),
+        borderRadius: BorderRadius.circular(VoetjeRadius.cardLarge),
         boxShadow: const [
           BoxShadow(
             color: VoetjeColors.shadowMedium,

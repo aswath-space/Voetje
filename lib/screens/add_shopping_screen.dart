@@ -8,6 +8,7 @@ import 'package:carbon_tracker/providers/emission_provider.dart';
 import 'package:carbon_tracker/screens/second_hand_celebration_screen.dart';
 import 'package:carbon_tracker/services/shopping_calculator.dart';
 import 'package:carbon_tracker/widgets/screen_shell.dart';
+import 'package:carbon_tracker/widgets/voetje_button.dart';
 
 class AddShoppingScreen extends StatefulWidget {
   const AddShoppingScreen({super.key});
@@ -168,6 +169,20 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
           ),
           const SizedBox(height: 6),
         ],
+
+        // No-results message (search active, nothing found)
+        if (_searchCtrl.text.isNotEmpty && _searchResults.isEmpty)
+          Padding(
+            padding: const EdgeInsets.symmetric(
+                horizontal: VoetjeSpacing.screenEdge, vertical: 8),
+            child: Text(
+              'No results for "${_searchCtrl.text}" — try a different term or use the custom item below.',
+              style: VoetjeTypography.caption().copyWith(
+                color: VoetjeColors.textMutedOf(context),
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
 
         // Results list
         Expanded(
@@ -358,28 +373,10 @@ class _AddShoppingScreenState extends State<AddShoppingScreen> {
               ],
 
               const Spacer(),
-              SizedBox(
-                width: double.infinity,
-                height: 52,
-                child: ElevatedButton.icon(
-                  icon: const Icon(Icons.check, color: Colors.white),
-                  label: Text(
-                    'Log ${item.name} (${_condition.label})',
-                    style: VoetjeTypography.buttonLabel(),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: VoetjeColors.primary,
-                    foregroundColor: Colors.white,
-                    elevation: 2,
-                    shadowColor:
-                        VoetjeColors.primary.withValues(alpha: 0.4),
-                    shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(VoetjeRadius.card),
-                    ),
-                  ),
-                  onPressed: _save,
-                ),
+              VoetjeButton(
+                label: 'Log ${item.name} (${_condition.label})',
+                icon: Icons.check,
+                onPressed: _save,
               ),
             ]),
       ),

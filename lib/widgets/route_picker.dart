@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:carbon_tracker/config/design_tokens.dart';
 import 'package:carbon_tracker/models/saved_place.dart';
 import 'package:carbon_tracker/models/transport_mode.dart';
 import 'package:carbon_tracker/providers/emission_provider.dart';
@@ -52,9 +53,9 @@ class _RoutePickerState extends State<RoutePicker> {
       children: [
         Text(
           'Quick route',
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+          style: VoetjeTypography.sectionHeader().copyWith(
+            color: VoetjeColors.textPrimaryOf(context),
+          ),
         ),
         const SizedBox(height: 8),
         Row(
@@ -68,9 +69,14 @@ class _RoutePickerState extends State<RoutePicker> {
                 onChanged: (p) => _onFromChanged(p, context),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8),
-              child: Icon(Icons.arrow_forward, size: 18),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                  horizontal: VoetjeSpacing.chipGap),
+              child: Icon(
+                Icons.arrow_forward,
+                size: VoetjeIconSize.smallIcon,
+                color: VoetjeColors.textMutedOf(context),
+              ),
             ),
             Expanded(
               child: _PlaceDropdown(
@@ -84,12 +90,12 @@ class _RoutePickerState extends State<RoutePicker> {
           ],
         ),
         if (_routeSummary != null) ...[
-          const SizedBox(height: 6),
+          const SizedBox(height: VoetjeSpacing.chipGap),
           Text(
             _routeSummary!,
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: Colors.grey.shade600,
-                ),
+            style: VoetjeTypography.caption().copyWith(
+              color: VoetjeColors.captionColorOf(context),
+            ),
           ),
         ],
         const SizedBox(height: 8),
@@ -172,13 +178,19 @@ class _AddPlaceButton extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Quick route',
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold)),
+        Text(
+          'Quick route',
+          style: VoetjeTypography.sectionHeader().copyWith(
+            color: VoetjeColors.textPrimaryOf(context),
+          ),
+        ),
         const SizedBox(height: 4),
-        Text('Save places for quick distance fill',
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: Colors.grey.shade600)),
+        Text(
+          'Save places for quick distance fill',
+          style: VoetjeTypography.caption().copyWith(
+            color: VoetjeColors.captionColorOf(context),
+          ),
+        ),
         const SizedBox(height: 8),
         ActionChip(
           avatar: const Icon(Icons.add, size: 18),
@@ -233,11 +245,19 @@ class _PlaceDropdown extends StatelessWidget {
         value: effective,
         isExpanded: true,
         underline: const SizedBox.shrink(),
-        hint: Text(label),
+        hint: Text(label, style: VoetjeTypography.caption().copyWith(
+          color: VoetjeColors.captionColorOf(context),
+        )),
         items: available
             .map((p) => DropdownMenuItem(
                   value: p,
-                  child: Text(p.name, overflow: TextOverflow.ellipsis),
+                  child: Text(
+                    p.name,
+                    overflow: TextOverflow.ellipsis,
+                    style: VoetjeTypography.body().copyWith(
+                      color: VoetjeColors.textPrimaryOf(context),
+                    ),
+                  ),
                 ))
             .toList(),
         onChanged: onChanged,

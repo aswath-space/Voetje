@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:carbon_tracker/config/design_tokens.dart';
 import 'package:carbon_tracker/models/waste_setup.dart';
 import 'package:carbon_tracker/providers/emission_provider.dart';
+import 'package:carbon_tracker/widgets/voetje_button.dart';
 
 /// 2-screen setup wizard for Waste & Recycling.
 /// Screen 1: Which bins do you have?
@@ -95,40 +96,6 @@ class _WasteSetupScreenState extends State<WasteSetupScreen> {
   }
 }
 
-// ─── Shared green pill button ─────────────────────────────────────────────────
-
-class _GreenPillButton extends StatelessWidget {
-  final String label;
-  final VoidCallback? onPressed;
-
-  const _GreenPillButton({required this.label, this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: 52,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: VoetjeColors.primary,
-          foregroundColor: Colors.white,
-          disabledBackgroundColor: VoetjeColors.disabledButtonOf(context),
-          elevation: 2,
-          shadowColor: VoetjeColors.primary.withValues(alpha: 0.4),
-          shape: RoundedRectangleBorder(
-            borderRadius:
-                BorderRadius.circular(VoetjeRadius.card),
-          ),
-        ),
-        child: Text(
-          label,
-          style: VoetjeTypography.buttonLabel(),
-        ),
-      ),
-    );
-  }
-}
 
 class _BinSelectionStep extends StatelessWidget {
   final Set<BinType> selectedBins;
@@ -165,7 +132,7 @@ class _BinSelectionStep extends StatelessWidget {
                 onTap: () => onToggle(bin),
               )),
           const SizedBox(height: 28),
-          _GreenPillButton(
+          VoetjeButton(
             label: 'Next →',
             onPressed: selectedBins.isNotEmpty ? onNext : null,
           ),
@@ -227,8 +194,8 @@ class _BinTile extends StatelessWidget {
               ),
               Icon(
                 selected
-                    ? Icons.check_box
-                    : Icons.check_box_outline_blank,
+                    ? Icons.check_circle
+                    : Icons.radio_button_unchecked,
                 color: selected
                     ? VoetjeColors.primaryMediumOf(context)
                     : VoetjeColors.borderOf(context),
@@ -322,7 +289,7 @@ class _HousingTypeStep extends StatelessWidget {
                 ),
               )),
           const SizedBox(height: 28),
-          _GreenPillButton(label: 'Done', onPressed: onDone),
+          VoetjeButton(label: 'Done', onPressed: onDone),
         ],
       ),
     );

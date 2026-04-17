@@ -218,7 +218,7 @@ class _CategoryGrid extends StatelessWidget {
       if (energyEnabled)
         const _Category(key: 'energy', label: 'Energy', icon: Icons.bolt),
       if (shoppingEnabled)
-        const _Category(key: 'shopping', label: 'Shopping', icon: Icons.shopping_bag),
+        const _Category(key: 'shopping', label: 'Shopping', icon: Icons.shopping_bag_outlined),
       if (wasteEnabled)
         const _Category(key: 'waste', label: 'Waste', icon: Icons.recycling),
     ];
@@ -229,7 +229,7 @@ class _CategoryGrid extends StatelessWidget {
       child: SafeArea(
         top: false,
         child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
+          padding: const EdgeInsets.fromLTRB(VoetjeSpacing.screenEdge, 12, VoetjeSpacing.screenEdge, 24),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
